@@ -1,0 +1,50 @@
+.Offer{
+    background-color: rgb(243, 243, 243);
+    padding:20px 14%;
+    font-family: cinzel,serif;
+    text-align: center;
+}
+.Top > h2{
+    margin: 40px 0;
+}
+.Top >p {
+    padding: 0 19%;
+    font-size: 18px;
+    margin-top: 33px;
+}
+.Top >img {
+    margin-left: 15px;
+    width: 485px;
+}
+.ElseOffer {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 10%;
+}
+.Column{
+    width: 50%;
+}
+.Column > ul {
+    text-align: start;
+}
+@media (max-width: 768px) {
+    .Top >img {
+        width: 100%;
+        margin: 0;
+        height: 200px;
+    }
+    .Offer{
+        padding:10px 10px;
+        width: 100%;
+    }
+    .Top >p{
+        padding:0;
+    }
+    .ElseOffer{
+        flex-direction: column;
+        padding: 10px 10px;
+    }
+    .Column{
+        width: 100%;
+    }
+}

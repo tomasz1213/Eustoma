@@ -1,0 +1,40 @@
+.Element{
+    height: 700px;
+    text-align: center;
+    padding: 40px 30%;
+    background-size: cover;
+    margin-bottom: 50px;
+}
+.Element >h2 {
+    color: white;
+    font-family: libre baskerville,serif;
+    letter-spacing: 10px;
+    font-size: 32px;
+    margin-bottom: 80px;
+}
+.Element >p {
+    font-family: barlow-extralight,barlow,sans-serif;
+    font-size: 18px;
+    white-space: pre-wrap;
+    margin-bottom: 50px;
+    line-height:26px;
+    color: rgb(156, 156, 156);
+}
+.Element > a{
+    color: white;
+    border:1px solid white;
+    padding:10px;
+    cursor: pointer;
+}
+.Element > a:hover{
+    background-color:white;
+    color:black;
+}
+@media (max-width: 768px){
+    .Element{
+        height:auto;
+        width:100vw;
+        padding:30px 0;
+        object-fit: cover;
+    }
+}

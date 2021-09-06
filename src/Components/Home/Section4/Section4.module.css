@@ -1,0 +1,18 @@
+.Section4 {
+    background-color: #efe2d7;
+    margin-top: 70px;
+    width: 99.2vw;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 768px){
+    .Section4{
+        flex-direction:column;
+        margin-top: 400px;
+        margin-bottom: 100px;
+        width: 105%;
+    }
+}

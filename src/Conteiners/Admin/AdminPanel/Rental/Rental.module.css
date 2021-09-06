@@ -1,0 +1,91 @@
+.Button{
+    background-color: #3f7beb;
+    position: absolute;
+    left:17px;
+    top:170px;
+    color:#fff;
+    width:260px;
+    height:30px;
+    border: 0 solid #eee;
+    cursor: pointer;
+    z-index: 10;
+}
+.Button:hover{
+    background-color: #134e6f;
+    cursor: pointer;
+}
+.Button::before{
+    content:"";
+    position: absolute;
+    top:-9px;
+    left:13px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #3f7beb;
+}
+.Button > input {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+    cursor: pointer;
+}
+.Button > p {
+    position: relative;
+    font-size:13.3333px;
+    top: -27px;
+    text-align: center;
+}
+.Result{
+    display: flex;
+    flex-wrap: wrap;
+    position:relative;
+}
+.Rental > h2 {
+    border-bottom: 1px solid #134e6f;
+}
+.Input{
+    float: right;
+    height: 20px;
+}
+.ldsdualring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.ldsdualring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #3f7beb;
+    border-color: #3f7beb transparent #3f7beb transparent;
+    animation: ldsdualring 1.2s linear infinite;
+  }
+@keyframes ldsdualring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .Modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.877);
+    display: block;
+    text-align: center;
+}

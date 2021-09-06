@@ -1,0 +1,59 @@
+.Modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.877);
+    display: block;
+    text-align: center;
+}
+.Img{
+    max-width: 80vw;
+    max-height:80vh;
+    margin-top: 10vh;
+}
+
+.Left{
+    color:white;
+    position: absolute;
+    top:40%;
+    left:30px;
+    font-size: 20px;
+    text-shadow: 2px 2px 8px #000000;
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+.Right{
+    font-size: 40px;
+    color:white;
+    position: absolute;
+    top: 40%;
+    right:30px;
+    text-shadow: 2px 2px 8px #000000;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.Left > i{
+    font-size:50px;
+}.Right > i{
+    font-size:50px;
+}
+.Close{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+}
+.Close > i {
+    font-size:40px;
+    font-weight: normal;
+    cursor: pointer;
+}
+@media (max-width:768px) {
+    .Img{
+        width: 100%;
+    }
+}

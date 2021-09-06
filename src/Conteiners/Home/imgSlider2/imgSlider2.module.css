@@ -1,0 +1,44 @@
+.Foto{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width:70vw;
+}
+.Slider{
+    margin: 20px 15%;
+}
+.SliderLeft{
+    color: white;
+    cursor: pointer;
+}
+.SliderRight{
+    cursor: pointer;
+    color: white;
+    visibility: hidden;    
+}
+.SliderLeft > i{
+    font-size:50px;
+    position: relative;
+    top: 268px;
+    z-index: 90;
+    text-shadow: 4px 4px 4px #000000;
+}
+.SliderRight > i{
+    font-size: 50px;
+    position: relative;
+    right: -94%;
+    top: -271px;
+    z-index: 90;
+    text-shadow: 4px 4px 4px #000000;
+}
+@media (max-width: 768px){
+    .Slider{
+        margin: 0;
+    }
+    .SliderRight > i{
+        right: -85%
+    }
+    .Foto{
+        width: 105%;
+    }
+}

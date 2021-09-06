@@ -1,0 +1,48 @@
+.Tile{
+    display:flex;
+    flex-direction:column;
+    background-color:rgba(216, 211, 211, 0.445);
+    width: 30%;
+    height: 320px;
+    margin-left: 10px;
+}
+.Number{
+    width:100%;
+    text-align: center;
+    color:white;
+    position:relative;
+    top:-86px;
+    font-size:100px;
+    font-weight: 200;
+    font-style: italic;
+    font-family: 'GFS Didot', serif;
+    
+}
+
+.Number::after {
+    content: "";
+    position: absolute;
+    left: clamp(78px, 45%, 100%);
+    height: 118px;
+    width: 33px;
+    border-bottom: 2px solid white;
+}
+.Text{
+    position:relative;
+    top:-138px;
+    text-align: center;
+    width:100%;
+    color:white;
+    font-family: lato,sans-serif;
+    font-size: 16px;
+}
+@media (max-width:768px){
+    .Tile{
+        width:100%;
+        height:225px;
+        margin: 0;
+    }
+    .Text{
+        top: 64px;
+    }
+}

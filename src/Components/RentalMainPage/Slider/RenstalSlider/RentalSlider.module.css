@@ -1,0 +1,39 @@
+.Foto{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width:70vw;
+}
+.Slider{
+    margin: 20px 20%;
+    overflow: hidden;
+}
+.SliderLeft{
+    color: white;
+    cursor: pointer;
+}
+.SliderRight{
+    cursor: pointer;
+    color: white;
+}
+.SliderLeft > i{
+    font-size:30px;
+    position: relative;
+    top: 160px;
+    left:15%;
+    text-shadow: 0px 0px 4px #000000;
+    z-index: 90;
+}
+.SliderRight > i{
+    font-size: 30px;
+    position: relative;
+    left: 83%;
+    text-shadow: 0px 0px 4px #000000;
+    bottom: 346px;
+    z-index: 90;
+}
+@media screen and (max-width:768px){
+    .SliderLeft > i{
+        left: 10%;
+    }
+}

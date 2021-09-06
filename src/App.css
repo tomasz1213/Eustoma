@@ -1,0 +1,12 @@
+.App {
+    width: 100%;
+    margin: 0;
+    padding:0;
+    outline: 0;
+    caret-color: transparent;
+}
+@media (max-width: 768px) {
+    .App {
+        width: 95%;
+    }
+}

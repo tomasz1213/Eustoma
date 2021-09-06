@@ -1,0 +1,54 @@
+.Section3{
+    display: flex;
+    flex-direction: row;
+    height: 98vh;
+    padding: 0 20%;
+}
+.Photo{
+    position: relative;
+    width: 619px;
+    height: 80vh;
+}
+.Photo > img {
+    object-fit: cover;
+    width: 100%;
+}
+.Text{
+    position: relative;
+    margin-left: 20px;
+    top: -30px;
+    width:30%;
+    font-family: cinzel,serif;
+    font-size: clamp(0.5rem, 1vw, 1rem);
+}
+.Text >h1{
+    font-size: 56px;
+    letter-spacing: 10px;
+    font-weight: 200;
+    font-family: 'Lobster', cursive;
+}
+@media (max-width: 768px){
+    .Section3{
+        flex-direction: column;
+        padding:0;
+        margin-bottom:200px;
+        width: 105%;
+    }
+    .Photo > img{
+        height: 350px;
+    }
+    .Photo{
+        width: 100vw;
+    }
+    .Text{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 3px;
+        height:auto;
+        width: 100%;
+        font-size:16px;
+    }
+    .Text > h1{
+        font-size: 40px;
+    }
+}

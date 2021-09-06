@@ -1,0 +1,18 @@
+.Rental{
+    width:100%;
+}
+.Name{
+    margin: 20px;
+    font-family: cinzel,serif;
+    font-size: 38px;
+    text-align: center;
+}
+.Wrapper{
+    background-color:rgba(244, 244, 244, 0.69);
+    height: 450px;
+}
+@media (max-width: 768px) {
+    .Rental{
+        width: 105%;
+    }
+}

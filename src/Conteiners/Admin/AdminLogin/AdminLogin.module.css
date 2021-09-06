@@ -1,0 +1,73 @@
+.AdminLogin{
+    display:flex;
+    flex-direction:column;
+    margin: 200px auto;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+}
+.ErrorDisplay{
+    position: relative;
+    top:-100px;
+    align-items: center;
+    left:35%;
+    color:red;
+}
+.InputWrapper{
+    font-family:'Courier New', Courier, monospace;
+    background-color:#3f7beb;
+    height:600px;
+    width:500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border: 0 solid #3f3f3f;
+    box-shadow: 0 2px 3px #ccc;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #3f7beb 60%, rgb(255, 255, 255) 40%);
+}
+.Input{
+    width:90%;
+    height:25px;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    margin: 10px;
+}
+input::placeholder{
+    text-align: center;
+    
+}
+.Text{
+    position: relative;
+    top:100px;
+}
+.AdminLogin > button{
+    background-color: #3f7beb;
+    margin:10px;
+    color: #fff;
+    width:260px;
+    height:30px;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+.AdminLogin > button:hover{
+    background-color: #134e6f;
+}
+.Text > h3,
+.Text > p {
+    text-align: center;
+    color: white;
+}
+
+@media (min-width: 600px){
+    .Auth{
+        width:500px;
+    }
+}

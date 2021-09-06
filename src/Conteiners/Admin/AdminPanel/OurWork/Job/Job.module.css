@@ -1,0 +1,59 @@
+.InputLabel{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    padding:20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Input{
+    width:100%;
+    height:20px;
+    border: 1px solid #dbdada;
+}
+.Buttons{
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Button{
+    position: relative;
+    background-color: #134e6f;
+    color: #fff;
+    height:30px;
+    width: 100px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Button:hover{
+    background-color: #4d7f9c;
+}
+.FotoInput{
+    opacity: 0;
+    cursor: pointer;
+    background-color: #134e6f;
+}
+.InputLabel p {
+    margin: 0;
+    text-align: center;
+}
+.Close{
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    color: black;
+}
+.Close > i {
+    font-size:40px;
+    font-weight: normal;
+    cursor: pointer;
+}
+.Image{
+    height:100px;
+    width:100px;
+    cursor: pointer;
+    object-fit: cover;
+    margin-right: 5px;
+}

@@ -1,0 +1,15 @@
+.Admin > button{
+    position: fixed;
+    left: 7px;
+    background-color: #3f7beb;
+    margin:10px;
+    color: #fff;
+    width:260px;
+    height:30px;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+.Admin > button:hover{
+    background-color: #134e6f;
+}

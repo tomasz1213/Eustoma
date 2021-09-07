@@ -4,11 +4,10 @@ import Tile from '../../../UI/Tile/Tile';
 import img1 from '../../../img/galeriasg.webp';
 import img2 from '../../../img/wycenasg.webp';
 
-const section4 = () => (
-    <div className={classes.Section4}>
+const section4 = (props) => (
+    <div style={{backgroundColor:props.background}} className={classes.Section4}>
         <Tile title='GALERIA' desc='zobacz nasze realizacje' background={img1}/>
         <Tile title='WYCENA' desc='wypełnij formularz' background={img2}/>
-        <Tile title='KALENDARZ' desc='sprawdź termin'/>
     </div>
 );
 

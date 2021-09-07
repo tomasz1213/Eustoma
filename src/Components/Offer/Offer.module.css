@@ -26,6 +26,15 @@
 }
 .Column > ul {
     text-align: start;
+    font-size: 21px;
+}
+.Prizing{
+    padding:0 15%;
+    font-size:21px;
+}
+.BorderedP{
+    font-size:21px;
+    border-bottom: 1px solid black;
 }
 @media (max-width: 768px) {
     .Top >img {
@@ -37,6 +46,9 @@
         padding:10px 10px;
         width: 100%;
     }
+    .Column > ul{
+        font-size:15px;
+    }
     .Top >p{
         padding:0;
     }
@@ -46,5 +58,13 @@
     }
     .Column{
         width: 100%;
+    }
+    .Prizing{
+        font-size:15px;
+        padding: 0 5px;
+    }
+    .BorderedP{
+        font-size:15px;
+        border: none;
     }
 }

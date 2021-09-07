@@ -5,6 +5,7 @@ import classes from './Offer.module.css';
 import img1 from '../../img/offer1.webp';
 import img2 from '../../img/offer2.webp';
 import Element from './Element/Element';
+import Section4 from '../Home/Section4/Section4';
 
 const offer = () => (
     <>
@@ -53,16 +54,16 @@ const offer = () => (
                 </div>
             </div>
             <h1>CENNIK</h1>
-            <p style={{padding:'0 15%',fontSize:'21px'}}>Podane ceny są orientacyjne, gdyż całkowity koszt dekoracji zależny jest od ich wielkości, rodzaju kwiatów oraz ich dostępności, a także innych materiałów użytych do ich wykonania.
+            <p className={classes.Prizing}>Podane ceny są orientacyjne, gdyż całkowity koszt dekoracji zależny jest od ich wielkości, rodzaju kwiatów oraz ich dostępności, a także innych materiałów użytych do ich wykonania.
                 To Wy ustalacie maksymalny budżet - podczas sporządzania kosztorysu i ogólnego zarysu dekoracji. Sami decydujecie, ile maksymalnie chcecie przeznaczyć na oprawę florystyczną.
                 Kierujemy się wyłącznie zasadą <strong>minimalnego budżetu w wysokości 4000 zł brutto </strong>przy kompleksowej dekoracji – przy takiej kwocie jesteśmy w stanie podjąć się wykonania dla Was usługi i dopasować elementy dekoratorskie do założeń kosztorysu klienta. </p>
             <div className={classes.ElseOffer}>
                 <div className={classes.Column}>
-                    <ul style={{fontSize:'21px'}}>
+                    <ul>
                         <li>Bukiet ślubny - 150 - 350zł</li>
                         <li>Bukiet dla świadkowej -80 - 180zł</li>
                         <li>Wianek na głowę - 80 - 150zł</li>
-                        <li>Kwiaty do włosów - 10zł - 80zł</li>
+                        <li>Kwiaty do włosów - 10zł - 80zł</li>``
                         <li>Grzebyk do włosów - 30 - 60zł</li>
                         <li>Butonierka - 25zł</li>
                         <li>Korsarz - 40 - 60zł</li> 
@@ -79,7 +80,7 @@ const offer = () => (
                     </ul>
                 </div>              
                 <div className={classes.Column}>
-                    <ul style={{fontSize:'21px'}}>
+                    <ul>
                         <li>Dekoracja stołu Młodej Pary - 200 - 1000zł</li>
                         <li>Dekoracja tła za Młodymi - 300 -1000zł</li>
                         <li>Dekoracja stołów gości - 50 - 450zł/szt.</li>
@@ -99,7 +100,9 @@ const offer = () => (
                     </ul>
                 </div>
             </div>
+            <p className={classes.BorderedP}>Dojazd w obrębie 20km Pracowni jest w cenie, pozostałe 10ZŁ plus 1,50zl /km</p>
         </div>
+        <Section4 style={{padding:'0'}} background="rgb(243, 243, 243)"/>
         <Footer/>
     </>
 );

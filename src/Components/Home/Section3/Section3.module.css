@@ -31,7 +31,7 @@
     .Section3{
         flex-direction: column;
         padding:0;
-        margin-bottom:200px;
+        padding-bottom:300px;
         width: 105%;
     }
     .Photo > img{

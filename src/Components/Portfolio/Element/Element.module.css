@@ -1,0 +1,11 @@
+.Element{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+}
+.Title{
+    color:#292929;
+    font-size: 38px;
+    border-bottom: 1px solid black;
+    letter-spacing:5px;
+}

@@ -1,0 +1,45 @@
+.Top{
+    width: 100%;
+    height: 500px;
+    text-align: center;
+}
+.TopText{
+    font-size: 73px;
+    letter-spacing: 40px;
+    font-family: 'Raleway', sans-serif;
+    position:relative;
+}
+.TopText1{
+    left:458px;
+    top:154px;
+    color: #7a7a7a;
+}
+.TopText2{
+    left:-150px;
+    top:200px;
+    color:#dedede;
+}
+.Results{
+    margin: 50px 20%;
+    width:60%;
+}
+
+@media (max-width: 768px){
+    .Top {
+        width: 105%;
+        height:100px;
+        background-size:cover;
+    }
+    .TopText{
+        letter-spacing:12px;
+        font-size:21px;
+    }
+    .TopText1{
+        left:124px;
+        top:30px;
+    }    
+    .TopText2{
+        left:-63px;
+        top:44px;
+    }
+}

@@ -1,0 +1,15 @@
+.ImgElement {
+    width: 308px;
+    height: 308px;
+    padding:10px;
+    padding-left: 0;
+    padding-top: 0;
+    cursor: pointer;
+}
+@media (max-width: 768px){
+    .ImgElement{
+        padding: 2.5px 6%;
+        width:88%;
+
+    }
+}

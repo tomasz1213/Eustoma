@@ -8,4 +8,21 @@
     font-size: 38px;
     border-bottom: 1px solid black;
     letter-spacing:5px;
+    padding-top: 40px;
+    width: 90%;
+}
+.Text{
+    font-size: 15px;
+    letter-spacing:1px;
+    color:#000000;
+    font-family: 'Barlow', sans-serif;
+}
+@media (max-width: 768px){
+    .Title{
+        font-size:23px;
+        width:100%;
+    }
+    .Element{
+        padding: 0 6%;
+    }
 }

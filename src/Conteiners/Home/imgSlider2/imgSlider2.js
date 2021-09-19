@@ -33,11 +33,9 @@ const ImgSlider2 = () => {
         const sliderClass = [...document.getElementsByClassName(`${idSlider.className}`)];
         const el = document.getElementsByClassName(`${classes.SliderRight}`);
         const el2 = document.getElementsByClassName(`${classes.SliderLeft}`);
-        const elementParent = window.getComputedStyle(sliderClass[0].parentNode.parentNode);
-        const elementParentWidth = elementParent.width.slice(1, (elementParent.width.length -2));
         let defaultImgNumber = 3; 
-        if(elementParentWidth > 300){
-            defaultImgNumber = 4;
+        if(window.innerWidth <= 768){
+            defaultImgNumber = 1;
         }
         nextValue = side ? nextValue -378: nextValue +378; // width of ProductElement + 20px for moving tiles
         switch(nextValue) {

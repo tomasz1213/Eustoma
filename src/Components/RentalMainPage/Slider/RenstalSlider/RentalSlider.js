@@ -7,12 +7,13 @@ import axios from 'axios';
 import {updateSuccess} from '../../../../store/actions';
 
 let nextValue = 0;
-let sliderCounter = 5; // from this numer new product is added to slider;
+let sliderCounter = 6; // from this numer new product are added to slider;
 let isMobile = false;
 
 const RentalSlider = () => {
     const dispatch = useDispatch();
     const [productData,setProductData] = useState([]);
+    console.log(productData);
     useEffect(() => {
         const productArr = [];
         axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json')
@@ -26,23 +27,23 @@ const RentalSlider = () => {
     const sendProductData = (data) => {
         dispatch(updateSuccess(data));
     };
-    const showUp = productData.map((element, i) => <NavLink key={element[0]} to="/rental/product"><Product type={false} onClick={() => sendProductData(element)} key={element[0]} src={element[1].url} alt="Slider2" data={element}/></NavLink>);
+
+    const showUp = productData.map((element, i) => <NavLink key={element[0]} to="/rental/product">
+        <Product type={false} onClick={() => sendProductData(element)} key={element[0]} src={element[1].url} alt="Slider2" data={element}/></NavLink>);
     const moveSlider = (side) => { // true for left false for right
         const rightIcon = document.getElementsByClassName(`${classes.SliderRight}`);
         const leftIcon = document.getElementsByClassName(`${classes.SliderLeft}`);
         const idSlider = document.getElementById('SLIDER_PRODUCT');
         const sliderClass = [...document.getElementsByClassName(`${idSlider.className}`)];
-        const elementParent = window.getComputedStyle(sliderClass[0].parentNode.parentNode);
-        const elementParentWidth = elementParent.width.slice(0, (elementParent.width.length -2));
-        const elemntsDisplayed = Math.ceil(elementParentWidth / 224);
-        if(elemntsDisplayed <6 && !isMobile){
+        if(window.innerWidth < 765 && !isMobile){
             isMobile = true;
-            sliderCounter = elemntsDisplayed-2;
+            sliderCounter = 1;
         }
-        if(sliderCounter >= productData.length-1 && side === true) {
+        const countMoves = isMobile ? productData.length : productData.length+1;
+        if(sliderCounter >=  countMoves && side === true) { // left button
             return leftIcon[0].firstChild.style.cursor = 'not-allowed';
         }
-        if(sliderCounter <= (isMobile ? elemntsDisplayed-2:5) && side === false) {
+        if(sliderCounter <= (isMobile ? 1:6) && side === false) {
             return rightIcon[0].firstChild.style.cursor = 'not-allowed';
         }
         rightIcon[0].firstChild.style.cursor = 'pointer';

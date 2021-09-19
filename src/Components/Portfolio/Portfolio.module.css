@@ -20,8 +20,8 @@
     color:#dedede;
 }
 .Results{
-    margin: 50px 20%;
-    width:60%;
+    margin: 50px 24%;
+    width:58%;
 }
 
 @media (max-width: 768px){
@@ -41,5 +41,9 @@
     .TopText2{
         left:-63px;
         top:44px;
+    }
+    .Results{
+        margin: 0;
+        width: 105%;
     }
 }

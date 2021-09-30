@@ -1,16 +1,18 @@
 .Menu{
-    width:clamp(1170px, 100%, 100%);
+    width:100%;
     box-sizing: border-box;
     background-color: white;
     height: 75px;
     top:0;
-    padding: 5px 60px;
+    padding: 5px;
     position: sticky;
     display: flex;
-    /* overflow: hidden; */
+    color: #191b16 !important;
     z-index: 100;
 }
-
+.Menu a{
+    text-decoration: none;
+}
 .Logo{
     font-family: 'Cinzel', serif;
     height: 75px;
@@ -25,17 +27,19 @@
     left:100px;
     top:-90px;
     font-size: 24px;
+    color: #191b16 !important;
 }
 .Logo p:last-of-type{
     position: relative;
     width: 300px;
-    left:95px;
+    left:101px;
     top:-110px;
     font-size: 14px;
+    color: #191b16 !important;
 }
-@media (max-width: 768px){
+@media (max-width: 1000px){
     .Logo p:last-of-type{
-        left:90px;
+        left:88px;
         font-size: 12px;
         width:220px;
     }
@@ -45,11 +49,17 @@
         width:200px;
         font-size: 16px;
     }
+    .Logo{
+        margin-left: 10px;
+    }
     .Menu{
         width: 105%;
         padding: 5px 0;
     }
-    .Logo img{
-        
+}
+@media (min-width: 768px) and (max-width:1400px) {
+    .Menu{
+        width:100%;
+        padding:0;
     }
 }

@@ -1,16 +1,26 @@
 .ImgElement2{
     position: relative;
+    width: 176px;
+    margin:0 8px;
+}
+.ImgElement{
+    position: relative;
+    width: 226px;
+    margin:0 10px;
 }
 .ImgE2{
+    width: 226px;
+    height:400px;
+}
+.ImgE{
     transition: 0.2s;
-    margin: 0 8px;
     width: 176px;
     height: 234px;   
     position: relative;
     left:0px;
     cursor: pointer;
 }
-.ImgElement2:hover .HoverEffect{
+.ImgElement2:hover .HoverEffect, .ImgElement:hover .HoverEffect{
     opacity:0.8;
 }
 .Name{
@@ -20,8 +30,7 @@
     font-family: 'Poppins', sans-serif;
     font-size:16px;
     text-align: center;
-    width: 174px;
-    padding-left: 10px;
+    width:100%;
 }
 .Prize{
     position:relative;
@@ -30,6 +39,7 @@
     font-family: 'Poppins', sans-serif;
     font-size:14px;
     text-align: center;
+    width:100%;
 }
 .Border{
     position:relative;
@@ -44,9 +54,8 @@
     display: flex;
     position: relative;
     top:-63px;
-    left: 8px;
     opacity:0;
-    width: 176px;
+    width: 100%;
     height: 60px;
     background-color:rgb(209, 209, 209);
     font-family: 'Poppins', sans-serif;
@@ -54,4 +63,15 @@
     color:rgb(90, 90, 90);
     justify-content:center;
     align-items: center;
+}
+.Fresh{
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    color:white;
+    top: 0;
+    left: 0;
+    background-color:#F0AB8B;
 }

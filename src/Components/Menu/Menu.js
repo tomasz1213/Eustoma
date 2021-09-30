@@ -7,11 +7,13 @@ import logo from '../../img/logo.webp';
 const menu = () => (
     <header  className={classes.Menu}>
         <div className={classes.Logo}>
-            <img src={logo} alt="logo"></img>
-            <p>PRACOWNIA EUSTOMA</p>
-            <p>DEKORACJE I FLORYSTYKA ŚLUBNA</p>
+            <a href="/">
+                <img src={logo} alt="logo"></img>
+                <p>PRACOWNIA EUSTOMA</p>
+                <p>DEKORACJE I FLORYSTYKA ŚLUBNA</p>
+            </a>
         </div>
-        <LinkItems />
+        <LinkItems onClick={window.scrollTo(0, 0)}/>
     </header>
 );
 export default menu;

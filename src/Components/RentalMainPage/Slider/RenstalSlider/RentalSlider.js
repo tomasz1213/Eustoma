@@ -10,26 +10,50 @@ let nextValue = 0;
 let sliderCounter = 6; // from this numer new product are added to slider;
 let isMobile = false;
 
-const RentalSlider = () => {
+const RentalSlider = (props) => {
     const dispatch = useDispatch();
     const [productData,setProductData] = useState([]);
-    console.log(productData);
     useEffect(() => {
         const productArr = [];
         axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
-                productArr.push([key, value]);
-            } 
-            setProductData(productArr);
+                productArr.push({key,...value});
+            }
+            if(props.sorted){
+                productArr.sort((a, b) => {
+                    if(!a.date && !b.date){
+                        return 0;
+                    }
+                    return new Date(b.date) - new Date(a.date);
+                }); 
+                setProductData(productArr);
+            }else{
+                setProductData(productArr);
+            }
         });
-    },[]);
+    },[props.sorted]);
     const sendProductData = (data) => {
         dispatch(updateSuccess(data));
     };
+    const computeFresh = (date) => {
+        if(date){
+            const today = new Date();
+            const compareDate = new Date(date);
+            const diffTime = Math.abs(today - compareDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            if(diffDays <= 30){
+                return true;
+            }else{
+                return false;
+            }
 
-    const showUp = productData.map((element, i) => <NavLink key={element[0]} to="/rental/product">
-        <Product type={false} onClick={() => sendProductData(element)} key={element[0]} src={element[1].url} alt="Slider2" data={element}/></NavLink>);
+        }else{
+            return false;
+        }
+    };
+    const showUp = productData.map((element, i) => <NavLink key={element.key} to="/rental/product">
+        <Product type={false} fresh={computeFresh(element.date)} onClick={() => sendProductData(element)} key={element.key} src={element.url} alt="Slider2" data={element}/></NavLink>);
     const moveSlider = (side) => { // true for left false for right
         const rightIcon = document.getElementsByClassName(`${classes.SliderRight}`);
         const leftIcon = document.getElementsByClassName(`${classes.SliderLeft}`);
@@ -39,7 +63,7 @@ const RentalSlider = () => {
             isMobile = true;
             sliderCounter = 1;
         }
-        const countMoves = isMobile ? productData.length : productData.length+1;
+        const countMoves = isMobile ? productData.length : productData.length;
         if(sliderCounter >=  countMoves && side === true) { // left button
             return leftIcon[0].firstChild.style.cursor = 'not-allowed';
         }

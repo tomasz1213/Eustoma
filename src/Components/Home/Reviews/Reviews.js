@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Reviews.module.css';
 import image from '../../../img/agaga.webp';
 
-const Reviews = (props) => {
+const Reviews = () => {
 
     return(
         <div className={classes.Reviews}>

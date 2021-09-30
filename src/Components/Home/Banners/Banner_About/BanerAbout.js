@@ -10,13 +10,12 @@ const bannerAbout = () => (
             Stworzymy niepowtarzalny klimat i zadbamy o wyjątkową oprawę Twojej imprezy, sprawiając, że pozostaje ona niezapomniana.
         </p>
             <img src={backgroundImg} alt="background"></img>
-            <span  className={classes.Tiles} >
+            <div  className={classes.Tiles} >
                 <Tile number='01' text='NAPISZ DO NAS!'/>
                 <Tile number='02' text='ZAREZERWUJ TERMIN !'/>
                 <Tile number='03' text='DOGRAJ SZCZEGÓŁY!'/>
                 <Tile number='04' text='SPEŁNIJ MARZENIA!'/>
-
-            </span>
+            </div>
 
     </div>
 );

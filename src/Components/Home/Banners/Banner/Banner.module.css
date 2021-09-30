@@ -1,6 +1,6 @@
 .Banner{
     width:100%;
-    max-height: 65vh;
+    height:auto;
     text-align:center;
     
 }
@@ -13,9 +13,9 @@
 
 .Banner p:first-of-type{
     width:50%;
-    position: relative;
+    position: absolute;
     left:31%;
-    top:-460px;
+    top:5em;
     font-size: 44px;
     color: white;
     font-family: 'Cookie', cursive;
@@ -24,11 +24,11 @@
 }
 .Banner p:last-of-type{
     width:50%;
-    position: relative;
+    position: absolute;
     font-family: 'Cinzel', serif;
     color: white;
     left:20%;
-    top:-460px;
+    top:7.5em;
     font-size: 40px;
     -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

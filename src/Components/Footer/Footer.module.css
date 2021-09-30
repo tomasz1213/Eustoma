@@ -34,6 +34,9 @@
     color:#ABABAB;
     margin-top:40px;
 }
+.fb-page{
+    width: 100%;
+}
 @media (max-width: 768px) {
     .Footer {
         flex-direction: column;

@@ -11,6 +11,7 @@ import RentalMain from './Components/RentalMainPage/RentalMain';
 import WeddingLab from './Components/WeddingLab/WeddingLab';
 import Offer from './Components/Offer/Offer';
 import Portfolio from './Components/Portfolio/Portfolio';
+import ProductPage from './Components/RentalMainPage/ProductPage/ProductPage';
 
 const rootReducer = combineReducers({
   slider: sliderReducer,
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/portfolio" component={Portfolio}/>
                 <Route path="/pracownia" component={WeddingLab}/>
                 <Route path="/oferta" component={Offer}/>
+                <Route path="/rental/product" component={ProductPage}/>
                 <Route exact path="/" component={Home} />
             </Switch>
       </div>

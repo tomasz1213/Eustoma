@@ -23,6 +23,7 @@ const Element = (props) => {
                 }
             })
             setImages(elArr);
+            setImgSrc(elArr[0]);
         })
     },[props.url]);
     useEffect(() => {

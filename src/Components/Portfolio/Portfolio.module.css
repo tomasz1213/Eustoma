@@ -47,3 +47,12 @@
         width: 105%;
     }
 }
+@media (min-width: 768px) and (max-width:1400px) {
+    .TopText{ 
+        letter-spacing: 0;
+    }
+    .Results{
+        margin:auto;
+        width: 95%;
+    }
+}

@@ -3,10 +3,10 @@ import classes from './Tiles.module.css';
 
 const tiles = (props) => {
     return (
-        <span className={classes.Tile}>
+        <div className={classes.Tile}>
             <p className={classes.Number}>{props.number}</p>
             <p className={classes.Text}>{props.text}</p>
-        </span>
+        </div>
     );
 };
 

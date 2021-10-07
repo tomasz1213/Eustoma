@@ -3,9 +3,8 @@ import classes from './Rental.module.css';
 import Categories from './Categories/Categories';
 import Products from './Product/Product';
 import Element from '../UI/Element/Element';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import {downloadData} from '../../../../store/actions';
-import {useDispatch } from 'react-redux';
 
 let elementData = null;
 let dataMode = false;

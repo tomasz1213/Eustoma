@@ -44,6 +44,8 @@
     display: flex;
     flex-wrap: wrap;
     position:relative;
+    overflow: scroll;
+    height:43vh;
 }
 .Rental > h2 {
     border-bottom: 1px solid #134e6f;

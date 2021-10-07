@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import classes from './Tile.module.css';
 
-const tile = (props) => {
+const Tile = (props) => {
+    const history = useHistory();
     const divHover= (e, val) => {
         const bottomArrow = e.target.getElementsByTagName('span')[0];
 
@@ -30,7 +32,8 @@ const tile = (props) => {
         }
     };
     return (
-        <div onMouseOver={e=> divHover(e, 0)} onMouseOut={e=>divHover(e, '-30px')} className={classes.Tile} style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.327),rgba(0, 0, 0, 0.3)) ,url(${props.background})`}}>
+        <div onClick={() => history.push(props.ahref)} onMouseOver={e=> divHover(e, 0)} onMouseOut={e=>divHover(e, '-30px')} className={classes.Tile}
+         style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.327),rgba(0, 0, 0, 0.3)) ,url(${props.background})`}}>
             <h1>{props.title}</h1>
             <p className={classes.Desc}>{props.desc}</p>
             <span className={classes.Desc1}></span>
@@ -38,4 +41,4 @@ const tile = (props) => {
     );
 };
 
-export default tile;
+export default Tile;

@@ -6,8 +6,8 @@ import img2 from '../../../img/wycenasg.webp';
 
 const section4 = (props) => (
     <div style={{backgroundColor:props.background}} className={classes.Section4}>
-        <Tile title='GALERIA' desc='zobacz nasze realizacje' background={img1}/>
-        <Tile title='WYCENA' desc='wypełnij formularz' background={img2}/>
+        <Tile ahref="/portfolio" title='GALERIA' desc='zobacz nasze realizacje' background={img1}/>
+        <Tile ahref="/wycena" title='WYCENA' desc='wypełnij formularz' background={img2}/>
     </div>
 );
 

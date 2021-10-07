@@ -1,0 +1,59 @@
+.Conteiner{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    margin: 50px auto;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.Contact{
+    width:490px;
+    padding: 40px 10px;
+    text-align: center;
+    font-family: cinzel,serif;
+    white-space: pre-wrap;
+}
+.Contact > p{
+    font-size:15px;
+    padding:10px 0;
+}
+.Image{
+    width:490px;
+    height:741px;
+}
+.GreyP{
+    font-size:15px;
+    margin-top:40px;
+    color:black;
+}
+.Button{
+    background-color:#7b736f;
+    width:204px;
+    height:40px;
+    color:white;
+    border: 1px solid #7b736f;
+    border-radius: 28px;
+    cursor: pointer;
+}
+.Button:hover{
+    background-color:#a59a94;
+}
+@media (max-width: 768px){
+    .Conteiner{
+        flex-direction: column;
+    }
+    .Contact{
+        order:0;
+        height:auto;
+        width:100%;
+    } 
+    .Image img{
+        height:253px;
+        width:100vw;
+    }   
+    .Image{
+        order:1;
+        height:auto;
+        width:100vw;
+    }
+}

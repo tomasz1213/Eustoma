@@ -1,0 +1,17 @@
+.Main{
+    text-align: center;
+    font-family: 'Barlow';
+    font-size:18px;
+    padding: 0 26%;
+    white-space:pre-wrap;
+}
+.Conteiner{
+    width:100%;
+}
+@media (max-width: 768px){
+    .Main{
+        box-sizing: border-box;
+        padding: 0 5%;
+        width: 105%;
+    }
+}

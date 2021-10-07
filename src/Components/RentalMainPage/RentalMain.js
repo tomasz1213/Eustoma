@@ -38,7 +38,7 @@ const RentalMain = (props) => {
     const sendProductData = (data) => {
         dispatch(updateSuccess(data));
     };
-    const computeFresh = (date) => {
+    const computeFreshDate = (date) => {
         if(date){
             const today = new Date();
             const compareDate = new Date(date);
@@ -137,7 +137,7 @@ const RentalMain = (props) => {
                     </select>
                     <div className={classes.Results}>
                         {sortedProducts.map((element, i) => <NavLink key={element.key + i} to="/rental/product">
-                            <Product fat={true} type={false} fresh={computeFresh(element.date)} onClick={() => sendProductData(element)} key={element.key} src={element.url}
+                            <Product fat={true} type={false} fresh={computeFreshDate(element.date)} onClick={() => sendProductData(element)} key={element.key} src={element.url}
                             alt="Slider2" data={element}/></NavLink>)}
                     </div>
                 </div>

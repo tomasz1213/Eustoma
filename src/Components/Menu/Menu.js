@@ -1,7 +1,6 @@
 import classes from './Menu.module.css';
 import React from 'react';
 import LinkItems from './LinkItems/LinkItems';
-
 import logo from '../../img/logo.webp';
 
 const menu = () => (

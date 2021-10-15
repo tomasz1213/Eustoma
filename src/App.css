@@ -4,6 +4,12 @@
     padding:0;
     outline: 0;
     caret-color: transparent;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color:transparent;
 }
 a{
     text-decoration: none;

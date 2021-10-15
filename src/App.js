@@ -29,17 +29,17 @@ const store = createStore(rootReducer, composeEnhancers(
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/eustomadevmode/">
       <div className="App">
             <Switch>
                 <Route path="/admin" component={Admin}/>
-                <Route path="/wypozyczalnia" component={RentalMain}/>
-                <Route path="/portfolio" component={Portfolio}/>
-                <Route path="/pracownia" component={WeddingLab}/>
-                <Route path="/oferta" component={Offer}/>
-                <Route path="/rental/product" component={ProductPage}/>
-                <Route path="/kontakt" component={Contact}/>
-                <Route path="/wycena" component={Pricing}/>
+                <Route exact path="/wypozyczalnia" component={RentalMain}/>
+                <Route exact path="/portfolio" component={Portfolio}/>
+                <Route exact path="/pracownia" component={WeddingLab}/>
+                <Route exact path="/oferta" component={Offer}/>
+                <Route exact path="/rental/product" component={ProductPage}/>
+                <Route exact path="/kontakt" component={Contact}/>
+                <Route exact path="/wycena" component={Pricing}/>
                 <Route exact path="/" component={Home} />
             </Switch>
       </div>

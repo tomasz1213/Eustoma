@@ -2,21 +2,21 @@ import React,{useState} from 'react';
 import classes from './ProductPage.module.css';
 import Menu from '../../Menu/Menu';
 import Footer from '../../Footer/Footer';
+import Modal from '../../../UI/Modal/Modal';
 import {useSelector} from 'react-redux';
 
 const ProductPage = (props) => {
     const data = useSelector(state => state.slider.data.dataArr);
     const [prize,setPrize] = useState(data.prize);
     const [displayImg,setDisplayImg] = useState(data.url);
+    const [showPhoto, setShowPhoto] = useState(false);
     let isMobile = false;
-    if(window.innerWidth <= 765){
-        isMobile = true;
-    }
+    if(window.innerWidth <= 765) isMobile = true;
 
     const selectPrize = (type) => {
         switch(type) {
             case 'false':
-                return setPrize(Number(data.prize) + 5);
+                return setPrize(Number(data.prize) + Number(data.cleanPrize));
             default:
                 setPrize(data.prize);
         }
@@ -24,9 +24,11 @@ const ProductPage = (props) => {
     return (
         <>
             <Menu/>
+            {data.url ? <Modal clicked={()=> setShowPhoto(false)} show={showPhoto} src={displayImg} alt='ProductPhoto' 
+                        nextImg={{arr: data.url,currIndex: data.url.findIndex(el => el === showPhoto)}}/>: window.location.assign('/wypozyczalnia')}
             <div className={classes.Conteiner}>
                 <section className={classes.LeftSide}>
-                    <img src={displayImg} alt='Product Poto'></img>
+                    <img onClick={()=> setShowPhoto(true)} src={displayImg} alt='Product Poto'></img>
                     <div>{
                        data.url && data.url.map(el => <img className={classes.MiniImg} onClick={()=> setDisplayImg(el)} src={el} key={el} alt='Product Poto'></img>)
                     }</div>
@@ -36,11 +38,17 @@ const ProductPage = (props) => {
                     <h1 className={classes.Title}>{data.name}</h1>
                     {isMobile &&  <div className={classes.Description} >{data.description}</div>}
                     <div style={{paddingTop:'23px',fontSize:'18px'}}>zł {prize}</div>
-                    <p>Czyszczenie</p>
-                    <select className={classes.SelectBox} onChange={(event)=>selectPrize(event.target.value)}>
-                        <option value={true}>oddam produkt wyczyszczcony</option>
-                        <option value={false}>oddam produkt bez czyszczenia</option>
-                    </select>
+                    {data.cleanPrize && <div>
+                        <p>Czyszczenie</p>
+                        <select className={classes.SelectBox} onChange={(event)=>selectPrize(event.target.value)}>
+                            <option value={true}>oddam produkt wyczyszczcony</option>
+                            <option value={false}>oddam produkt bez czyszczenia</option>
+                        </select>
+                    </div>}
+                    <p>SPRAWDŹ DOSTĘPNOŚĆ</p>
+                    <ul style={{listStyle:'none'}}>
+                        <li><a className={classes.GreyP} href="mailto:pracowniaeustoma@gmail.com">PRACOWNIAEUSTOMA@GMAIL.COM</a>{'\n'}</li>
+                    </ul>
                     <p>TRANSPORT</p>
                     <ul style={{borderBottom:'1px solid black',paddingBottom:'20px'}}>
                         <li>Odbiór osobisty w naszej Pracowni</li>

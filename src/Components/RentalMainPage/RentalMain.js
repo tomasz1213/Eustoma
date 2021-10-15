@@ -13,6 +13,7 @@ import Product from './Slider/RenstalSlider/Product/Product';
 const RentalMain = (props) => {
     const [categories,setCategories] = useState();
     const [products,setProducts] = useState();
+    const [elementsToDisplay,setElementsToDisplay] = useState(12);
     const [sortedProducts,setSortedProducts] = useState();
     const [displayProducts,setDisplayProducts] = useState(0);
     const dispatch = useDispatch();
@@ -46,13 +47,8 @@ const RentalMain = (props) => {
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
             if(diffDays <= 30){
                 return true;
-            }else{
-                return false;
-            }
-
-        }else{
-            return false;
-        }
+            }else return false;
+        }else return false;
     };
     const sortByCategory = (category) => {
         setTimeout(() => {
@@ -136,10 +132,11 @@ const RentalMain = (props) => {
                         <option value="nameZ">Nazwa Z-A</option>
                     </select>
                     <div className={classes.Results}>
-                        {sortedProducts.map((element, i) => <NavLink key={element.key + i} to="/rental/product">
+                        {[...sortedProducts].slice(0,elementsToDisplay).map((element, i) => <NavLink key={element.key + i} to="/rental/product">
                             <Product fat={true} type={false} fresh={computeFreshDate(element.date)} onClick={() => sendProductData(element)} key={element.key} src={element.url}
                             alt="Slider2" data={element}/></NavLink>)}
                     </div>
+                    {sortedProducts.length > 12 && <span className={classes.ButtonMore} onClick={() =>setElementsToDisplay(elementsToDisplay+12)}>Wyświetl więcej</span>}
                 </div>
             </div>}
             <Footer/>

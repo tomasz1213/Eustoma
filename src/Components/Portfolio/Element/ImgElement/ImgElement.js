@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import classes from './ImgElement.module.css';
 import Modal from '../../../../UI/Modal/Modal';
 
-
 const ImgElement = (props) => {
     const [useShow, setShow] = useState(false);
     return(

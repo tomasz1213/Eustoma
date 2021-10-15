@@ -6,20 +6,21 @@ import Element from '../../UI/Element/Element';
 
 const ImgList = (props) => {
     const dispatch = useDispatch();
-    let arr = [];
+    let dataArray = [];
     const data = useSelector(state => state.slider.data.dataArr);
+    const auth = useSelector(state => state.auth.auth.idToken);
     const isDataDownloaded = useSelector(state => state.slider.loading);
     let element = null;
     const uploader = () => {
-        dispatch(uploadImage("input_slider",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders/${props.name}.json`));
+        dispatch(uploadImage("input_slider",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders/${props.name}.json?auth=${auth}`));
     };
-    const deleteElement = (key) => {
+    const deleteElement = (elementId) => {
         let answer = window.confirm("Usunąć element?");
         if (answer) {
-            if(arr.length === 1){
+            if(dataArray.length === 1){
                return alert('Nie można usunąć ostatniego elementu, dodaj kolejny i ponów próbę!');
             }
-            dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders/${props.name}/${key}.json`,key));
+            dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders/${props.name}/${elementId}.json?auth=${auth}`,elementId));
         }
         else {
             
@@ -27,18 +28,17 @@ const ImgList = (props) => {
     };
     const displayImgList = () => {
         if(data.length !== 0){
-            const dataArray = data.find(el => el[0] === props.name);
-            for (const [key, value] of Object.entries(dataArray[1])) {
+            const dataArray = data.find(el => el.key === props.name);
+            for (const [key, value] of Object.entries(dataArray)) {
                 const obj = {value, key};
-                arr.push(obj);
+                dataArray.push(obj);
             }  
-            element = arr.map(el => <Element clicked={()=> deleteElement(el.key)} key={el.key} name={el.value.name} background={el.value.url}/>);
+            element = dataArray.map(el => <Element clicked={()=> deleteElement(el.key)} key={el.key} name={el.value.name} background={el.value.url}/>);
         }
     };
     if(!isDataDownloaded){
         displayImgList();
     }
-
     return(
         <div className={classes.ImgList}>
             <label className={classes.Button} >

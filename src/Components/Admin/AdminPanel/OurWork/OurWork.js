@@ -1,42 +1,42 @@
 import React,{useState,useEffect} from 'react';
 import classes from './OurWork.module.css';
 import Element from '../UI/Element/Element';
-import {useSelector} from 'react-redux';
-import {downloadData} from '../../../../store/actions';
-import {useDispatch } from 'react-redux';
 import Job from './Job/Job';
+import axios from 'axios';
 
-let elementData = null;
-let dataMode = false;
+let ELEMENT_DATA = null;
+let EDIT_DATA_MODE = false;
 const OurWork = () => {
-    const dispatch = useDispatch();
-    const data = useSelector(state => state.slider.data.dataArr);
-    const [showState,setState] = useState(0);
-    const [showLoading,setLoading] = useState(false);
-    const [showCategories,setCategories] = useState([]);
-    let displayWork = null;
+    const [displayMode,setDisplayMode] = useState(0);
+    const [showLoadingSpinner,setLoading] = useState(false);
+    const [showData,setData] = useState([]);
+    let displayElement = null;
     useEffect(() =>{
-        dispatch(downloadData('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json'));
-    },[dispatch]); 
-    useEffect(()=>{
-        setCategories(data);
-        setLoading(true);
-    },[data]);  
+        const arr = [];
+        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json')
+        .then(res => {
+            for (const [key, value] of Object.entries(res.data)) {
+                arr.push({...value,key});
+            }
+            setData(arr);
+            setLoading(true);
+        }); 
+    },[]); 
     const updateData = (element,conf) => { // Editing existing realisation
-        elementData = element;
-        dataMode = true;
-        setState(conf);
+        ELEMENT_DATA = element;
+        EDIT_DATA_MODE = true;
+        setDisplayMode(conf);
     };
     const showDataMode = (conf) => { // Add new realization
-        dataMode = false;
-        setState(conf);
+        EDIT_DATA_MODE = false;
+        setDisplayMode(conf);
     };
-    switch(showState) {
+    switch(displayMode) {
         case 1:
-            displayWork = <Job elLeft={data.length} catType={dataMode} data={elementData} clicked={()=> setTimeout(()=>setState(0),0)}/>;
+            displayElement = <Job elLeft={showData.length} editMode={EDIT_DATA_MODE} data={ELEMENT_DATA} clicked={()=> setTimeout(()=>setDisplayMode(0),0)}/>;
             break;
         default:
-            displayWork = showCategories.map(el => <Element clicked={() => updateData([el[0],el[1]],1)} name={el[1].name} key={el[0]} background={el[1].url}/>)
+            displayElement = showData.map(el => <Element clicked={() => updateData(el,1)} name={el.name} key={el.key} background={el.url && el.url}/>)
     };
     return (
         <div className={classes.Rental}>
@@ -44,9 +44,9 @@ const OurWork = () => {
                 <input onClick={() => showDataMode(1)} type="checkbox"></input>
                 <p>DODAJ REALIZACJĘ</p>
                 </label>
-                {!showState && <h2>Realizacje:</h2>}
+                {!displayMode && <h2>Realizacje:</h2>}
                 <div className={classes.Result}>
-                    {showLoading ? displayWork : <div className={classes.ldsdualring}></div>}
+                    {showLoadingSpinner ? displayElement : <div className={classes.ldsdualring}></div>}
                 </div>
         </div>
     );

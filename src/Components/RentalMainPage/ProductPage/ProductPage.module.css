@@ -9,9 +9,10 @@
     height: 100%;
 }
 .LeftSide > img{
-    width:500px;
-    height:750px;
-    object-fit:fit;
+    max-width:500px;
+    max-height:750px;
+    object-fit:scale-down;
+    cursor: pointer;
 }
 .RightSide{
     height: 100%;
@@ -45,6 +46,9 @@
 .Description{
     padding:25px 0;
     font-size:18px;
+}
+.GreyP{
+    color: #575757;
 }
 @media (max-width: 768px){
     .Conteiner{

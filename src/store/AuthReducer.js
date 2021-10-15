@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 const initialState = {
     status:{
         login:false,
+        auth:{},
         error:null
     }
 };
@@ -10,13 +11,12 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.AUTH_LOGIN:{
             const newState = Object.assign({},state);
-            localStorage.setItem('login', true);
             newState.status.login = true;
+            newState.auth = action.authResponse;
             return newState;
         }
         case actionTypes.AUTH_LOGOUT:{
             const newState = Object.assign({},state);
-            localStorage.removeItem('login');
             newState.status.login = false;
             return newState;
         }
@@ -24,12 +24,10 @@ const reducer = (state = initialState, action) => {
             const newState = Object.assign({},state);
             newState.status.login = false;
             newState.status.error = action.error;
-
             return newState;
         }
         default:
-            return state;
-            
+            return state;     
     }
 };
 

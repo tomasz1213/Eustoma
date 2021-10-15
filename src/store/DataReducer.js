@@ -35,5 +35,4 @@ const sliderReducer = (state = initialState, action) => {
     }
 };
 
-
 export default sliderReducer;

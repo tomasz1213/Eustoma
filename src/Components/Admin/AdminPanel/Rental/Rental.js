@@ -3,16 +3,12 @@ import classes from './Rental.module.css';
 import Categories from './Categories/Categories';
 import Products from './Product/Product';
 import Element from '../UI/Element/Element';
-import {useSelector,useDispatch} from 'react-redux';
-import {downloadData} from '../../../../store/actions';
+import axios from 'axios';
 
-let elementData = null;
-let dataMode = false;
+let ELEMENT_DATA = null;
+let EDIT_MODE = false;
 const Rental = () => {
-    const dispatch = useDispatch();
-    const data1 = useSelector(state => state.slider.data.dataArr); // categories
-    const data2 = useSelector(state => state.slider.data.secondDataArr); // products
-    const [showState,setState] = useState(0);
+    const [displayMode,setDisplayMode] = useState(0);
     const [showLoading,setLoading] = useState(false);
     const [showCategories,setCategories] = useState([]);
     const [showProducts,setProducts] = useState([]);
@@ -20,41 +16,53 @@ const Rental = () => {
     let displayCategories = [];
     let displayProducts = [];
     useEffect(() =>{
-        dispatch(downloadData('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json','https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json'));
-    },[dispatch]); 
-    useEffect(()=>{
-        setCategories(data1);
-        setSortedProducts(data2);
-        setProducts(data2);
-        setLoading(true);
-    },[data1,data2]);  
+        const arrCategories = [];
+        const arrProducts = [];
+        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json')
+        .then(res => {
+            for (const [key, value] of Object.entries(res.data)) {
+                arrCategories.push({...value,key});
+            }
+            setCategories(arrCategories);
+            setLoading(true);
+        }); 
+        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json')
+        .then(res => {
+            for (const [key, value] of Object.entries(res.data)) {
+                arrProducts.push({...value,key});
+            }
+            setProducts(arrProducts);
+            setSortedProducts(arrProducts);
+            setLoading(true);
+        }); 
+    },[]);   
     const handleCategories = (target) => {
         if(target.value === 'all'){
             setSortedProducts(showProducts);
         }else{
-            const filtredArray = showProducts.filter(el => el[1].itemCategory === target.value);
+            const filtredArray = showProducts.filter(el => el.itemCategory === target.value);
             setSortedProducts(filtredArray);
         };
     };
     const updateData = (element,conf) => {
-        elementData = element;
-        dataMode = true;
-        setState(conf);
+        ELEMENT_DATA = element;
+        EDIT_MODE = true;
+        setDisplayMode(conf);
     };
     const showDataMode = (conf) => {
-        dataMode = false;
-        setState(conf);
+        EDIT_MODE = false;
+        setDisplayMode(conf);
     };
-    switch(showState) {
+    switch(displayMode) {
         case 1:
-            displayCategories = <div className={classes.Modal}><Categories elLeft={data1.length} catType={dataMode} data={elementData} clicked={()=> setTimeout(()=>setState(0),0)}/></div>;
+            displayCategories = <div className={classes.Modal}><Categories elLeft={showCategories.length} editMode={EDIT_MODE} data={ELEMENT_DATA} clicked={()=> setTimeout(()=>setDisplayMode(0),0)}/></div>;
             break;
         case 2:
-            displayCategories = <div className={classes.Modal}><Products elLeft={data2.length} catType={dataMode} data={elementData} clicked={()=> setState(0)}/></div>;
+            displayCategories = <div className={classes.Modal}><Products elLeft={showProducts.length} editMode={EDIT_MODE} data={ELEMENT_DATA} clicked={()=> setDisplayMode(0)}/></div>;
             break;
         default:
-            displayCategories = showCategories.map(el => <Element clicked={() => updateData([el[0],el[1]],1)} name={el[1].name} key={el[0]} background={el[1].url}/>)
-            displayProducts = showSortedProducts.map(el => <Element clicked={() => updateData([el[0],el[1]],2)} name={el[1].name} key={el[0]} background={el[1].url}/>)      
+            displayCategories = showCategories.map(el => <Element clicked={() => updateData(el,1)} name={el.name} key={el.key} background={el.url}/>)
+            displayProducts = showSortedProducts.map(el => <Element clicked={() => updateData(el,2)} name={el.name} key={el.key} background={el.url}/>)      
     };
     return (
         <div className={classes.Rental}>
@@ -66,13 +74,13 @@ const Rental = () => {
                 <input onClick={() => showDataMode(2)} type="checkbox"></input>
                 <p>DODAJ PRODUKT</p>
                 </label>
-                {!showState && <h2>Kategorie:</h2>}
+                {!displayMode && <h2>Kategorie:</h2>}
                 <div className={classes.Result}>
                     {showLoading ? displayCategories : <div className={classes.ldsdualring}></div>}
                 </div>
-                {!showState && <h2>Produkty:  <select className={classes.Input} onChange={event => handleCategories(event.target)} name="input_products--category" id="input_products--category">
+                {!displayMode && <h2>Produkty:  <select className={classes.Input} onChange={event => handleCategories(event.target)} name="input_products--category" id="input_products--category">
                                                 <option value="all">--Wszystkie Produkty--</option>
-                    {showCategories.map(el => <option value={el[1].name} key={el[0]}>{el[1].name}</option>)}
+                    {showCategories.map(el => <option value={el.name} key={el.key}>{el.name}</option>)}
                 </select></h2>}
                 <div className={classes.Result}>
                     {showLoading ? displayProducts : <div className={classes.ldsdualring}></div>}

@@ -7,13 +7,13 @@ const element = (props) => {
     return (
         <>
             <div className={classes.Element}>
-                <span className={classes.Title}>{props.data.name}</span>
-                <span style={{paddingTop:'30px'}} className={classes.Text}>Miejsce wesela : {wedding}</span>
-                <span className={classes.Text}>Miejsce ślubu : {church}</span>
-                <span className={classes.Text}>Kwiaty i Dekoracje : {flowers}</span>
-                <span style={{paddingBottom:'30px'}} className={classes.Text}>Fotograf : {photograph}</span>
+                <span style={{marginBottom:'30px'}} className={classes.Title}>{props.data.name}</span>
+                {wedding&& <span className={classes.Text}>Miejsce wesela : {wedding}</span>}
+                {church && <span className={classes.Text}>Miejsce ślubu : {church}</span>}
+                {flowers && <span className={classes.Text}>Kwiaty i Dekoracje : {flowers}</span>}
+                {photograph && <span className={classes.Text}>Fotograf : {photograph}</span>}
             </div>
-            {url.map((el,i) => <ImgElement src={el} key={i} nextImg={{arr: url,currIndex: i}}/>)}
+            <div  style={{marginTop:'30px'}}>{url && url.map((el,i) => <ImgElement src={el} key={i} nextImg={{arr: url,currIndex: i}}/>)}</div>
         </>
     );
 };

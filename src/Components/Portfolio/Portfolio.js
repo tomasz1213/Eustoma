@@ -15,6 +15,7 @@ const Portfolio = () => {
                 for(let [key,value] of Object.entries(response.data)){
                     data.push({...value,key});
                 }
+                data.sort((a,b) => Number(a.queue)-Number(b.queue));
                 setData(data);
             });
     },[]);

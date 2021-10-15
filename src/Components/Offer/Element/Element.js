@@ -2,7 +2,6 @@ import React,{useEffect,useState} from 'react';
 import classes from './Element.module.css';
 import axios from 'axios';
 
-
 const Element = (props) => {
     const [photoIndex,setPhotoIndex] = useState(0);
     const [images,setImages] = useState([]);
@@ -12,12 +11,12 @@ const Element = (props) => {
         axios.get(props.url)
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
-                arr.push([key, value]);
+                arr.push({...value,key});
             } 
         })
         .then(() => {
             const elArr = [];
-            arr.flat().forEach(el => {
+            arr.forEach(el => {
                 if(el.url !== undefined){
                     elArr.push(el.url);
                 }

@@ -3,7 +3,6 @@ import {NavLink} from 'react-router-dom';
 import classes from './LinkItems.module.css';
 import '../../../fontello-61630bda/css/fontello.css';
 
-
 const LinkItems = () => {
     const [showMenu,setShowMenu] = useState(false);
     const displayMobileMenu = () => {

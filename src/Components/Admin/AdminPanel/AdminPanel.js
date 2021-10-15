@@ -23,9 +23,9 @@ const AdminPanel = () => {
             </div>
             <div className={classes.Context}>
                 <Switch>
-                    <Route path="/admin/slider" component={Slider}/>
-                    <Route path="/admin/ourwork" component={OurWork}/>
-                    <Route path="/admin/rental" component={Rental}/>
+                    <Route exact path="/admin/slider" component={Slider}/>
+                    <Route exact path="/admin/ourwork" component={OurWork}/>
+                    <Route exact path="/admin/rental" component={Rental}/>
                 </Switch>
             </div>
         </div>

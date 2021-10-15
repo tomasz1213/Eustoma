@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Menu from '../Menu/Menu';
 import Banner from '../Home/Banners/Banner/Banner';
 import BannerAbout from '../Home/Banners/Banner_About/BanerAbout';

@@ -5,7 +5,7 @@ import BannerAbout from '../Home/Banners/Banner_About/BanerAbout';
 import OurWork from '../Home/OurWork/OurWork';
 import Section3 from '../Home/Section3/Section3';
 import Section4 from '../Home/Section4/Section4';
-import ImgSlider2 from '../../Conteiners/Home/imgSlider2/imgSlider2';
+import ImgSlider2 from '../Sliders/imgSlider2/imgSlider2';
 import Rental from '../Home/Rental/Rental';
 import Reviews from '../Home/Reviews/Reviews';
 import Footer from '../Footer/Footer';

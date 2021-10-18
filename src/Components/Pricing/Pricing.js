@@ -2,8 +2,9 @@ import React from 'react';
 import classes from './Pricing.module.css';
 import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
-import ImageSlider from '../../Conteiners/Home/imgSlider2/imgSlider2';
+import ImageSlider from '../Sliders/imgSlider2/imgSlider2';
 import GraphElement from './GraphElement/GraphElement';
+import Form from './Form/Form';
 import img1 from '../../img/pricing1.webp';
 import img2 from '../../img/pricing2.webp';
 import img3 from '../../img/pricing3.webp';
@@ -33,6 +34,7 @@ const pricing = () => (
                 Najlepszym rozwiązaniem jest niezobowiązujące spotkanie, podczas którego poznamy Twoje potrzeby, zapytamy o wszystkie szczegóły jakie potrzebujemy do wstępnej wyceny.
                  Zobaczysz jakim jesteśmy zespołem, jakie mamy wartości związane z naszą pracą, przekonasz się czy chcesz z nami współpracować, a kilka dni po spotkaniu otrzymasz plik z wstępną ofertą. </p>
         </section>
+        <Form/>
     </div>
     <Footer/>
     </>

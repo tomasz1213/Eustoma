@@ -1,0 +1,98 @@
+.Form{
+    background-color: #f4f4f4;
+    margin:20px;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    padding: 0 auto;
+    font-family: 'Barlow';
+}
+.Inputs{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 600px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.Form > h2 {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+}.Form > p {
+    text-align: center;
+    padding: 5px 15%;
+}
+.Label,.Input{
+    flex-shrink: 50%;
+    width: 240px;
+    display:block;
+}
+.Input{
+    height:36px;
+}
+.Label{
+    padding-bottom: 10px;
+    font-size:16px;
+}
+.InputCont{
+    margin:10px;
+    flex:40%;
+}
+.FotoInput{
+    opacity: 0;
+    cursor: pointer;
+}
+.InputFoto{
+    text-align: center;
+    cursor: pointer;
+    padding-top:10px;
+    width: 240px;
+    height:36px;
+    background-color: white;
+    border:1px solid black;
+}
+.Premission{
+    padding: 10px 15%;
+    text-align: center;
+}
+.Button{
+    width: 143px;
+    height:30px;
+    margin: 10px;
+    background-color: #373b4d;
+    cursor: pointer;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    text-align: center;
+    padding-top:10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Button:hover{
+    background-color:black;
+}
+.InputArea{
+    width:94%;
+    height:264px;
+}
+@media (max-width: 768px){
+    .Form{
+        box-sizing: border-box;
+        padding: 0 5%;
+        width: 105%;
+    }
+    .InputCont{
+        flex:0;
+    }
+    .InputArea{
+        width: 100%;
+        align-items: center;
+    }
+    .Inputs{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+}

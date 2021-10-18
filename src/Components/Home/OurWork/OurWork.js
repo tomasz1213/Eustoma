@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './OurWork.module.css';
-import ImgSlider from '../../../Conteiners/Home/ImgSlider/ImgSlider';
+import ImgSlider from '../../Sliders/ImgSlider/ImgSlider';
 
 const ourWork = () => (
     <div className={classes.OurWork}>

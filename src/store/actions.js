@@ -5,6 +5,7 @@ import Compressor from 'compressorjs';
 import {firebaseConfig} from './sec';
 
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 const storageRef = firebase.storage().ref();
 const database = firebase.database();
 const auth = firebase.auth();
@@ -64,7 +65,7 @@ const uploadMoreImages = (input) => { // func for assigning more img to 1 db ele
     return new Promise(async (resolve, reject) => {
         let fotoArr = [];
         const file = document.getElementById(input);
-        if(file.files.length === 0)resolve(fotoArr);
+        if(file.files.length === 0)reject('Brak plików do przetworzenia');
         for(let i=0;i<file.files.length;i++){
              const compressedPhoto = file.files[i].size > 1700000 ? await handleCompressedUpload(file.files[i]) : file.files[i];
              const fileRef = storageRef.child('images/' + file.files[i].name);
@@ -77,15 +78,17 @@ const uploadMoreImages = (input) => { // func for assigning more img to 1 db ele
 };
 export const uploadImage = (input,url,data) => {
     return async dispatch => {
+        let isComingFromForm = input === 'input_form--photo' ? 'forms/' : 'images/';
         dispatch(changeLoadingToTrue());
-        if(input === 'input_products--photo' || input === 'input_ourwork--photo'){ // Those input's have ability to upload more than one image
+        if(input === 'input_products--photo' || input === 'input_ourwork--photo'){ // Those input's have ability to upload more than one image to single DB node
             await uploadMoreImages(input)
             .then((fotoArr) => dispatch(uploadDataFirebase(url,{url:fotoArr,name:data.name,...data})))
         }else{
             const file = document.getElementById(input);
             for(let i=0;i<file.files.length;i++){
                  const compressedPhoto = await handleCompressedUpload(file.files[i]);
-                 const uploadTask = storageRef.child('images/' + file.files[i].name).put(file.files[i].size > 1700000?compressedPhoto:file.files[i]);
+                 const uploadTask = storageRef.child(isComingFromForm + file.files[i].name)
+                 .put(file.files[i].size > 1700000?compressedPhoto:file.files[i]);
                   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,()=>{},()=>{},
                     () => {
                     uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -129,7 +132,6 @@ export const removeFromFirebase = (url) => {
             dispatch(downloadData());
         })
         .catch(err => console.log(err));
-        
     };
 };
 

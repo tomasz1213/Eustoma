@@ -3,7 +3,6 @@ import {useDispatch } from 'react-redux';
 import classes from './Job.module.css';
 import {uploadImage,removeFromFirebase,updateDataFirebase} from '../../../../../store/actions';
 import {useSelector} from 'react-redux';
-
 const Products = (props) => { 
     const [showWork,setWork] = useState([]);
     const auth = useSelector(state => state.auth.auth.idToken);
@@ -67,7 +66,6 @@ const Products = (props) => {
                     break;
             default:
         }     
-
     };
     const removeImage = (img) => {
             const filtredArr = fotoArr.filter(e => e !== img);

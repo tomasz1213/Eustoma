@@ -27,9 +27,10 @@ const ImgList = (props) => {
         }    
     };
     const displayImgList = () => {
-        if(data.length !== 0){
-            const dataArray = data.find(el => el.key === props.name);
-            for (const [key, value] of Object.entries(dataArray)) {
+        if(data.length > 1){
+            const filtredData = data.find(el => el.key === props.name);
+            console.log(dataArray);
+            for (const [key, value] of Object.entries(filtredData)) {
                 const obj = {value, key};
                 dataArray.push(obj);
             }  

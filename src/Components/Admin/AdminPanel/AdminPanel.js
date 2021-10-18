@@ -1,21 +1,17 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import classes from './AdminPanel.module.css';
 import {Switch, Route,NavLink} from 'react-router-dom';
 import Slider from './Slider/Slider';
 import OurWork from './OurWork/OurWork';
 import Rental from './Rental/Rental';
-import {downloadData} from '../../../store/actions';
-import {useDispatch } from 'react-redux';
+import Dashboard from './Dashboard/Dashboard';
 
 const AdminPanel = () => {
-    const dispatch = useDispatch();
-    useEffect(() =>{
-        dispatch(downloadData('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json','https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json'));
-    },[dispatch]); 
     return (
         <div className={classes.AdminPanel}>
             <div className={classes.Menu}>
                 <div className={classes.ButtonSquare}>
+                    <NavLink activeClassName={classes.Active} to="/admin/dashboard"><button className={classes.Button}>Dashboard</button></NavLink>
                     <NavLink activeClassName={classes.Active} to="/admin/slider"><button className={classes.Button}>SLIDER</button></NavLink>
                     <NavLink activeClassName={classes.Active} to="/admin/ourwork"><button className={classes.Button}>NASZE REALIZACJE</button></NavLink>
                     <NavLink activeClassName={classes.Active} to="/admin/rental"><button className={classes.Button}>WYPOŻYCZALNIA</button></NavLink>
@@ -26,6 +22,7 @@ const AdminPanel = () => {
                     <Route exact path="/admin/slider" component={Slider}/>
                     <Route exact path="/admin/ourwork" component={OurWork}/>
                     <Route exact path="/admin/rental" component={Rental}/>
+                    <Route  path="/admin" component={Dashboard}/>
                 </Switch>
             </div>
         </div>

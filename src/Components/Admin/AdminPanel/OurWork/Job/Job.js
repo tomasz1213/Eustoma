@@ -6,7 +6,6 @@ import {useSelector} from 'react-redux';
 const Products = (props) => { 
     const [showWork,setWork] = useState([]);
     const auth = useSelector(state => state.auth.auth.idToken);
-
     useEffect(() =>{
         const arr = [];
         fetch('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json')

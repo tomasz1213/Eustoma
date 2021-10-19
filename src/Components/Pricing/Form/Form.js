@@ -3,8 +3,10 @@ import {useDispatch } from 'react-redux';
 import { uploadImage } from '../../../store/actions';
 import SelectBox from '../../../UI/SelectBox/SelectBox';
 import classes from './Form.module.css';
+import {useSelector} from 'react-redux';
 
 const Form = () =>{
+    const isDataDownloaded = useSelector(state => state.slider.loading);
     const dispatch = useDispatch();
     const [checkBoxData,setCheckboxData] = useState({kompletSlubny:[],oprawaKwiatowa:[],oprawaPozaKwiatowa:[],jakTrafiliscie:[]});
     const [inputData,setInputData] = useState({name:null,surname:null,email:null,tel:null,date:null,
@@ -62,8 +64,6 @@ const Form = () =>{
             default:
         }     
     };
-    console.log(checkBoxData);
-
     return(
         <div className={classes.Form}>
             <h2>FORMULARZ</h2>
@@ -148,7 +148,7 @@ const Form = () =>{
                     <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Nie jesteśmy zainteresowani"/>
                 </div> 
                 <div className={classes.InputCont}>
-                    <label className={classes.Label}>Planowana oprawa pozawkiatowa</label>
+                    <label className={classes.Label}>Jak się o nas dowiedzieliście?</label>
                     <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Jesteśmy klijentami kwiaciarni"/>
                     <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Facebook"/>
                     <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Instagram"/>
@@ -177,7 +177,7 @@ const Form = () =>{
                 <SelectBox req={true} value="Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji zapytania ofertowego złożonego w formularzu.
                  (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. 2016 r. poz. 922)."/>
             </div>
-            <div onClick={submitData} className={classes.Button}>Wyślij!</div>
+            {!isDataDownloaded ? <div onClick={submitData} className={classes.Button}>Wyślij!</div> : <div className={classes.ldsdualring}></div>}
         </div>
     );
 };

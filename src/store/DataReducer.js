@@ -19,16 +19,19 @@ const sliderReducer = (state = initialState, action) => {
             newState.loading = false;
             return newState;
         }
-        case actionTypes.LOADING_FALSE:
+        case actionTypes.LOADING_FALSE:{
             return{
             ...state,
             loading:false
+            }
         }
-        case actionTypes.LOADING_TRUE:           
-         return{
-            ...state,
-            loading:true
-        }
+        case actionTypes.LOADING_TRUE:{
+            return{
+                ...state,
+                loading:true
+            }
+        }           
+
         default:
             return state;
             

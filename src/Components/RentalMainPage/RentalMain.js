@@ -9,6 +9,7 @@ import classes from './RentalMain.module.css';
 import img from '../../img/RENTAL.webp';
 import RentalSlider from './Slider/RenstalSlider/RentalSlider';
 import Product from './Slider/RenstalSlider/Product/Product';
+import ShoppingCart from './shoppingCart/ShoppingCart';
 
 const RentalMain = (props) => {
     const [categories,setCategories] = useState();
@@ -101,6 +102,7 @@ const RentalMain = (props) => {
                 <span className={`${classes.TopText} ${classes.TopText2}`}>DEKORACJI</span>
             </div>
             <span className={classes.Button} onClick={() => setDisplayProducts(1)}>WSZYSTKIE PRODUKTY</span>
+            <ShoppingCart/>
             {!displayProducts ? <div>
                 <div className={classes.Header}>Nowości</div>
                 <RentalSlider sorted={true}/>

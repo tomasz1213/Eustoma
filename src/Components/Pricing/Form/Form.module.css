@@ -77,6 +77,32 @@
     width:94%;
     height:264px;
 }
+.ldsdualring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.ldsdualring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #3f7beb;
+    border-color: #3f7beb transparent #3f7beb transparent;
+    animation: ldsdualring 1.2s linear infinite;
+  }
+@keyframes ldsdualring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 @media (max-width: 768px){
     .Form{
         box-sizing: border-box;

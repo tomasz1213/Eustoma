@@ -80,11 +80,13 @@ export const uploadImage = (input,url,data) => {
     return async dispatch => {
         let isComingFromForm = input === 'input_form--photo' ? 'forms/' : 'images/';
         dispatch(changeLoadingToTrue());
-        if(input === 'input_products--photo' || input === 'input_ourwork--photo'){ // Those input's have ability to upload more than one image to single DB node
+        
+        if(input === 'input_products--photo' || input === 'input_ourwork--photo' || input === 'input_form--photo'){ // Those input's have ability to upload more than one image to single DB node
             await uploadMoreImages(input)
             .then((fotoArr) => dispatch(uploadDataFirebase(url,{url:fotoArr,name:data.name,...data})))
         }else{
             const file = document.getElementById(input);
+            if(file.files.length ===0)dispatch(uploadDataFirebase(url,{url:[],name:data.name,...data}));
             for(let i=0;i<file.files.length;i++){
                  const compressedPhoto = await handleCompressedUpload(file.files[i]);
                  const uploadTask = storageRef.child(isComingFromForm + file.files[i].name)
@@ -142,7 +144,9 @@ export const uploadDataFirebase = (url,dataInfo) => {
           };
           axios.post(url,data)
           .then(response => {
+            dispatch(changeLoadingToFalse());
             dispatch(downloadData());
+            window.alert('Wysłano');
           })
           .catch(err => console.log(err));
     };

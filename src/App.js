@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose, combineReducers} from "redux";
 import thunk from "redux-thunk";
 import authReducer from './store/AuthReducer';
 import sliderReducer from './store/DataReducer';
+import basketSlice from './store/basketSlice';
 
 import Admin from './Components/Admin/Admin';
 import Home from './Components/Home/Home';
@@ -18,7 +19,8 @@ import Pricing from './Components/Pricing/Pricing';
 
 const rootReducer = combineReducers({
   slider: sliderReducer,
-  auth: authReducer
+  auth: authReducer,
+  basket:basketSlice.reducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

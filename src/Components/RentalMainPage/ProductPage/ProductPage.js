@@ -3,10 +3,16 @@ import classes from './ProductPage.module.css';
 import Menu from '../../Menu/Menu';
 import Footer from '../../Footer/Footer';
 import Modal from '../../../UI/Modal/Modal';
-import {useSelector} from 'react-redux';
+import ShoppingCart from '../shoppingCart/ShoppingCart';
+import {useSelector, useDispatch} from 'react-redux';
+import {addProduct} from '../../../store/basketSlice';
 
 const ProductPage = (props) => {
     const data = useSelector(state => state.slider.data.dataArr);
+    const basket = useSelector(state => state.basket.cart);
+    const dispatch = useDispatch();
+    const basketProductAmount = basket.find(product => product.key === data.key);
+    const [productAmount,setProductAmount] = useState(basketProductAmount?basketProductAmount.productAmount:0);
     const [prize,setPrize] = useState(data.prize);
     const [displayImg,setDisplayImg] = useState(data.url);
     const [showPhoto, setShowPhoto] = useState(false);
@@ -21,9 +27,13 @@ const ProductPage = (props) => {
                 setPrize(data.prize);
         }
     };
+    const addToShoppingCart = () => {
+        dispatch(addProduct({...data,productAmount}));
+    };
     return (
         <>
             <Menu/>
+            <ShoppingCart/>
             {data.url ? <Modal clicked={()=> setShowPhoto(false)} show={showPhoto} src={displayImg} alt='ProductPhoto' 
                         nextImg={{arr: data.url,currIndex: data.url.findIndex(el => el === showPhoto)}}/>: window.location.assign('/wypozyczalnia')}
             <div className={classes.Conteiner}>
@@ -45,10 +55,11 @@ const ProductPage = (props) => {
                             <option value={false}>oddam produkt bez czyszczenia</option>
                         </select>
                     </div>}
-                    <p>SPRAWDŹ DOSTĘPNOŚĆ</p>
-                    <ul style={{listStyle:'none'}}>
-                        <li><a className={classes.GreyP} href="mailto:pracowniaeustoma@gmail.com">PRACOWNIAEUSTOMA@GMAIL.COM</a>{'\n'}</li>
+                    <ul style={{listStyle:'none',paddingLeft:'0'}}>
+                        <li><label>ilość:</label></li>
+                        <li><input value={productAmount} onChange={(event)=> setProductAmount(event.target.value)} className={classes.Input} type="number" ></input></li>
                     </ul>
+                    <div onClick={addToShoppingCart} className={classes.ButtonSubmit}>Dodaj do koszyka</div>
                     <p>TRANSPORT</p>
                     <ul style={{borderBottom:'1px solid black',paddingBottom:'20px'}}>
                         <li>Odbiór osobisty w naszej Pracowni</li>

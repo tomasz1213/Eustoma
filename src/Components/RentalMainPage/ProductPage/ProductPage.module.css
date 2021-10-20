@@ -50,6 +50,25 @@
 .GreyP{
     color: #575757;
 }
+.Input{
+    width:60px;
+    height: 25px;
+    border: 1px soid rgb(167, 167, 167);
+}
+.ButtonSubmit{
+    box-sizing: border-box;
+    width:262px;
+    height: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size:14px;
+    padding-top: 10px;
+    text-align: center;
+    margin: 0;
+    color: white;
+    background-color:#F0AB8B;
+    border-radius: 30px;
+    cursor: pointer;
+}
 @media (max-width: 768px){
     .Conteiner{
         flex-direction: column;

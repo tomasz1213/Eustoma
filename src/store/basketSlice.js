@@ -1,16 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { value: 0 };
-
 const basketSlice = createSlice({
   name: 'basket',
-  initialState,
+  initialState: {
+    value:0,
+    cart:[],
+    totalPrize:0
+  },
   reducers: {
-    increment(state) {
-      state.value++
+    addProduct(state,action) {
+      const newItem = action.payload;
+      const existingItem = state.cart.find(el => el.key === action.payload.key);
+      if(!existingItem){
+        state.cart.push(newItem);
+        state.value++
+      }else{
+        existingItem.productAmount = action.payload.productAmount;
+      }
     },
-    decrement(state) {
-      state.value--
+    removeProduct(state,action) {
+      state.cart = state.cart.filter(el => el.key !== action.payload);
+      state.value--;
     },
     incrementByAmount(state, action) {
       state.value += action.payload
@@ -18,5 +28,5 @@ const basketSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = basketSlice.actions;
+export const { addProduct, removeProduct, incrementByAmount } = basketSlice.actions;
 export default basketSlice;

@@ -59,11 +59,12 @@
     cursor: pointer;
 }
 .Products{
-    height:650px;
     padding: 20px;
     overflow:scroll;
 }
 .Prize{
+    position: fixed;
+    bottom:20px;
     font-family: 'Poppins', sans-serif;
     text-align: center;
     font-size: 25px;
@@ -81,4 +82,18 @@
     margin: auto;
     color: white;
     background-color:#F0AB8B;
+    cursor: pointer;
+}
+.Product{
+    display: flex;
+    flex-direction: row;
+}
+.ProductImage >img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+.ProductInfo{
+    display: flex;
+    flex-direction: column;
 }

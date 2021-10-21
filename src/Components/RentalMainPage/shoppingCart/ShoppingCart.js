@@ -27,18 +27,20 @@ const ShoppingCart = (props) => {
                      return <div key={el.key} className={classes.Product}>
                          <div className={classes.ProductImage}><img src={el.url} alt={el.name}/></div>
                          <div className={classes.ProductInfo}>
-                             <span>{el.name}</span>
-                             <span>{el.prize}</span>
-                             <input onChange={(event)=> addToShoppingCart(event.target.value,el)} type="number" value={el.productAmount}></input>
-                             <span onClick={()=>removeFromShopppingCart(el.key)}>X</span>
+                             <span className={classes.ProductName}>{el.name}</span>
+                             <span className={classes.ProductPrize}>zł {el.prize}</span>
+                             <input className={classes.ProductInput} onChange={(event)=> addToShoppingCart(event.target.value,el)} type="number" value={el.productAmount}></input>
+                             <div className={classes.ProductDelete} onClick={()=>removeFromShopppingCart(el.key)}>X</div>
                          </div>
                      </div>   
                     })
 
                     }
                 </div>
-                <div className={classes.Prize}>Kwota Częściowa: <p style={{margin:'5px',fontSize:'23px'}}>{shoppingCar.totalPrize} zł</p>
-                    <div className={classes.ButtonSubmit}>Wyślij zapytanie</div>
+                <div className={classes.Bottom}>
+                    <div className={classes.Prize}>Kwota Częściowa: <p style={{margin:'5px',fontSize:'23px'}}>{shoppingCar.totalPrize} zł</p>
+                        <div className={classes.ButtonSubmit}>Wyślij zapytanie</div>
+                    </div>
                 </div>
             </aside>}
         </>

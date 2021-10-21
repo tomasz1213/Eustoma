@@ -14,12 +14,18 @@ const basketSlice = createSlice({
       if(!existingItem){
         state.cart.push(newItem);
         state.value++
+        state.cart.length > 0 ? state.cart.length > 1 ? state.totalPrize =+ state.cart.reduce((prev, curr) => (prev.prize * prev.productAmount) + (curr.prize * curr.productAmount)) : 
+        state.totalPrize = state.cart[0].prize * state.cart[0].productAmount: state.totalPrize = 0;
       }else{
         existingItem.productAmount = action.payload.productAmount;
+        state.cart.length > 0 ? state.cart.length > 1 ? state.totalPrize =+ state.cart.reduce((prev, curr) => (prev.prize * prev.productAmount) + (curr.prize * curr.productAmount)) : 
+        state.totalPrize = state.cart[0].prize * state.cart[0].productAmount: state.totalPrize = 0;
       }
     },
     removeProduct(state,action) {
       state.cart = state.cart.filter(el => el.key !== action.payload);
+      state.cart.length > 0 ? state.cart.length > 1 ? state.totalPrize =+ state.cart.reduce((prev, curr) => (prev.prize * prev.productAmount) + (curr.prize * curr.productAmount)) : 
+      state.totalPrize = state.cart[0].prize * state.cart[0].productAmount: state.totalPrize = 0;
       state.value--;
     },
     incrementByAmount(state, action) {

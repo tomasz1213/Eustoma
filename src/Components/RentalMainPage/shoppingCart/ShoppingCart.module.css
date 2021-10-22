@@ -89,6 +89,9 @@
     background-color:#F0AB8B;
     cursor: pointer;
 }
+.ButtonSubmit:hover{
+    background-color:#d3a38d;
+}
 .Product{
     display: flex;
     flex-direction: row;
@@ -135,6 +138,31 @@
     font-size: 12px;
     color:#999999;
     padding:1px;
+}
+.Modal{
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    top: 33%;
+    left: 40%;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    z-index: 100;
+    text-align: center;
+}
+.ModalSubmit{
+    background-color:#F0AB8B;
+    width: 150px;
+    height:50px;
+    margin: 10px auto;
+    padding:5px 0;
+    color: white;
+    cursor: pointer;
+}
+.ModalSubmit:hover{
+    background-color:#d3a38d;
 }
 @media (max-width: 768px){
     .Prize{

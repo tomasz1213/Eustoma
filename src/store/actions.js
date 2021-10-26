@@ -65,7 +65,7 @@ const uploadMoreImages = (input) => { // func for assigning more img to 1 db ele
     return new Promise(async (resolve, reject) => {
         let fotoArr = [];
         const file = document.getElementById(input);
-        if(file.files.length === 0)reject('Brak plików do przetworzenia');
+        if(file.files.length === 0)resolve();
         for(let i=0;i<file.files.length;i++){
              const compressedPhoto = file.files[i].size > 1700000 ? await handleCompressedUpload(file.files[i]) : file.files[i];
              const fileRef = storageRef.child('images/' + file.files[i].name);

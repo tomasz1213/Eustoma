@@ -20,7 +20,7 @@ import Pricing from './Components/Pricing/Pricing';
 const rootReducer = combineReducers({
   slider: sliderReducer,
   auth: authReducer,
-  basket:basketSlice.reducer
+  basket:basketSlice.reducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

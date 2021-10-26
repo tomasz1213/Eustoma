@@ -9,7 +9,7 @@ const Slider = () => {
     const [displayMode, setDisplayMode] = useState(true);
     const [showName, setName] = useState('');
     const dispatch = useDispatch();
-    const el = useSelector(state => state.slider.data.dataArr);
+    const data = useSelector(state => state.slider.data.dataArr);
     let imgList = useRef([]);
     useEffect(() => {    
         dispatch(downloadData('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders.json'));   
@@ -17,7 +17,7 @@ const Slider = () => {
 
     return (
         <div className={classes.Slider}>
-            {displayMode ? el.map(el => <Element clicked={()=> {imgList.current.push(el);setName(el.key); setDisplayMode(false)}}name={el.key} key={el.key}/>) : 
+            {displayMode ? data && data.map(el => <Element clicked={()=> {imgList.current.push(el);setName(el.key); setDisplayMode(false)}}name={el.key} key={el.key}/>) : 
             !displayMode ? <ImgList arr={imgList.current.flat()} name={showName}/> : null}
         </div>
     );

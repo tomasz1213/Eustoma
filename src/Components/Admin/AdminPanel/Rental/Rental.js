@@ -5,14 +5,14 @@ import Products from './Product/Product';
 import Element from '../UI/Element/Element';
 import axios from 'axios';
 
-let ELEMENT_DATA = null;
-let EDIT_MODE = false;
 const Rental = () => {
     const [displayMode,setDisplayMode] = useState(0);
     const [showLoading,setLoading] = useState(false);
     const [showCategories,setCategories] = useState([]);
     const [showProducts,setProducts] = useState([]);
     const [showSortedProducts,setSortedProducts] = useState([]);
+    const [editMode,setEditMode] = useState(false);
+    const [elementData,setELementData] = useState();
     let displayCategories = [];
     let displayProducts = [];
     useEffect(() =>{
@@ -44,25 +44,25 @@ const Rental = () => {
             setSortedProducts(filtredArray);
         };
     };
-    const updateData = (element,conf) => {
-        ELEMENT_DATA = element;
-        EDIT_MODE = true;
-        setDisplayMode(conf);
+    const updateData = (element,config) => {
+        setELementData(element);
+        setEditMode(true);
+        setDisplayMode(config);
     };
-    const showDataMode = (conf) => {
-        EDIT_MODE = false;
-        setDisplayMode(conf);
+    const showDataMode = (config) => {
+        setEditMode(true);
+        setDisplayMode(config);
     };
     switch(displayMode) {
         case 1:
-            displayCategories = <div className={classes.Modal}><Categories elLeft={showCategories.length} editMode={EDIT_MODE} data={ELEMENT_DATA} clicked={()=> setTimeout(()=>setDisplayMode(0),0)}/></div>;
+            displayCategories = <div className={classes.Modal}><Categories elLeft={showCategories.length} editMode={editMode} data={elementData} clicked={()=> setTimeout(()=>setDisplayMode(0),0)}/></div>;
             break;
         case 2:
-            displayCategories = <div className={classes.Modal}><Products elLeft={showProducts.length} editMode={EDIT_MODE} data={ELEMENT_DATA} clicked={()=> setDisplayMode(0)}/></div>;
+            displayCategories = <div className={classes.Modal}><Products elLeft={showProducts.length} editMode={editMode} data={elementData} clicked={()=> setDisplayMode(0)}/></div>;
             break;
         default:
-            displayCategories = showCategories.map(el => <Element clicked={() => updateData(el,1)} name={el.name} key={el.key} background={el.url}/>)
-            displayProducts = showSortedProducts.map(el => <Element clicked={() => updateData(el,2)} name={el.name} key={el.key} background={el.url}/>)      
+            displayCategories = showCategories.map(el => <Element clicked={() => updateData(el,1)} name={el.name} key={el.key}/>)
+            displayProducts = showSortedProducts.map(el => <Element clicked={() => updateData(el,2)} name={el.name} key={el.key}/>)      
     };
     return (
         <div className={classes.Rental}>

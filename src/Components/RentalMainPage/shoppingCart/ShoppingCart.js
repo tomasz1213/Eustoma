@@ -8,7 +8,8 @@ const ShoppingCart = (props) => {
     const dispatch = useDispatch();
     const [displayShoppingCart,setDisplayShoppingCart] = useState(false);
     const [displayModal,setDisplayModal] = useState(false);
-    const [modalDataHandler,setModalDataHandler] = useState({date:null,location:null});
+    const [displayError,setDisplayError] = useState(false);
+    const [modalDataHandler,setModalDataHandler] = useState({date:null,location:null,name:null,email:null,phone:null});
     const shoppingCar = useSelector(state => state.basket);
     const addToShoppingCart = (event,data) => {
         dispatch(addProduct({...data,productAmount:event}));
@@ -17,8 +18,18 @@ const ShoppingCart = (props) => {
         dispatch(removeProduct(key));
     };
     const submitShoppingCart = () => {
-        dispatch(uploadDataFirebase('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/shoppingCart.json',{...modalDataHandler,...shoppingCar.cart}));
-        setDisplayModal(false);
+        if(modalDataHandler.date && modalDataHandler.location && modalDataHandler.phone){
+            dispatch(uploadDataFirebase('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/shoppingCart.json',{...modalDataHandler,cart:[...shoppingCar.cart]}));
+            setDisplayModal(false);
+            setDisplayError(false);
+        }else return setDisplayError(true);
+    };
+    const handleInputs = (event,type) => {
+        if(event.target.value.length < 1)event.target.style.backgroundColor = '#f08b8b';
+        else{
+            event.target.style.backgroundColor = 'white';
+            setModalDataHandler({...modalDataHandler,[type]:event.target.value});
+        };
     };
     return(
         <>
@@ -29,17 +40,20 @@ const ShoppingCart = (props) => {
             {displayShoppingCart && <div className={classes.ShoppingCartResult}></div>}
             {displayModal && <div className={classes.Modal}>
                 <label style={{margin:'5px'}}>Data ślubu:</label>
-                <input onChange={(event)=> setModalDataHandler({...modalDataHandler,date:event.target.value})} type="date" style={{width:'60%',height:'40px',margin:'5px auto'}}></input>
+                <input onChange={(event)=> setModalDataHandler({...modalDataHandler,date:event.target.value})} type="date" className={classes.ModalInput}></input>
                 <label style={{margin:'5px'}}>Miejsce ślubu:</label>    
-                <input onChange={(event)=> {
-                    if(event.target.value.length < 1)event.target.style.backgroundColor = '#f08b8b';
-                    else{event.target.style.backgroundColor = 'white';
-                    setModalDataHandler({...modalDataHandler,location:event.target.value})}
-                }} type="text" style={{width:'60%',height:'40px',margin:'5px auto'}}></input>
+                <input onChange={(event)=> handleInputs(event,'location')} type="text" className={classes.ModalInput}></input>
+                <label style={{margin:'5px'}}>Imię i Nazwisko:</label>    
+                <input onChange={(event)=> handleInputs(event,'name')} type="text" className={classes.ModalInput}></input>
+                <label style={{margin:'5px'}}>E-mail:</label>    
+                <input onChange={(event)=> handleInputs(event,'email')} type="email" className={classes.ModalInput}></input>
+                <label style={{margin:'5px'}}>Telefon:</label>    
+                <input onChange={(event)=> handleInputs(event,'phone')} type="tel" className={classes.ModalInput}></input>
+                {displayError && <div style={{color:'red'}}>Proszę uzupełnić wszystkie pola.</div>}
                 <div onClick={submitShoppingCart} className={classes.ModalSubmit}>Wyślij</div>
             </div>}
             {displayShoppingCart && <aside className={classes.SideBar}>
-                <div className={classes.Top}><span onClick={()=> setDisplayShoppingCart(false)} className={classes.ButtonBack}>></span>Koszyk</div>
+                <div className={classes.Top}><span onClick={()=> {setDisplayShoppingCart(false);setDisplayModal(false)}} className={classes.ButtonBack}>></span>Koszyk</div>
                 <div className={classes.Products}>
                     {shoppingCar.cart&&shoppingCar.cart.map(el => {
                      return <div key={el.key} className={classes.Product}>

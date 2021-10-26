@@ -1,9 +1,8 @@
 import React,{useState} from 'react';
-import {useDispatch } from 'react-redux';
+import {useDispatch,useSelector } from 'react-redux';
 import { uploadImage } from '../../../store/actions';
 import SelectBox from '../../../UI/SelectBox/SelectBox';
 import classes from './Form.module.css';
-import {useSelector} from 'react-redux';
 
 const Form = () =>{
     const isDataDownloaded = useSelector(state => state.slider.loading);
@@ -21,48 +20,8 @@ const Form = () =>{
         {...inputData,...checkBoxData}));
     }
     const handleInputs = (event) => {
-        switch(event.id){
-            case 'input__form--name':
-                setInputData({...inputData,name:event.value})
-                break;
-            case 'input__form--surname':
-                setInputData({...inputData,surname:event.value})
-                    break;
-            case 'input__form--email':
-                setInputData({...inputData,email:event.value})
-                    break;
-            case 'input__form--phone':
-                setInputData({...inputData,tel:event.value})
-                    break;
-            case 'input__form--date':
-                setInputData({...inputData,date:event.value})
-                    break;
-            case 'input__form--church':
-                setInputData({...inputData,church:event.value})
-                    break;
-            case 'input__form--wedding':
-                setInputData({...inputData,weddinPlace:event.value})
-                    break;
-            case 'input__form--guests':
-                setInputData({...inputData,guests:event.value})
-                    break;
-            case 'input__form--table':
-                setInputData({...inputData,table:event.value})
-                    break;
-            case 'input__form--budget':
-                setInputData({...inputData,budget:event.value})
-                    break;
-            case 'input__form--area':
-                setInputData({...inputData,desc:event.value})
-                    break;
-            case 'input__form--pintrest':
-                setInputData({...inputData,pintrest:event.value})
-                    break;
-            case 'input__form--photo':
-                setInputData({...inputData,photo:event.value})
-                    break;
-            default:
-        }     
+        const header = event.id.split('--');
+        setInputData({...inputData,[header[1]]:event.value});
     };
     return(
         <div className={classes.Form}>
@@ -82,7 +41,7 @@ const Form = () =>{
                 </div> 
                     <div className={classes.InputCont}>
                     <label className={classes.Label}>Telefon</label>
-                    <input onChange={event => handleInputs(event.target)} id='input__form--phone' type="tel" placeholder="Telefon" className={classes.Input}></input>
+                    <input onChange={event => handleInputs(event.target)} id='input__form--tel' type="tel" placeholder="Telefon" className={classes.Input}></input>
                 </div>
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Data ślubu</label>
@@ -94,7 +53,7 @@ const Form = () =>{
                 </div>                 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Miejsce wesela</label>
-                    <input onChange={event => handleInputs(event.target)} id='input__form--wedding' type="text" placeholder="Miejsce wesela" className={classes.Input}></input>
+                    <input onChange={event => handleInputs(event.target)} id='input__form--weddinPlace' type="text" placeholder="Miejsce wesela" className={classes.Input}></input>
                 </div> 
                     <div className={classes.InputCont}>
                     <label className={classes.Label}>Planowana liczba gości</label>
@@ -110,51 +69,29 @@ const Form = () =>{
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Wizja / Pomysł Waszego ślubu</label>
-                    <textarea onChange={event => handleInputs(event.target)} id='input__form--area' type="text" placeholder="Opisz dokładnie co Cię interesuję"className={classes.InputArea} ></textarea>
+                    <textarea onChange={event => handleInputs(event.target)} id='input__form--desc' type="text" placeholder="Opisz dokładnie co Cię interesuję"className={classes.InputArea} ></textarea>
                 </div>    
             </div>
             <div className={classes.Inputs}>
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Komplet ślubny</label>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value="Bukiet ślubny"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value="Wianek / kwiaty do włosów"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value="Bukiet / korsarz dla świadkowej / druhen"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value="Butonierki dla Pana Młodego / świadka"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value="Inne"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value="Nie jesteśmy zainteresowani"/>
+                    {["Bukiet ślubny","Wianek / kwiaty do włosów","Bukiet / korsarz dla świadkowej / druhen","Butonierki dla Pana Młodego / świadka",
+                    "Inne","Nie jesteśmy zainteresowani"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'kompletSlubny')} value={el}/>)}
                 </div>                 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Planowna oprawa kwiatowa</label>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Miejsce błogosławieństwa"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Dekoracja kościoła"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Dekoracja Urzędu Stanu Cywilnego"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Dekoracja sali"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Dekoracja w plenerze"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Dekoracja samochodu"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Podziękowania dla rodziców"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Inne"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value="Nie jesteśmy zainteresowani"/>
+                    {["Miejsce błogosławieństwa","Dekoracja kościoła","Dekoracja Urzędu Stanu Cywilnego","Dekoracja sali","Dekoracja w plenerze","Dekoracja samochodu",
+                    "Podziękowania dla rodziców","Inne","Nie jesteśmy zainteresowani"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Planowana oprawa pozawkiatowa</label>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Girlandy żarówkowe"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Napis Kochaj"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Napis Love"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Świece"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Numerki Stołów"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Plan Stołów"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Ścianka za Młodą Parą"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Kufry na koperty / pudełka na obrączki"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value="Nie jesteśmy zainteresowani"/>
+                    {["Girlandy żarówkowe","Napis Kochaj","Napis Love","Świece","Numerki Stołów","Plan Stołów","Ścianka za Młodą Parą",
+                    "Kufry na koperty / pudełka na obrączki","Nie jesteśmy zainteresowani"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Jak się o nas dowiedzieliście?</label>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Jesteśmy klijentami kwiaciarni"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Facebook"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Instagram"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Strona WWWW / wyszukiwarka"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Widzieliśmy waszą dekorację na ślubie"/>
-                    <SelectBox clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value="Polecenie"/>
+                    {["Jesteśmy klijentami kwiaciarni","Facebook","Instagram","Strona WWWW / wyszukiwarka","Widzieliśmy waszą dekorację na ślubie"
+                    ,"Polecenie"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>PINTREST</label>

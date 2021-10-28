@@ -12,7 +12,7 @@ const menu = () => (
                 <p>DEKORACJE I FLORYSTYKA ŚLUBNA</p>
             </a>
         </div>
-        <LinkItems onClick={window.scrollTo(0, 0)}/>
+        <LinkItems/>
     </header>
 );
 export default menu;

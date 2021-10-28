@@ -11,7 +11,7 @@ const LinkItems = () => {
     return(
         <nav className={classes.Nav}>
             <button onClick={displayMobileMenu} className={classes.BurgerButton}></button>
-            <ul className={showMenu ? classes.MobileMenu : classes.List}>
+            <ul onClick={()=>window.scrollTo(0, 0)} className={showMenu ? classes.MobileMenu : classes.List}>
                 <li><NavLink exact to="/">Home</NavLink></li>
                 <li><NavLink to="/pracownia">Pracownia Ślubna</NavLink></li>
                 <li><NavLink to="/admin">admin</NavLink></li>

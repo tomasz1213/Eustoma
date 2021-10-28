@@ -39,6 +39,7 @@ const RentalMain = (props) => {
     },[]);
     const sendProductData = (data) => {
         dispatch(updateSuccess(data));
+        window.scrollTo(0, 0);
     };
     const computeFreshDate = (date) => {
         if(date){

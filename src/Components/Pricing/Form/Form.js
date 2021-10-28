@@ -7,21 +7,28 @@ import classes from './Form.module.css';
 const Form = () =>{
     const isDataDownloaded = useSelector(state => state.slider.loading);
     const dispatch = useDispatch();
+    const [displayError,setDisplayError] = useState(false);
     const [checkBoxData,setCheckboxData] = useState({kompletSlubny:[],oprawaKwiatowa:[],oprawaPozaKwiatowa:[],jakTrafiliscie:[]});
-    const [inputData,setInputData] = useState({name:null,surname:null,email:null,tel:null,date:null,
-        weddinPlace:null,church:null,guests:null,table:null,budget:null,desc:null,pintrest:null,photo:null})
+    const [inputData,setInputData] = useState({name:null,surname:null,email:null,tel:null,date:null});
     const handleCheckBoxes = (target,targetHeader) => {
         let filterArr = [...checkBoxData.[targetHeader]];
         target.value && target.checked ? filterArr.push(target.value) : filterArr = checkBoxData.[targetHeader].filter(el => el !== target.value);
         setCheckboxData({...checkBoxData,[targetHeader]:filterArr});
     };
     const submitData = () => {
-        dispatch(uploadImage("input_form--photo",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/forms.json`,
-        {...inputData,...checkBoxData}));
-    }
+        if(inputData.name && inputData.surname && inputData.email && inputData.tel){
+            dispatch(uploadImage("input_form--photo",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/forms.json`,
+            {...inputData,...checkBoxData}));
+            setDisplayError(false);
+        }else{
+            setDisplayError(true);
+            for(const [key, value] of Object.entries(inputData))if(!value)document.getElementById(`input__form--${key}`).style.background = "#f08b8b";
+        }
+    };
     const handleInputs = (event) => {
         const header = event.id.split('--');
         setInputData({...inputData,[header[1]]:event.value});
+        if(displayError)event.style.background = "white";
     };
     return(
         <div className={classes.Form}>
@@ -81,17 +88,20 @@ const Form = () =>{
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Planowna oprawa kwiatowa</label>
                     {["Miejsce błogosławieństwa","Dekoracja kościoła","Dekoracja Urzędu Stanu Cywilnego","Dekoracja sali","Dekoracja w plenerze","Dekoracja samochodu",
-                    "Podziękowania dla rodziców","Inne","Nie jesteśmy zainteresowani"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value={el}/>)}
+                    "Podziękowania dla rodziców","Inne","Nie jesteśmy zainteresowani"]
+                    .map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'oprawaKwiatowa')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Planowana oprawa pozawkiatowa</label>
                     {["Girlandy żarówkowe","Napis Kochaj","Napis Love","Świece","Numerki Stołów","Plan Stołów","Ścianka za Młodą Parą",
-                    "Kufry na koperty / pudełka na obrączki","Nie jesteśmy zainteresowani"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value={el}/>)}
+                    "Kufry na koperty / pudełka na obrączki","Nie jesteśmy zainteresowani"]
+                    .map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'oprawaPozaKwiatowa')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Jak się o nas dowiedzieliście?</label>
                     {["Jesteśmy klijentami kwiaciarni","Facebook","Instagram","Strona WWWW / wyszukiwarka","Widzieliśmy waszą dekorację na ślubie"
-                    ,"Polecenie"].map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value={el}/>)}
+                    ,"Polecenie"]
+                    .map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>PINTREST</label>
@@ -115,6 +125,7 @@ const Form = () =>{
                  (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. 2016 r. poz. 922)."/>
             </div>
             {!isDataDownloaded ? <div onClick={submitData} className={classes.Button}>Wyślij!</div> : <div className={classes.ldsdualring}></div>}
+            {displayError && <p style={{color:'red',fontSize:'23px'}}>Proszę uzupełnić brakujące dane!</p>}
         </div>
     );
 };

@@ -52,7 +52,6 @@ const ImgSlider2 = () => {
             }
         sliderClass.forEach(elm => elm.style.left = `${nextValue}px`);
     };
-
     return (
         <div className={classes.Slider}>   
             <span onClick={() => moveSlider(true)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
@@ -60,7 +59,6 @@ const ImgSlider2 = () => {
                    {showUp}
                 </div>
             <span onClick={() => moveSlider(false)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>
-    
         </div>
     );
 };

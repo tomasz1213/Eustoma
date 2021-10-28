@@ -39,6 +39,7 @@ const ShoppingCart = (props) => {
             </div>}
             {displayShoppingCart && <div className={classes.ShoppingCartResult}></div>}
             {displayModal && <div className={classes.Modal}>
+                <span onClick={() => setDisplayModal(false)} style={{position: 'absolute',right: '10px',cursor: 'pointer'}}>x</span>
                 <label style={{margin:'5px'}}>Data ślubu:</label>
                 <input onChange={(event)=> setModalDataHandler({...modalDataHandler,date:event.target.value})} type="date" className={classes.ModalInput}></input>
                 <label style={{margin:'5px'}}>Miejsce ślubu:</label>    

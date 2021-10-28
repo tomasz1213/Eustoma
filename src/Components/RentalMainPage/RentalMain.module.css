@@ -91,12 +91,12 @@
     width:490px;
     height: 315px;
     display: grid;
-    grid-template-columns: 100px 150px 150px 50px;
+    grid-template-columns: 100px 150px 0px 200px;
     grid-template-rows: auto;
     grid-template-areas: 
     ". . . ."
     "catname catname . ."
-    ". . catlink catlink";
+    ". . . catlink";
 }
 .CatName{
     padding-left: 10px;
@@ -185,6 +185,7 @@
     }
     .Categories{
         width:105%;
+    
         flex-direction:row;
     }
     .CatLink{

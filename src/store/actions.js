@@ -78,7 +78,7 @@ const uploadMoreImages = (input) => { // func for assigning more img to 1 db ele
 };
 export const uploadImage = (input,url,data) => {
     return async dispatch => {
-        let isComingFromForm = input === 'input_form--photo' ? 'forms/' : 'images/';
+        let isInputFromForm = input === 'input_form--photo' ? 'forms/' : 'images/';
         dispatch(changeLoadingToTrue());
         
         if(input === 'input_products--photo' || input === 'input_ourwork--photo' || input === 'input_form--photo'){ // Those input's have ability to upload more than one image to single DB node
@@ -89,7 +89,7 @@ export const uploadImage = (input,url,data) => {
             if(file.files.length ===0)dispatch(uploadDataFirebase(url,{url:[],name:data.name,...data}));
             for(let i=0;i<file.files.length;i++){
                  const compressedPhoto = await handleCompressedUpload(file.files[i]);
-                 const uploadTask = storageRef.child(isComingFromForm + file.files[i].name)
+                 const uploadTask = storageRef.child(isInputFromForm + file.files[i].name)
                  .put(file.files[i].size > 1700000?compressedPhoto:file.files[i]);
                   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,()=>{},()=>{},
                     () => {

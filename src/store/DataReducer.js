@@ -9,7 +9,7 @@ const initialState = {
     loading:false
 };
 
-const sliderReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.UPLOAD:{
             const newState = Object.assign({},state);
@@ -21,8 +21,8 @@ const sliderReducer = (state = initialState, action) => {
         }
         case actionTypes.LOADING_FALSE:{
             return{
-            ...state,
-            loading:false
+                ...state,
+                loading:false
             }
         }
         case actionTypes.LOADING_TRUE:{
@@ -31,11 +31,9 @@ const sliderReducer = (state = initialState, action) => {
                 loading:true
             }
         }           
-
         default:
-            return state;
-            
+            return state;       
     }
 };
 
-export default sliderReducer;
+export default dataReducer;

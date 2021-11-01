@@ -83,6 +83,7 @@
 }
 .List li {
     padding: 0 10px;
+    width:auto;
 }
 .Nav a, a:visited {
     font-family: 'Poppins', sans-serif;

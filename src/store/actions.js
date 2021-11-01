@@ -43,7 +43,7 @@ export const updateDataFirebase = (nodeName,id,data,inputID) => { // nodeName = 
         let combineArr = [];
         dispatch(changeLoadingToTrue());
         let userRef = database.ref(`${nodeName}/${id}`);
-        await uploadMoreImages(inputID).then(arr => combineArr = [...arr,...data.url]);
+        await uploadMultipleImages(inputID).then(arr => combineArr = [...arr,...data.url]);
         await userRef.update({...data,url:combineArr});
         await dispatch(downloadData());
     };
@@ -61,11 +61,11 @@ const handleCompressedUpload = (image) => {
           });
     });
   };
-const uploadMoreImages = (input) => { // func for assigning more img to 1 db element
+const uploadMultipleImages = (input) => { // func for assigning more img to 1 db element
     return new Promise(async (resolve, reject) => {
         let fotoArr = [];
         const file = document.getElementById(input);
-        if(file.files.length === 0)resolve();
+        if(file.files.length === 0)resolve([]);
         for(let i=0;i<file.files.length;i++){
              const compressedPhoto = file.files[i].size > 1700000 ? await handleCompressedUpload(file.files[i]) : file.files[i];
              const fileRef = storageRef.child('images/' + file.files[i].name);
@@ -82,7 +82,7 @@ export const uploadImage = (input,url,data) => {
         dispatch(changeLoadingToTrue());
         
         if(input === 'input_products--photo' || input === 'input_ourwork--photo' || input === 'input_form--photo'){ // Those input's have ability to upload more than one image to single DB node
-            await uploadMoreImages(input)
+            await uploadMultipleImages(input)
             .then((fotoArr) => dispatch(uploadDataFirebase(url,{url:fotoArr,name:data.name,...data})))
         }else{
             const file = document.getElementById(input);

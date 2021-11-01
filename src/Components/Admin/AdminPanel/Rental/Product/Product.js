@@ -7,7 +7,6 @@ import {uploadImage,removeFromFirebase,updateDataFirebase} from '../../../../../
 const Products = (props) => {
     const [showCategories,setCategories] = useState([]);
     const auth = useSelector(state => state.auth.auth.idToken);
-
     useEffect(() =>{
         const arr = [];
         fetch('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json')
@@ -92,38 +91,38 @@ const Products = (props) => {
     };
     return (
         <div  className={classes.InputLabel}>
-                <span onClick={closeModal} className={classes.Close}><i className="icon-cancel-1"></i></span>
-                <p>DODAJ ZDJĘCIA PRODUKTU:</p>
-                <input className={classes.FotoInput} type="file" id="input_products--photo" multiple></input>
-                <button style={{top:'-10px'}} onClick={() => document.getElementById('input_products--photo').click()} className={classes.Button}>Dodaj Zdjęcie</button>
-                <div className={classes.Buttons}>
-                    {props.editMode && fotoArr.map((img,i) => <img className={classes.Image} onClick={() => deleteImage(img)} key={i} alt='foto' src={img}></img>)}
-                </div>
-                <p>DODAJ NAZWĘ PRODUKTU:</p>
-                <input className={classes.Input} value={name} onChange={event => handleInputs(event.target)} type="text" id="input_products--name"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                <p>DODAJ OPIS PRODUKTU:</p>
-                <textarea style={{height:'200px'}} value={desc} className={classes.Input} onChange={event => handleInputs(event.target)} type="text" id="input_products--description"></textarea>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                <p>WYBIERZ KATEGORIĘ PRODUKTU:</p>
-                <select value={itemProduct}  className={classes.Input} onChange={event => handleInputs(event.target)} name="input_products--category" id="input_products--category">
-                    <option value="">--Proszę wybrać opcję--</option>
-                    {showCategories.map(el => <option key={el.key}>{el.name}</option>)}
-                </select>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                <p>DODAJ ILOŚĆ SZTUK:</p>
-                <input className={classes.Input} value={itemsLeft} onChange={event => handleInputs(event.target)} type="text" id="input_products--items"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
-                <p>DODAJ CENĘ CZYSZCZENIA:</p>
-                <input className={classes.Input} value={cleanPrize} onChange={event => handleInputs(event.target)} type="text" id="input_products--cleanPrize"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
-                <p>DODAJ CENĘ PRODUKTU:</p>
-                <input className={classes.Input} value={prize} onChange={event => handleInputs(event.target)} type="text" id="input_products--prize"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
-                <div className={classes.Buttons}>
-                    <button style={{top:'10px'}} className={classes.Button} onClick={()=> uploader()}>Wyślij</button>
-                    {props.editMode && <button style={{top:'10px',backgroundColor:'#6f1322'}} className={classes.Button} onClick={()=> deleteProduct()}>Usuń</button>}
-                </div>
+            <span onClick={closeModal} className={classes.Close}><i className="icon-cancel-1"></i></span>
+            <p>DODAJ ZDJĘCIA PRODUKTU:</p>
+            <input className={classes.FotoInput} type="file" id="input_products--photo" multiple></input>
+            <button style={{top:'-10px'}} onClick={() => document.getElementById('input_products--photo').click()} className={classes.Button}>Dodaj Zdjęcie</button>
+            <div className={classes.Buttons}>
+                {props.editMode && fotoArr.map((img,i) => <img className={classes.Image} onClick={() => deleteImage(img)} key={i} alt='foto' src={img}></img>)}
+            </div>
+            <p>DODAJ NAZWĘ PRODUKTU:</p>
+            <input className={classes.Input} value={name} onChange={event => handleInputs(event.target)} type="text" id="input_products--name"></input>
+            <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
+            <p>DODAJ OPIS PRODUKTU:</p>
+            <textarea style={{height:'200px'}} value={desc} className={classes.Input} onChange={event => handleInputs(event.target)} type="text" id="input_products--description"></textarea>
+            <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
+            <p>WYBIERZ KATEGORIĘ PRODUKTU:</p>
+            <select value={itemProduct}  className={classes.Input} onChange={event => handleInputs(event.target)} name="input_products--category" id="input_products--category">
+                <option value="">--Proszę wybrać opcję--</option>
+                {showCategories.map(el => <option key={el.key}>{el.name}</option>)}
+            </select>
+            <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
+            <p>DODAJ ILOŚĆ SZTUK:</p>
+            <input className={classes.Input} value={itemsLeft} onChange={event => handleInputs(event.target)} type="text" id="input_products--items"></input>
+            <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
+            <p>DODAJ CENĘ CZYSZCZENIA:</p>
+            <input className={classes.Input} value={cleanPrize} onChange={event => handleInputs(event.target)} type="text" id="input_products--cleanPrize"></input>
+            <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
+            <p>DODAJ CENĘ PRODUKTU:</p>
+            <input className={classes.Input} value={prize} onChange={event => handleInputs(event.target)} type="text" id="input_products--prize"></input>
+            <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
+            <div className={classes.Buttons}>
+                <button style={{top:'10px'}} className={classes.Button} onClick={()=> uploader()}>Wyślij</button>
+                {props.editMode && <button style={{top:'10px',backgroundColor:'#6f1322'}} className={classes.Button} onClick={()=> deleteProduct()}>Usuń</button>}
+            </div>
         </div>
     );
 };

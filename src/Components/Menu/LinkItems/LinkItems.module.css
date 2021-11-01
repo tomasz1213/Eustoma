@@ -62,7 +62,8 @@
     left:0;
     top:-20px;
     background-color: white;
-    width: 90vw;
+    width: 100vw;
+    box-sizing: border-box;
     height: 103vh;
     text-align: center;
     list-style: none;
@@ -95,6 +96,6 @@
 }
 @media (min-width: 768px) and (max-width:1400px) {
     .MobileMenu{
-        width:95vw;
+        width:100%;
     }
 }

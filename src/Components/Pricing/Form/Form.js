@@ -17,7 +17,7 @@ const Form = () =>{
     };
     const submitData = () => {
         if(inputData.name && inputData.surname && inputData.email && inputData.tel){
-            dispatch(uploadImage("input_form--photo",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/forms.json`,
+            dispatch(uploadImage("input_form--photo",`/forms.json`,
             {...inputData,...checkBoxData}));
             setDisplayError(false);
         }else{

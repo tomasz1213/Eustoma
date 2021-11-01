@@ -1,7 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch } from 'react-redux';
-import classes from './Product.module.css';
 import {useSelector} from 'react-redux';
+import axios from '../../../../../AxiosConfig';
+import classes from './Product.module.css';
 import {uploadImage,removeFromFirebase,updateDataFirebase} from '../../../../../store/actions';
 
 const Products = (props) => {
@@ -9,7 +10,7 @@ const Products = (props) => {
     const auth = useSelector(state => state.auth.auth.idToken);
     useEffect(() =>{
         const arr = [];
-        fetch('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json')
+        axios.get('/categories.json')
         .then(response => response.json())
         .then(res => {
             for (const [key, value] of Object.entries(res)) {
@@ -33,7 +34,7 @@ const Products = (props) => {
             return;
         }
         if(!props.editMode){
-            dispatch(uploadImage("input_products--photo",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${auth}`,
+            dispatch(uploadImage("input_products--photo",`/products.json?auth=${auth}`,
             {name:name,cleanPrize:cleanPrize,description:desc,prize:prize,items:itemsLeft,itemCategory:itemProduct,date:`${new Date().toISOString().split('T')[0]}`}));
             props.clicked();
         }else if(props.editMode){
@@ -46,7 +47,7 @@ const Products = (props) => {
         if(props.elLeft === 1){
             return alert('Nie można usunąć ostatniego elementu, dodaj kolejny i ponów próbę!');         
         }
-        dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products/${props.data.key}.json?auth=${auth}`));
+        dispatch(removeFromFirebase(`/products/${props.data.key}.json?auth=${auth}`));
         props.clicked();
     };
     const handleInputs = (event) => {

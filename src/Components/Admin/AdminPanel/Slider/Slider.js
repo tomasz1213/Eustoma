@@ -12,7 +12,7 @@ const Slider = () => {
     const data = useSelector(state => state.slider.data.dataArr);
     let imgList = useRef([]);
     useEffect(() => {    
-        dispatch(downloadData('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders.json'));   
+        dispatch(downloadData('/sliders.json'));   
     },[dispatch]);
 
     return (

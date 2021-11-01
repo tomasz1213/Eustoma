@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import axios from 'axios';
+import axios from '../../../../AxiosConfig';
 import DisplayFormData from './DisplayData/DisplayFormData';
 import DisplayCartData from './DisplayData/DisplayCartData';
 import Element from '../UI/Element/Element';
@@ -13,14 +13,14 @@ const Dashboard = () => {
   useEffect(() =>{
     const formData = [];
     const cartData = [];
-    axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/forms.json')
+    axios.get('/forms.json')
     .then(res => {
         for (const [key, value] of Object.entries(res.data)) {
             formData.push({...value,key});
         }
         setFormData(formData);
     }); 
-    axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/shoppingCart.json')
+    axios.get('/shoppingCart.json')
     .then(res => {
         for (const [key, value] of Object.entries(res.data)) {
             cartData.push({...value,key});
@@ -34,8 +34,8 @@ const Dashboard = () => {
   };
     return (
       <div className={classes.Dashboard}>
-        {formData && !displayMode && formData.map(element => <Element clicked={()=>displayResult(element,1)} background={element.url} name={"Formularz "+element.name}/>)}
-        {cartData && !displayMode && cartData.map(element => <Element clicked={()=>displayResult(element,2)} background={element.url} name={"Koszyk "+element.name}/>)}
+        {formData && !displayMode && formData.map(element => <Element key={element.key} clicked={()=>displayResult(element,1)} background={element.url} name={"Formularz "+element.name}/>)}
+        {cartData && !displayMode && cartData.map(element => <Element key={element.key} clicked={()=>displayResult(element,2)} background={element.url} name={"Koszyk "+element.name}/>)}
         {displayMode === 1 && <DisplayFormData clicked={()=> setDisplayMode(0)} data={resultData}/>}
         {displayMode === 2 && <DisplayCartData clicked={()=> setDisplayMode(0)} data={resultData}/>}
       </div>

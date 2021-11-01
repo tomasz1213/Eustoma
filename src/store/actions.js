@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from '../AxiosConfig';
 import * as actionsType from './actionTypes';
 import firebase from "firebase";
 import Compressor from 'compressorjs';
@@ -146,7 +146,7 @@ export const uploadDataFirebase = (url,dataInfo) => {
           .then(response => {
             dispatch(changeLoadingToFalse());
             dispatch(downloadData());
-            window.alert('Wysłano');
+            window.alert('Wysłano!');
           })
           .catch(err => console.log(err));
     };

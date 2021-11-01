@@ -6,7 +6,7 @@ import {removeFromFirebase} from '../../../../../store/actions';
 const DisplayCartData = (props) => {
     const dispatch = useDispatch();
     const deleteForm = () => {
-        dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/shoppingCart/${props.data.key}.json`));
+        dispatch(removeFromFirebase(`/shoppingCart/${props.data.key}.json`));
         props.clicked();
       };
     return(

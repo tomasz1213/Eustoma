@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import classes from './OurWork.module.css';
 import Element from '../UI/Element/Element';
 import Job from './Job/Job';
-import axios from 'axios';
+import axios from '../../../../AxiosConfig';
 
 let ELEMENT_DATA = null;
 let EDIT_DATA_MODE = false;
@@ -13,7 +13,7 @@ const OurWork = () => {
     let displayElement = null;
     useEffect(() =>{
         const arr = [];
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json')
+        axios.get('/ourwork.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
                 arr.push({...value,key});

@@ -19,7 +19,7 @@ const ShoppingCart = (props) => {
     };
     const submitShoppingCart = () => {
         if(modalDataHandler.date && modalDataHandler.location && modalDataHandler.phone){
-            dispatch(uploadDataFirebase('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/shoppingCart.json',{...modalDataHandler,cart:[...shoppingCar.cart]}));
+            dispatch(uploadDataFirebase('/shoppingCart.json',{...modalDataHandler,cart:[...shoppingCar.cart]}));
             setDisplayModal(false);
             setDisplayError(false);
         }else return setDisplayError(true);

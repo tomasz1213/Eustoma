@@ -1,7 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import classes from './ImgSlider.module.css';
 import ImgElement from '../../../UI/ImgElement/ImgElement';
-import axios from 'axios';
+import axios from '../../../AxiosConfig';
+
 
 let intervalSlider = '';
 const ImgSlider = () => {
@@ -9,7 +10,7 @@ const ImgSlider = () => {
     const [images,setImages] = useState([]);
     useEffect(() => {
         const arr = [];
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders/slider1.json')
+        axios.get('/sliders/slider1.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
                 arr.push([key, value]);

@@ -17,12 +17,12 @@ const Categories = (props) => {
             return;
         }
         if(!props.editMode){
-            dispatch(uploadImage("input_categories",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json?auth=${auth}`,{name:categoryName}));
+            dispatch(uploadImage("input_categories",`/categories.json?auth=${auth}`,{name:categoryName}));
             props.clicked();
         }
         else if(props.editMode){
-            dispatch(uploadImage("input_categories",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json?auth=${auth}`,{name:categoryName}));
-            dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories/${props.data.key}.json?auth=${auth}`));
+            dispatch(uploadImage("input_categories",`/categories.json?auth=${auth}`,{name:categoryName}));
+            dispatch(removeFromFirebase(`/categories/${props.data.key}.json?auth=${auth}`));
             props.clicked();
         }
     };
@@ -30,7 +30,7 @@ const Categories = (props) => {
         if(props.elLeft === 1){
             return alert('Nie można usunąć ostatniego elementu, dodaj kolejny i ponów próbę!');         
         }
-        dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories/${props.data.key}.json?auth=${auth}`));
+        dispatch(removeFromFirebase(`/categories/${props.data.key}.json?auth=${auth}`));
         props.clicked();
     };
     const closeModal = () => {

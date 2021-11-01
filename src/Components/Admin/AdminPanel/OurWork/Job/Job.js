@@ -1,14 +1,15 @@
 import React,{useState,useEffect} from 'react';
-import {useDispatch } from 'react-redux';
-import classes from './Job.module.css';
+import {useDispatch,useSelector } from 'react-redux';
 import {uploadImage,removeFromFirebase,updateDataFirebase} from '../../../../../store/actions';
-import {useSelector} from 'react-redux';
+import axios from '../../../../../AxiosConfig';
+import classes from './Job.module.css';
+
 const Products = (props) => { 
     const [showWork,setWork] = useState([]);
     const auth = useSelector(state => state.auth.auth.idToken);
     useEffect(() =>{
         const arr = [];
-        fetch('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json')
+        axios.get('/ourwork.json')
         .then(response => response.json())
         .then(res => {
             for (const [key, value] of Object.entries(res)) {
@@ -27,7 +28,7 @@ const Products = (props) => {
     const dispatch = useDispatch();
     const uploader = () => {
         if(!props.editMode){
-            dispatch(uploadImage("input_ourwork--photo",`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json?auth=${auth}`,
+            dispatch(uploadImage("input_ourwork--photo",`/ourwork.json?auth=${auth}`,
             {name:name,wedding:wedding,church:church,photograph:photograph,flowers:flowers,queue:queue}));
             props.clicked();
         }else if(props.editMode){
@@ -40,7 +41,7 @@ const Products = (props) => {
         if(props.elLeft === 1){
             return alert('Nie można usunąć ostatniego elementu, dodaj kolejny i ponów próbę!');         
         }
-        dispatch(removeFromFirebase(`https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork/${props.data.key}.json?auth=${auth}`));
+        dispatch(removeFromFirebase(`/ourwork/${props.data.key}.json?auth=${auth}`));
         props.clicked();
     };
     const handleInputs = (event) => {

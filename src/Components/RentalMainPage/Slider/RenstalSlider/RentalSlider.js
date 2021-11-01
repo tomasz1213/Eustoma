@@ -3,7 +3,7 @@ import classes from './RentalSlider.module.css';
 import Product from './Product/Product';
 import {NavLink} from 'react-router-dom';
 import {useDispatch } from 'react-redux';
-import axios from 'axios';
+import axios from '../../../../AxiosConfig';
 import {updateSuccess} from '../../../../store/actions';
 
 let NEXT_VALUE = 0;
@@ -15,7 +15,7 @@ const RentalSlider = (props) => {
     const [productData,setProductData] = useState([]);
     useEffect(() => {
         const productArr = [];
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json')
+        axios.get('/products.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
                 productArr.push({key,...value});

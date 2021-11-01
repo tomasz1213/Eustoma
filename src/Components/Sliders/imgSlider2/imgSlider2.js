@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import classes from './imgSlider2.module.css';
 import ImgElement from '../../../UI/ImgElement/ImgElement';
-import axios from 'axios';
+import axios from '../../../AxiosConfig';
 let nextValue = 0;
 
 const ImgSlider2 = () => {
     const [images,setImages] = useState([]);
     useEffect(() => {
         const arr = [];
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/sliders/slider2.json')
+        axios.get('/sliders/slider2.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
                 arr.push([key, value]);

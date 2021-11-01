@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import axios from 'axios';
+import axios from '../../AxiosConfig';
 import {NavLink} from 'react-router-dom';
 import {updateSuccess} from '../../store/actions';
 import {useDispatch } from 'react-redux';
@@ -19,7 +19,7 @@ const RentalMain = (props) => {
     const [displayProducts,setDisplayProducts] = useState(0);
     const dispatch = useDispatch();
     useEffect(() => {
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json')
+        axios.get('/categories.json')
         .then(res => {
             let data = [];
             for(const [key, value] of Object.entries(res.data)){
@@ -27,7 +27,7 @@ const RentalMain = (props) => {
             }
             setCategories(data);
         });
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json')
+        axios.get('/products.json')
         .then(res => {
             let data = [];
             for(const [key, value] of Object.entries(res.data)){

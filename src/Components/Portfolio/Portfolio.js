@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import axios from 'axios';
+import axios from '../../AxiosConfig';
 import Element from './Element/Element';
 import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
@@ -10,7 +10,7 @@ const Portfolio = () => {
     const [dataArr, setData] = useState([]);
     useEffect(() => {
         const data = [];
-            axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/ourwork.json')
+            axios.get('/ourwork.json')
             .then(response => {
                 for(let [key,value] of Object.entries(response.data)){
                     data.push({...value,key});

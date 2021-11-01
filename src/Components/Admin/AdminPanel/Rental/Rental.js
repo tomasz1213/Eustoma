@@ -3,7 +3,7 @@ import classes from './Rental.module.css';
 import Categories from './Categories/Categories';
 import Products from './Product/Product';
 import Element from '../UI/Element/Element';
-import axios from 'axios';
+import axios from '../../../../AxiosConfig';
 
 const Rental = () => {
     const [displayMode,setDisplayMode] = useState(0);
@@ -18,7 +18,7 @@ const Rental = () => {
     useEffect(() =>{
         const arrCategories = [];
         const arrProducts = [];
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/categories.json')
+        axios.get('/categories.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
                 arrCategories.push({...value,key});
@@ -26,7 +26,7 @@ const Rental = () => {
             setCategories(arrCategories);
             setLoading(true);
         }); 
-        axios.get('https://study-49f96-default-rtdb.europe-west1.firebasedatabase.app/products.json')
+        axios.get('/products.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
                 arrProducts.push({...value,key});

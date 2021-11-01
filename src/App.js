@@ -31,7 +31,7 @@ const store = createStore(rootReducer, composeEnhancers(
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter basename="/eustomadevmode/">
+      <BrowserRouter>
       <div className="App">
             <Switch>
                 <Route path="/admin" component={Admin}/>

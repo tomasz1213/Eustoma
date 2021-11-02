@@ -50,7 +50,7 @@ const Rental = () => {
         setDisplayMode(config);
     };
     const showDataMode = (config) => {
-        setEditMode(true);
+        setEditMode(false);
         setDisplayMode(config);
     };
     switch(displayMode) {

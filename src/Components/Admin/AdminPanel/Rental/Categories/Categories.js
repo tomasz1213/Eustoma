@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
-import {useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import classes from './Categories.module.css';
-import {useSelector} from 'react-redux';
 import {uploadImage, removeFromFirebase} from '../../../../../store/actions';
 
 const Categories = (props) => {

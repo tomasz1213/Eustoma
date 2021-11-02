@@ -5,35 +5,31 @@ import axios from '../../../../../AxiosConfig';
 import classes from './Job.module.css';
 
 const Products = (props) => { 
-    const [showWork,setWork] = useState([]);
+    const [fetchedData,setFetchedData] = useState([]);
     const auth = useSelector(state => state.auth.auth.idToken);
     useEffect(() =>{
         const arr = [];
         axios.get('/ourwork.json')
-        .then(response => response.json())
         .then(res => {
-            for (const [key, value] of Object.entries(res)) {
+            for (const [key, value] of Object.entries(res.data)) {
                 arr.push({...value,key});
             } 
-            setWork(arr);
+            setFetchedData(arr);
         })
     },[]);
-    let [name,setName] = useState(props.editMode ? props.data.name : '');
-    let [wedding,setWedding] = useState(props.editMode ? props.data.wedding : '');
-    let [church,setChurch] = useState(props.editMode ? props.data.church : '');
-    let [queue,setQueue] = useState(props.editMode ? props.data.queue : '');
-    let [fotoArr,setFotoArr] = useState(props.data.url &&(props.editMode && [...props.data.url]));
-    let [flowers,setFlowers] = useState(props.editMode ? props.data.flowers : '');
-    let [photograph,setPhotogprah] = useState(props.editMode ? props.data.photograph : '');
+    let [inputData,setInputData] = useState({name:props.editMode ? props.data.name : '',
+        wedding:props.editMode ? props.data.wedding : '',church:props.editMode ? props.data.church : '',
+        photograph:props.editMode ? props.data.photograph : '',flowers:props.editMode ? props.data.flowers : '',queue:props.editMode ? props.data.queue : ''});
+    let [fotoArr,setFotoArr] = useState(props.editMode ? props.data.url && [...props.data.url]: []);
     const dispatch = useDispatch();
     const uploader = () => {
         if(!props.editMode){
             dispatch(uploadImage("input_ourwork--photo",`/ourwork.json?auth=${auth}`,
-            {name:name,wedding:wedding,church:church,photograph:photograph,flowers:flowers,queue:queue}));
+            {...inputData}));
             props.clicked();
         }else if(props.editMode){
             dispatch(updateDataFirebase(`ourwork`,props.data.key,
-            {name:name,wedding:wedding,church:church,flowers:flowers,photograph:photograph,queue:queue,url:fotoArr},"input_ourwork--photo"));
+            {...inputData,url:fotoArr},"input_ourwork--photo"));
             props.clicked();
         }
     };
@@ -44,28 +40,10 @@ const Products = (props) => {
         dispatch(removeFromFirebase(`/ourwork/${props.data.key}.json?auth=${auth}`));
         props.clicked();
     };
+    
     const handleInputs = (event) => {
-        switch(event.id){
-            case 'input_ourwork--name':
-                setName(event.value);
-                break;
-            case 'input_ourwork--wedding':
-                setWedding(event.value);
-                    break;
-            case 'input_ourwork--church':
-                setChurch(event.value);
-                    break;
-            case 'input_ourwork--flowers':
-                setFlowers(event.value);
-                    break;
-            case 'input_ourwork--queue':
-                setQueue(event.value);
-                    break;
-            case 'input_ourwork--photograph':
-                setPhotogprah(event.value);
-                    break;
-            default:
-        }     
+        const header = event.id.split('--');
+        setInputData({...inputData,[header[1]]:event.value});
     };
     const removeImage = (img) => {
             const filtredArr = fotoArr.filter(e => e !== img);
@@ -77,27 +55,21 @@ const Products = (props) => {
     return (
         <>
         <div  className={classes.InputLabel}>
-                {props.editMode && <p style={{fontSize:'12px',color:'grey'}}>Nazwa realizacji:</p>}
-                <input className={classes.Input} placeholder="Nazwa realizacji" value={name} onChange={event => handleInputs(event.target)} type="text" id="input_ourwork--name"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                {props.editMode && <p style={{fontSize:'12px',color:'grey'}}>Miejsce wesela:</p>}
-                <input type="text" placeholder="Miejsce wesela" value={wedding} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--wedding"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                {props.editMode && <p style={{fontSize:'12px',color:'grey'}}>Miejsce ślubu:</p>}
-                <input type="text" placeholder="Miejsce ślubu" value={church} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--church"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                {props.editMode && <p style={{fontSize:'12px',color:'grey'}}>Kwiaty i dekoracje:</p>}
-                <input  placeholder="Kwiaty i dekoracje" className={classes.Input} value={flowers} onChange={event => handleInputs(event.target)} type="text" id="input_ourwork--flowers"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
-                {props.editMode &&  <p style={{fontSize:'12px',color:'grey'}}>Fotograf:</p>}
-                <input type="text" placeholder="Fotograf" value={photograph} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--photograph"></input>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
-                {props.editMode && <p style={{fontSize:'12px',color:'grey'}}>Nr kolejności wyświetlania:</p>}
-                <select type="text" placeholder="Numer kolejki" value={queue} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--queue">
+                <p style={{fontSize:'12px',color:'grey',margin:'2px'}}>Nazwa realizacji:</p>
+                <input className={classes.Input} value={inputData.name} onChange={event => handleInputs(event.target)} type="text" id="input_ourwork--name"></input>
+                <p style={{fontSize:'12px',color:'grey',margin:'2px'}}>Miejsce wesela:</p>
+                <input type="text" value={inputData.wedding} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--wedding"></input>
+                <p style={{fontSize:'12px',color:'grey',margin:'2px'}}>Miejsce ślubu:</p>
+                <input type="text" value={inputData.church} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--church"></input>
+                <p style={{fontSize:'12px',color:'grey',margin:'2px'}}>Kwiaty i dekoracje:</p>
+                <input  className={classes.Input} value={inputData.flowers} onChange={event => handleInputs(event.target)} type="text" id="input_ourwork--flowers"></input>
+                <p style={{fontSize:'12px',color:'grey',margin:'2px'}}>Fotograf:</p>
+                <input type="text" value={inputData.photograph} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--photograph"></input>
+                <p style={{fontSize:'12px',color:'grey',margin:'2px'}}>Nr kolejności wyświetlania:</p>
+                <select type="text" value={inputData.queue} className={classes.Input} onChange={event => handleInputs(event.target)}id="input_ourwork--queue">
                 <option value="">--Proszę wybrać nr kolejności wyświetlania--</option>
-                    {showWork.map((el,i) => <option key={el.key}>{i}</option>)}
+                    {fetchedData.map((el,i) => <option key={el.key}>{i}</option>)}
                 </select>
-                <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
                 <input className={classes.FotoInput} type="file" id="input_ourwork--photo" multiple></input>
                 <div className={classes.Buttons}>
                     {fotoArr && props.editMode && fotoArr.map((img,i) => <img className={classes.Image} onClick={() => removeImage(img)} key={i} alt='foto' src={img}></img>)}

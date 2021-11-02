@@ -11,9 +11,8 @@ const Products = (props) => {
     useEffect(() =>{
         const arr = [];
         axios.get('/categories.json')
-        .then(response => response.json())
         .then(res => {
-            for (const [key, value] of Object.entries(res)) {
+            for (const [key, value] of Object.entries(res.data)) {
                 arr.push({...value,key});
             } 
             setCategories(arr);

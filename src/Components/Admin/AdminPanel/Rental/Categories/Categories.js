@@ -4,7 +4,7 @@ import classes from './Categories.module.css';
 import {uploadImage, removeFromFirebase} from '../../../../../store/actions';
 
 const Categories = (props) => {
-    let [categoryName,setCategoryName] = useState(props.editMode ? props.data.name : '');
+    const [categoryName,setCategoryName] = useState(props.editMode ? props.data.name : '');
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth.auth.idToken);
     const uploader = () => {

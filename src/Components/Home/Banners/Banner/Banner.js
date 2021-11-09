@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Banner.module.css';
 import imgBanner from '../../../../img/firstBackground.webp';
 
-
 const banner = () => (
     <div className={classes.Banner}>
         <img src={imgBanner} alt="logo"></img>

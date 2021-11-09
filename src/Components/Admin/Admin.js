@@ -6,17 +6,17 @@ import { authLogout } from '../../store/actions';
 import AdminPanel from './AdminPanel/AdminPanel';
 
 const Admin = () => {
-    let checkState = useSelector(state => state.auth.status.login);
+    const checkLoginStatus = useSelector(state => state.auth.status.login);
     const dispatch = useDispatch();
     const onClickLog = () => {
         dispatch(authLogout());
     };
-    let displayLogin = checkState ? null : <AdminLogin/>;
+    let displayLoginComponent = !checkLoginStatus && <AdminLogin/>;
     return (
         <div className={classes.Admin}>
-            {displayLogin}
-            {checkState ? <button onClick={onClickLog}>LOGOUT</button>: null}
-            {checkState ? <AdminPanel/> : null}
+            {displayLoginComponent}
+            {checkLoginStatus && <button onClick={onClickLog}>LOGOUT</button>}
+            {checkLoginStatus && <AdminPanel/>}
         </div>
     );
 };

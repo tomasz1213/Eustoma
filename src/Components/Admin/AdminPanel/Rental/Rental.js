@@ -7,7 +7,7 @@ import axios from '../../../../AxiosConfig';
 
 const Rental = () => {
     const [displayMode,setDisplayMode] = useState(0);
-    const [showLoading,setLoading] = useState(false);
+    const [showLoadingSpinner,setLoadingSpinner] = useState(false);
     const [showCategories,setCategories] = useState([]);
     const [showProducts,setProducts] = useState([]);
     const [showSortedProducts,setSortedProducts] = useState([]);
@@ -24,7 +24,7 @@ const Rental = () => {
                 arrCategories.push({...value,key});
             }
             setCategories(arrCategories);
-            setLoading(true);
+            setLoadingSpinner(true);
         }); 
         axios.get('/products.json')
         .then(res => {
@@ -33,7 +33,7 @@ const Rental = () => {
             }
             setProducts(arrProducts);
             setSortedProducts(arrProducts);
-            setLoading(true);
+            setLoadingSpinner(true);
         }); 
     },[]);   
     const handleCategories = (target) => {
@@ -76,14 +76,14 @@ const Rental = () => {
                 </label>
                 {!displayMode && <h2>Kategorie:</h2>}
                 <div className={classes.Result}>
-                    {showLoading ? displayCategories : <div className={classes.ldsdualring}></div>}
+                    {showLoadingSpinner ? displayCategories : <div className={classes.ldsdualring}></div>}
                 </div>
                 {!displayMode && <h2>Produkty:  <select className={classes.Input} onChange={event => handleCategories(event.target)} name="input_products--category" id="input_products--category">
                                                 <option value="all">--Wszystkie Produkty--</option>
                     {showCategories.map(el => <option value={el.name} key={el.key}>{el.name}</option>)}
                 </select></h2>}
                 <div className={classes.Result}>
-                    {showLoading ? displayProducts : <div className={classes.ldsdualring}></div>}
+                    {showLoadingSpinner ? displayProducts : <div className={classes.ldsdualring}></div>}
                 </div>
         </div>
     );

@@ -7,7 +7,7 @@ import { downloadData } from '../../../../store/actions';
 
 const Slider = () => {
     const [displayMode, setDisplayMode] = useState(true);
-    const [showName, setName] = useState('');
+    const [showElementName, setElementName] = useState('');
     const dispatch = useDispatch();
     const data = useSelector(state => state.slider.data.dataArr);
     let imgList = useRef([]);
@@ -17,8 +17,8 @@ const Slider = () => {
 
     return (
         <div className={classes.Slider}>
-            {displayMode ? data && data.map(el => <Element clicked={()=> {imgList.current.push(el);setName(el.key); setDisplayMode(false)}}name={el.key} key={el.key}/>) : 
-            !displayMode ? <ImgList arr={imgList.current.flat()} name={showName}/> : null}
+            {displayMode ? data && data.map(el => <Element clicked={()=> {imgList.current.push(el);setElementName(el.key); setDisplayMode(false)}}name={el.key} key={el.key}/>) : 
+            !displayMode ? <ImgList arr={imgList.current.flat()} name={showElementName}/> : null}
         </div>
     );
 };

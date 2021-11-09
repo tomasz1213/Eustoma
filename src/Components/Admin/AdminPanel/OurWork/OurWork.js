@@ -8,7 +8,7 @@ let ELEMENT_DATA = null;
 let EDIT_DATA_MODE = false;
 const OurWork = () => {
     const [displayMode,setDisplayMode] = useState(0);
-    const [showLoadingSpinner,setLoading] = useState(false);
+    const [showLoadingSpinner,setLoadingSpinner] = useState(false);
     const [showData,setData] = useState([]);
     let displayElement = null;
     useEffect(() =>{
@@ -19,7 +19,7 @@ const OurWork = () => {
                 arr.push({...value,key});
             }
             setData(arr);
-            setLoading(true);
+            setLoadingSpinner(true);
         }); 
     },[]); 
     const updateData = (element,conf) => { // Editing existing realisation

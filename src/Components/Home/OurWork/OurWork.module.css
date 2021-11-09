@@ -1,5 +1,6 @@
 .OurWork{
     width:100%;
+    box-sizing: border-box;
 }
 .Title{
     font-size: 38px;

@@ -9,8 +9,9 @@ const LinkItems = () => {
          showMenu ? setShowMenu(false) : setShowMenu(true);
     };
     return(
+    <>
+        <button onClick={displayMobileMenu} className={classes.BurgerButton}></button>
         <nav className={classes.Nav}>
-            <button onClick={displayMobileMenu} className={classes.BurgerButton}></button>
             <ul onClick={()=>window.scrollTo(0, 0)} className={showMenu ? classes.MobileMenu : classes.List}>
                 <li><NavLink exact to="/">Home</NavLink></li>
                 <li><NavLink to="/pracownia">Pracownia Ślubna</NavLink></li>
@@ -24,6 +25,7 @@ const LinkItems = () => {
                 <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pracowniaeustoma/"><i className="icon-instagram"></i></a>
             </ul>
         </nav>
+    </>
 )};
 
 export default LinkItems;

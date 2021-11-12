@@ -38,7 +38,7 @@
 .Button:hover{
     background-color:#a59a94;
 }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Conteiner{
         flex-direction: column;
     }

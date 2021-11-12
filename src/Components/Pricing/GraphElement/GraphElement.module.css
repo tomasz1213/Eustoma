@@ -64,7 +64,7 @@
     width:500px;
     padding: 192px 54px;
 }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Header{
         font-size:20px;
         top:140px;

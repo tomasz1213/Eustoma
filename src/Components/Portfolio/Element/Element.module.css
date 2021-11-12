@@ -17,7 +17,7 @@
     color:#000000;
     font-family: 'Barlow', sans-serif;
 }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Title{
         font-size:23px;
         width:100%;

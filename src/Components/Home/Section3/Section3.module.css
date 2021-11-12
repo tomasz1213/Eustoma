@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     height: auto;
-    padding: 0 20%;
+    justify-content: center;
 }
 .Photo{
     position: relative;
@@ -19,7 +19,7 @@
     top: -30px;
     width:30%;
     font-family: cinzel,serif;
-    font-size: clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(0.8rem, 1rem, 1rem);
 }
 .Text >h1{
     font-size: 56px;
@@ -27,7 +27,7 @@
     font-weight: 200;
     font-family: 'Lobster', cursive;
 }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Section3{
         flex-direction: column;
         padding:0;

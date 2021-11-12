@@ -155,7 +155,7 @@
     font-weight: bold;
     color:black;
 }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Head{
         width:100%;
     }
@@ -223,15 +223,5 @@
     }
     .ButtonMore{
         width:140px;
-    }
-}
-@media (min-width: 768px) and (max-width:1400px) {
-    .TopText{ 
-        letter-spacing: 0;
-        font-size:69px;
-    }
-    .Top{
-        margin: 0;
-        width: 100%;
     }
 }

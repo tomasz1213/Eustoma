@@ -11,75 +11,18 @@
 .Banner p:first-of-type{
     position: relative;
     font-size: 44px;
-    width:64%;
-    padding-left: 10em;
     color: white;
-    font-family: 'Cookie', cursive;
-    -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    font-family: 'Cookie', serif;
 }
 .Banner p:last-of-type{
-    width:85%;
     position: relative;
     font-family: 'Cinzel', serif;
     color: white;
     font-size: 40px;
-    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-@media (max-width:768px){
-  .Banner p:first-of-type{
-    padding-left: 104px;
-    width:98%;
-  }
-  .Banner p:last-of-type{
-    width:44%;
-    font-size: 26px;
-  }
+@media (max-width:1200px){
   .Banner{
     width:105%;
   }
 }
-
-@-webkit-keyframes slide-left {
-    0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(-100px);
-              transform: translateX(-100px);
-    }
-  }
-  @keyframes slide-left {
-    0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(-100px);
-              transform: translateX(-100px);
-    }
-  }
-
-  @-webkit-keyframes slide-right {
-    0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(100px);
-              transform: translateX(100px);
-    }
-  }
-  @keyframes slide-right {
-    0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
-    100% {
-      -webkit-transform: translateX(100px);
-              transform: translateX(100px);
-    }
-  }

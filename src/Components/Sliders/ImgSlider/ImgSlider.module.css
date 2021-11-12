@@ -48,7 +48,7 @@
 .SliderRight > i:hover{
     text-shadow: 2px 2px 4px #000000;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .SliderLeft{
         left:-9%;
     }   

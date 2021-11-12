@@ -31,7 +31,7 @@
     z-index: 90;
     text-shadow: 4px 4px 4px #000000;
 }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Slider{
         margin: 0;
     }

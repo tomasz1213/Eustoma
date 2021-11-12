@@ -11,7 +11,7 @@
     background-color:rgba(244, 244, 244, 0.69);
     height: 450px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .Rental{
         width: 105%;
     }

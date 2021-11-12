@@ -7,7 +7,7 @@
     font-family: cinzel,serif;
     text-align: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .Title{
         position:relative;
         top: 74px;

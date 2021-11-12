@@ -104,7 +104,7 @@
       transform: rotate(360deg);
     }
   }
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Form{
         box-sizing: border-box;
         padding: 0 5%;

@@ -24,7 +24,7 @@
     width:58%;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .Top {
         width: 105%;
         height:100px;

@@ -1,7 +1,7 @@
 .About{
     margin-top: 70px;
     width: 100%;
-    height: clamp(800px, 600px, 800px);
+    height: clamp(750px, 600px, 800px);
     display: flex;
     flex-direction: column;
     align-items: center;

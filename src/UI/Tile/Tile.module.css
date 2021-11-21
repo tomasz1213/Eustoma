@@ -34,9 +34,10 @@
     top:-25px;
     color:lightgray;
 }
-@media (max-width:768px) {
+@media (max-width:1200px) {
     .Tile{
         margin: 10px;
-        width: 99%;
+        width: 100%;
+        box-sizing: border-box;
     }
 }

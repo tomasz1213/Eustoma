@@ -15,7 +15,6 @@ const LinkItems = () => {
             <ul onClick={()=>window.scrollTo(0, 0)} className={showMenu ? classes.MobileMenu : classes.List}>
                 <li><NavLink exact to="/">Home</NavLink></li>
                 <li><NavLink to="/pracownia">Pracownia Ślubna</NavLink></li>
-                {/* <li><NavLink to="/admin">admin</NavLink></li> */}
                 <li><NavLink to="/oferta">Oferta</NavLink></li>
                 <li><NavLink to="/portfolio">Portfolio</NavLink></li>
                 <li><NavLink to="/wypozyczalnia">Wypożyczalnia</NavLink></li>

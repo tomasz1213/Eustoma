@@ -29,7 +29,7 @@
 
 @media (max-width:1200px){
   .Banner{
-    width:105%;
+    width:100%;
   }
   .Image{
     object-fit: fill;

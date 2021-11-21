@@ -73,6 +73,7 @@
     .Conteiner{
         flex-direction: column;
         padding: 5px 5px;
+        box-sizing: border-box;
         width:100%;
     }
     .SelectBox{

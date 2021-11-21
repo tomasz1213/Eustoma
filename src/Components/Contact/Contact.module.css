@@ -7,7 +7,8 @@
     box-sizing: border-box;
 }
 .Contact{
-    width:490px;
+    width:100%;
+    box-sizing: border-box;
     padding: 40px 10px;
     text-align: center;
     font-family: cinzel,serif;
@@ -18,7 +19,7 @@
     padding:10px 0;
 }
 .Image{
-    width:490px;
+    width:100%;
     height:741px;
 }
 .GreyP{
@@ -49,11 +50,12 @@
     } 
     .Image img{
         height:253px;
-        width:100vw;
+        width:100%;
+        object-fit:cover;
     }   
     .Image{
         order:1;
         height:auto;
-        width:100vw;
+        width:100%;
     }
 }

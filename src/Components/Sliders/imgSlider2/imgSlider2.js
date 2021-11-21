@@ -7,16 +7,16 @@ let nextValue = 0;
 const ImgSlider2 = () => {
     const [images,setImages] = useState([]);
     useEffect(() => {
-        const arr = [];
+        const dataHolder = [];
         axios.get('/sliders/slider2.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
-                arr.push([key, value]);
+                dataHolder.push([key, value]);
             } 
         })
         .then(() => {
             const elArr = [];
-            arr.flat().forEach(el => {
+            dataHolder.flat().forEach(el => {
                 if(el.url !== undefined){
                     elArr.push(el.url);
                 }
@@ -54,11 +54,11 @@ const ImgSlider2 = () => {
     };
     return (
         <div className={classes.Slider}>   
-            <span onClick={() => moveSlider(true)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
+            <div onClick={() => moveSlider(true)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </div>
                 <div className={classes.Foto} >
                    {showUp}
                 </div>
-            <span onClick={() => moveSlider(false)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>
+            <div onClick={() => moveSlider(false)} className={classes.SliderRight}><i className="icon-right-open-big"></i></div>
         </div>
     );
 };

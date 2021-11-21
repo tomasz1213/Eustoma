@@ -17,12 +17,17 @@
     color:#000000;
     font-family: 'Barlow', sans-serif;
 }
+.Images{
+    margin-top:30px;
+    width:100%;
+    box-sizing: border-box;
+}
 @media (max-width: 1200px){
     .Title{
         font-size:23px;
-        width:100%;
+        width:90%;
     }
-    .Element{
-        padding: 0 6%;
+    .Images{
+        padding: 0;
     }
 }

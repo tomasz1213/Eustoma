@@ -42,10 +42,10 @@
         flex-direction: column;
     }
     .RightColumn, .CenterColumn {
-        width: 105%;
+        width: 100%;
     }
     .LeftColumn {
-        width: 105%;
+        width: 100%;
         font-size:10px;
         padding: 60px 0;
         min-height:100px;

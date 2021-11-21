@@ -161,7 +161,7 @@
     }
     .CatMobile{
         text-align: center;
-        width:105%;
+        width:100%;
     }
     .Sorting{
         margin-top: 40px;
@@ -180,11 +180,11 @@
         width:95%;
     }
     .Products{
-        width:105%;
+        width:100%;
         
     }
     .Categories{
-        width:105%;
+        width:100%;
     
         flex-direction:row;
     }
@@ -192,7 +192,7 @@
         left:-75px;
     }
     .Top {
-        width: 105%;
+        width: 100%;
         height:150px;
         background-size:cover;
     }

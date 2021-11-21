@@ -3,27 +3,25 @@ import classes from './ImgSlider.module.css';
 import ImgElement from '../../../UI/ImgElement/ImgElement';
 import axios from '../../../AxiosConfig';
 
-
 let intervalSlider = '';
 const ImgSlider = () => {
-
     const [images,setImages] = useState([]);
     useEffect(() => {
-        const arr = [];
+        const dataHolder = [];
         axios.get('/sliders/slider1.json')
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
-                arr.push([key, value]);
+                dataHolder.push([key, value]);
             } 
         })
         .then(() => {
-            const elArr = [];
-            arr.flat().forEach(el => {
+            const photoHolder = [];
+            dataHolder.flat().forEach(el => {
                 if(el.url !== undefined){
-                    elArr.push(el.url);
+                    photoHolder.push(el.url);
                 }
             })
-            setImages(elArr);
+            setImages(photoHolder);
         })
     },[]);
 
@@ -54,7 +52,7 @@ const ImgSlider = () => {
                 sliderClass.forEach(elm => elm.style.left = `${nextValue -200}px`);                
                 document.getElementsByTagName('I')[3].style.cursor = 'not-allowed';
             };
-            if(+Number(imgStyle.left.slice(1, (imgStyle.left.length -2))).toFixed(0) > Number(Math.ceil(elementCountedAmount / 10) * 10)){
+            if(Number(imgStyle.left.slice(1, (imgStyle.left.length -2))).toFixed(0) > Number(Math.ceil(elementCountedAmount / 10) * 10)){
                 clearInterval(intervalSlider);
                 sliderClass.forEach(elm => elm.style.left = `${nextValue +200}px`);                
                 document.getElementsByTagName('I')[2].style.cursor = 'not-allowed';
@@ -62,18 +60,17 @@ const ImgSlider = () => {
             
       }, 50);
     };
-    const showUp = images.map(e => <ImgElement type={true} key={images.indexOf(e)} src={e} alt="Slider" nextImg={{
+    const showImageElements = images.map(e => <ImgElement type={true} key={images.indexOf(e)} src={e} alt="Slider" nextImg={{
         arr: images,
         currIndex: images.indexOf(e)
     }}/>);
     return (
         <div className={classes.Slider}>   
-            <span onMouseOver={event => moveSlider(true)} onMouseOut={e => clearInterval(intervalSlider)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
+            <span onMouseOver={() => moveSlider(true)} onMouseOut={() => clearInterval(intervalSlider)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
                 <div className={classes.Foto} >
-                   {showUp}
+                   {showImageElements}
                 </div>
-            <span onMouseOver={event => moveSlider(false)} onMouseOut={e => clearInterval(intervalSlider)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>
-    
+            <span onMouseOver={() => moveSlider(false)} onMouseOut={() => clearInterval(intervalSlider)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>
         </div>
     );
     

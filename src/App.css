@@ -14,8 +14,3 @@
 a{
     text-decoration: none;
 }
-@media (max-width: 1200px) {
-    .App {
-        width: 95%;
-    }
-}

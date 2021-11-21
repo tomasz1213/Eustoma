@@ -33,7 +33,7 @@ const Tile = (props) => {
     };
     return (
         <div onClick={() => history.push(props.ahref)} onMouseOver={e=> divHover(e, 0)} onMouseOut={e=>divHover(e, '-30px')} className={classes.Tile}
-         style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.327),rgba(0, 0, 0, 0.3)) ,url(${props.background})`}}>
+         style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.327),rgba(0, 0, 0, 0.3)) ,url(${props.background})`,backgroundSize:'cover'}}>
             <h1>{props.title}</h1>
             <p className={classes.Desc}>{props.desc}</p>
             <span className={classes.Desc1}></span>

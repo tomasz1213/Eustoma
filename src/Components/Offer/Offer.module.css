@@ -46,7 +46,7 @@
     .Offer{
         box-sizing: border-box;
         padding:10px 9px;
-        width: 105%;
+        width: 100%;
         margin-bottom: 0;
     }
     .Column > ul{

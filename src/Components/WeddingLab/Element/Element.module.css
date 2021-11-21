@@ -38,9 +38,12 @@
 @media (max-width: 1200px){
     .Element{
         height:auto;
-        width:105%;
+        width:100%;
         padding:30px 0;
         object-fit: cover;
         overflow: hidden;
+    }
+    .Text{
+        width:auto;
     }
 }

@@ -111,7 +111,7 @@ const RentalMain = (props) => {
                 {categories && categories.map((el,i) => <div key={el.name +i} onClick={() => {setDisplayProducts(1);sortByCategory(el.name);window.scrollTo(0, 0);}} className={classes.Categories} 
                 style={{backgroundImage:`url(${el.url})`,backgroundSize:'cover'}}>
                     <p key={el.name} className={classes.CatName}>{el.name}</p>
-                    <span key={el.name+el.name} className={classes.CatLink}>Zobacz pordukty  ></span>
+                    <span key={el.name+el.name} className={classes.CatLink}>Zobacz pordukty  &gt;</span>
                     </div>)}
                 </div>
             </div>

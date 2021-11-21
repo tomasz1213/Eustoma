@@ -11,6 +11,7 @@
 @media (max-width: 1200px){
     .Section4{
         flex-direction:column;
+        height:auto;
         width: 105%;
         margin-top: 0;
     }

@@ -54,7 +54,7 @@ const ShoppingCart = (props) => {
                 <div onClick={submitShoppingCart} className={classes.ModalSubmit}>Wyślij</div>
             </div>}
             {displayShoppingCart && <aside className={classes.SideBar}>
-                <div className={classes.Top}><span onClick={()=> {setDisplayShoppingCart(false);setDisplayModal(false)}} className={classes.ButtonBack}>></span>Koszyk</div>
+                <div className={classes.Top}><span onClick={()=> {setDisplayShoppingCart(false);setDisplayModal(false)}} className={classes.ButtonBack}>&gt;</span>Koszyk</div>
                 <div className={classes.Products}>
                     {shoppingCar.cart&&shoppingCar.cart.map(el => {
                      return <div key={el.key} className={classes.Product}>

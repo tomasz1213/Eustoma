@@ -26,15 +26,15 @@ const DisplayData = (props) => {
                 <p><strong>Opis:</strong> {props.data.desc}</p>
                 <p><strong>Pintrest:</strong> {props.data.pintrest}</p>
                 <p><strong>Fotograf:</strong> {props.data.photo}</p>
-                <p><strong>Komplet ślubny:</strong> {props.data.kompletSlubny  && props.data.kompletSlubny.map(el => <li>{el}</li>)}</p>
-                <p><strong>Oprawa kwiatowa:</strong> {props.data.oprawaKwiatowa  && props.data.oprawaKwiatowa.map(el => <li>{el}</li>)}</p>
-                <p><strong>Oprawa pozakiatowa:</strong> {props.data.oprawaPozaKwiatowa  && props.data.oprawaPozaKwiatowa.map(el => <li>{el}</li>)}</p>
-                <p><strong>Jak trafiliście:</strong> {props.data.jakTrafiliscie  && props.data.jakTrafiliscie.map(el => <li>{el}</li>)}</p>
+                <p><strong>Komplet ślubny:</strong> {props.data.kompletSlubny  && props.data.kompletSlubny.map(el => <li key={el.key}>{el}</li>)}</p>
+                <p><strong>Oprawa kwiatowa:</strong> {props.data.oprawaKwiatowa  && props.data.oprawaKwiatowa.map(el => <li key={el.key}>{el}</li>)}</p>
+                <p><strong>Oprawa pozakiatowa:</strong> {props.data.oprawaPozaKwiatowa  && props.data.oprawaPozaKwiatowa.map(el => <li key={el.key}>{el}</li>)}</p>
+                <p><strong>Jak trafiliście:</strong> {props.data.jakTrafiliscie  && props.data.jakTrafiliscie.map(el => <li key={el.key}>{el}</li>)}</p>
                 <button style={{top:'10px',backgroundColor:'#6f1322'}} className={classes.Button} onClick={deleteForm}>Usuń</button>
             </div>
             <div className={classes.Right}>
                 <p>Fotografie:</p>
-                {props.data.url && [props.data.url].map(el => <img className={classes.Image} src={el} alt={el}></img>)}
+                {props.data.url && [props.data.url].map(el => <img className={classes.Image} key={el.key} src={el} alt={el}></img>)}
             </div>
         </div>
     );

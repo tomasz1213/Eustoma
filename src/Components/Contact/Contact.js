@@ -12,7 +12,7 @@ const contact = () => (
             <div className={classes.Contact}>
                 <span style={{fontSize:'40px',paddingBottom:'20px'}}>Kontakt</span>
                 <p>Ze względu, że pracujemy w różne dni, o różnych porach, spotkania w sprawie dekoracji ślubnych, odbywają się tylko po wcześniejszym umówieniu. </p>
-                <p>Nasza pracownia mieści się w Ptaszkowej, koło Nowego Sącza, ale realizujemy zlecenia na terenie całej małopolski.</p>
+                <p>Nasza pracownia mieści się w Ptaszkowej, koło Nowego Sącza, ale realizujemy zlecenia na terenie całej małopolski i podkarpacia.</p>
                 <p>Jeśli chcesz nawiązać z nami współpracę lub interesuje Cię indywidualna wycena zachęcamy do wypełnienia formularza.</p>
                 <NavLink exact to="/wycena"><button className={classes.Button}>WYCENA</button></NavLink>
                 <p>Adres Pracowni Ślubnej: {'\n'}Ptaszkowa 20 {'\n'}33-333 Ptaszkowa</p>

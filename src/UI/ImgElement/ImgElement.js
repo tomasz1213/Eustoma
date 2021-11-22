@@ -4,7 +4,6 @@ import Modal from '../Modal/Modal';
 
 const ImgElement = (props) => {
     const [useShow, setShow] = useState(false);
-
     return (
         <div>
             <span id={props.type ? 'SLIDER_IMG' : 'SLIDER_IMG2'} className={props.type ? classes.ImgElement : classes.ImgElement2}>

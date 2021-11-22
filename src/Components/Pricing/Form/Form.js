@@ -35,12 +35,12 @@ const Form = () =>{
             <h2>FORMULARZ</h2>
             <div className={classes.Inputs}>
                 <div className={classes.InputCont}>
-                    <label className={classes.Label}>Imię</label>
-                    <input onChange={event => handleInputs(event.target)} id='input__form--name' placeholder="Imię" className={classes.Input}></input>
+                    <label className={classes.Label}>Imię i Nazwisko Panny Młodej</label>
+                    <input onChange={event => handleInputs(event.target)} id='input__form--name' placeholder="Imię i Nazwisko Panny Młodej" className={classes.Input}></input>
                 </div> 
                     <div className={classes.InputCont}>
-                    <label className={classes.Label}>Nazwisko</label>
-                    <input onChange={event => handleInputs(event.target)} id='input__form--surname' placeholder="Nazwisko" className={classes.Input}></input>
+                    <label className={classes.Label}>Imię i Nazwisko Pana Młodego</label>
+                    <input onChange={event => handleInputs(event.target)} id='input__form--surname' placeholder="Imię i Nazwisko Pana Młodego" className={classes.Input}></input>
                 </div>  
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Adres e-mail</label>
@@ -99,18 +99,18 @@ const Form = () =>{
                 </div> 
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Jak się o nas dowiedzieliście?</label>
-                    {["Jesteśmy klijentami kwiaciarni","Facebook","Instagram","Strona WWWW / wyszukiwarka","Widzieliśmy waszą dekorację na ślubie"
+                    {["Jesteśmy klientami kwiaciarni","Facebook","Instagram","Strona WWW / wyszukiwarka","Widzieliśmy waszą dekorację na ślubie"
                     ,"Polecenie"]
                     .map(el =><SelectBox key={el} clicked={(event) => handleCheckBoxes(event.target,'jakTrafiliscie')} value={el}/>)}
                 </div> 
                 <div className={classes.InputCont}>
-                    <label className={classes.Label}>PINTREST</label>
-                    <input onChange={event => handleInputs(event.target)} id='input__form--pintrest' type="text" placeholder="Link do waszej tablicy" className={classes.Input}></input>
-                </div>                 
-                <div className={classes.InputCont}>
                     <label className={classes.Label}>Kto jest waszym fotografem?</label>
                     <input onChange={event => handleInputs(event.target)} id='input__form--photo' type="text" className={classes.Input}></input>
-                </div>               
+                </div>  
+                <div className={classes.InputCont}>
+                    <label className={classes.Label}>PINTREST</label>
+                    <input onChange={event => handleInputs(event.target)} id='input__form--pintrest' type="text" placeholder="Link do waszej tablicy" className={classes.Input}></input>
+                </div>                              
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Zdjęcia, pliki</label>
                      <div onClick={() => document.getElementById('input_form--photo').click()} className={classes.InputFoto}>Wyślij pliki

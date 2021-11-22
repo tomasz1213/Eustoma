@@ -4,35 +4,35 @@ import classes from './Tile.module.css';
 
 const Tile = (props) => {
     const history = useHistory();
-    const divHover= (e, val) => {
-        const bottomArrow = e.target.getElementsByTagName('span')[0];
-
-        if(e.target.tagName === 'DIV'){
-            const pElement = e.target.getElementsByTagName('p')[0];
+    const handleElementHover = (event, val) => {
+        const bottomArrow = event.target.getElementsByTagName('span')[0];
+        if(window.innerWidth < 1200)return;
+        if(event.target.tagName === 'DIV'){
+            const pElement = event.target.getElementsByTagName('p')[0];
             pElement.style.top = val;
             if(val === '-30px'){
                 bottomArrow.style.visibility = 'hidden';
             }else if(val === 0){
                 bottomArrow.style.visibility = 'inherit';
             }        
-        }else if(e.target.tagName === 'H1'){
-            e.target.nextSibling.style.top = val;
+        }else if(event.target.tagName === 'H1'){
+            event.target.nextSibling.style.top = val;
             if(val === '-30px'){
-                e.target.nextSibling.nextSibling.style.visibility = 'hidden';
+                event.target.nextSibling.nextSibling.style.visibility = 'hidden';
             }else if(val === 0){
-                e.target.nextSibling.nextSibling.style.visibility = 'inherit';
+                event.target.nextSibling.nextSibling.style.visibility = 'inherit';
             } 
-        }else if(e.target.tagName === 'P'){
-            e.target.style.top = val;
+        }else if(event.target.tagName === 'P'){
+            event.target.style.top = val;
             if(val === '-30px'){
-                e.target.nextSibling.style.visibility = 'hidden';
+                event.target.nextSibling.style.visibility = 'hidden';
             }else if(val === 0){
-                e.target.nextSibling.style.visibility = 'inherit';
+                event.target.nextSibling.style.visibility = 'inherit';
             } 
         }
     };
     return (
-        <div onClick={() => history.push(props.ahref)} onMouseOver={e=> divHover(e, 0)} onMouseOut={e=>divHover(e, '-30px')} className={classes.Tile}
+        <div onClick={() => history.push(props.ahref)} onMouseOver={event=> handleElementHover(event, 0)} onMouseOut={event=>handleElementHover(event, '-30px')} className={classes.Tile}
          style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.327),rgba(0, 0, 0, 0.3)) ,url(${props.background})`,backgroundSize:'cover'}}>
             <h1>{props.title}</h1>
             <p className={classes.Desc}>{props.desc}</p>

@@ -24,7 +24,7 @@ const weddingLab = () => (
             </Element></NavLink>
             <Element title="jak pracujemy?" img={img2} atext="SPRAWDŹ TERMIN">
                     1.Zapraszamy na niezobowiązującą kawę, przy której poznamy Wasze oczekiwania względem dekoracji weselnych, pomysły na aranżacje, wszelkie inspiracje. Odpowiadamy Wam na wszelkie pytania, które w między czasie się pojawią. {'\n'}
-                    2.W zależności od sezonu czas przygotowania oferty indywidualnej to od 3-14 dni. Oferta oczywiście podlega modyfikacjom, można zmieniać elementy dekoratorskie, zmniejszać lub dodawać ilości itp. Jesteśmy w stanie dopasować dekoracje do posiadanego budżetu.  Kierujemy się wyłącznie zasadą minimalnego budżetu w wysokości 3000,00 zł brutto.{'\n'}
+                    2.W zależności od sezonu czas przygotowania oferty indywidualnej to od 3-14 dni. Oferta oczywiście podlega modyfikacjom, można zmieniać elementy dekoratorskie, zmniejszać lub dodawać ilości itp. Jesteśmy w stanie dopasować dekoracje do posiadanego budżetu.  Kierujemy się wyłącznie zasadą minimalnego budżetu w wysokości 4000,00 zł brutto przy florystyce indywidualnej i dekoracji sali.{'\n'}
                     3.7 dni – to czas dla Was na zastanowienie się czy nasze doświadczenie i pomysły Wam odpowiadają. W tym czasie bezpłatnie rezerwujemy termin na Wasze przyjęcie.{'\n'}
                     4.Po upływie 7 dni od zapoznania się z ofertą zapada decyzja : ) Jeżeli zdecydujecie się na nasze usługi podpisujemy umowę, która jest podstawą naszej współpracy. Przy podpisywaniu umowy pobieramy zadatek.{'\n'}
             </Element>

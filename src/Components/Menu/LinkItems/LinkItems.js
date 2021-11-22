@@ -10,7 +10,7 @@ const LinkItems = () => {
     };
     return(
     <>
-        <button onClick={displayMobileMenu} className={classes.BurgerButton}></button>
+        <div onClick={displayMobileMenu} className={classes.BurgerButton}></div>
         <nav className={classes.Nav}>
             <ul onClick={()=>window.scrollTo(0, 0)} className={showMenu ? classes.MobileMenu : classes.List}>
                 <li><NavLink exact to="/">Home</NavLink></li>
@@ -20,8 +20,8 @@ const LinkItems = () => {
                 <li><NavLink to="/wypozyczalnia">Wypożyczalnia</NavLink></li>
                 <li><a href="http://kwiaciarniasadecka.pl/">Poczta Kwiatowa</a></li>
                 <li><NavLink to="/kontakt">Kontakt</NavLink></li>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/pracowniaeustoma/"><i className="icon-facebook"></i></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pracowniaeustoma/"><i className="icon-instagram"></i></a>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/pracowniaeustoma/"><i className="icon-facebook"></i></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/pracowniaeustoma/"><i className="icon-instagram"></i></a></li>
             </ul>
         </nav>
     </>

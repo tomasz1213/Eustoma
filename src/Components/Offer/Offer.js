@@ -55,51 +55,11 @@ const offer = () => (
             </div>
             <h1>CENNIK</h1>
             <p className={classes.Prizing}>Podane ceny są orientacyjne, gdyż całkowity koszt dekoracji zależny jest od ich wielkości, rodzaju kwiatów oraz ich dostępności, a także innych materiałów użytych do ich wykonania.
-                To Wy ustalacie maksymalny budżet - podczas sporządzania kosztorysu i ogólnego zarysu dekoracji. Sami decydujecie, ile maksymalnie chcecie przeznaczyć na oprawę florystyczną.
-                Kierujemy się wyłącznie zasadą <strong>minimalnego budżetu w wysokości 4000 zł brutto </strong>przy kompleksowej dekoracji – przy takiej kwocie jesteśmy w stanie podjąć się wykonania dla Was usługi i dopasować elementy dekoratorskie do założeń kosztorysu klienta. </p>
-            <div className={classes.ElseOffer}>
-                <div className={classes.Column}>
-                    <ul>
-                        <li>Bukiet ślubny - 150 - 350zł</li>
-                        <li>Bukiet dla świadkowej -80 - 180zł</li>
-                        <li>Wianek na głowę - 80 - 150zł</li>
-                        <li>Kwiaty do włosów - 10zł - 80zł</li>``
-                        <li>Grzebyk do włosów - 30 - 60zł</li>
-                        <li>Butonierka - 25zł</li>
-                        <li>Korsarz - 40 - 60zł</li> 
-                        <li>Dekoracja ołtarza głównego - 250-500zł</li>
-                        <li>Dekoracja przy tabernakulum /ołtarzach bocznych - 80 - 250 zł/szt.</li>
-                        <li>Dekoracja wejścia - od 80zł</li>
-                        <li>Dekoracja ławek - od 5zł/szt.</li>
-                        <li>Świece wzdłuż ławek - od 15zł/szt.</li>
-                        <li>Dekoracje krzeseł - od 15zł/szt.</li>
-                        <li>Rożki do sypania płatków - od 7zł/szt.</li>
-                        <li>Alejka z żywych płatków róż - od 20zł/mb</li>
-                        <li>Tablice z hymnem miłości - 100zł /komplet</li>
-                        <li>Biały dywan  -  200zł/ 10m , 400zł/ 200m​​</li>   
-                    </ul>
-                </div>              
-                <div className={classes.Column}>
-                    <ul>
-                        <li>Dekoracja stołu Młodej Pary - 200 - 1000zł</li>
-                        <li>Dekoracja tła za Młodymi - 300 -1000zł</li>
-                        <li>Dekoracja stołów gości - 50 - 450zł/szt.</li>
-                        <li>Dekoracje wiszące -od 30zł</li>
-                        <li>Dekoracja bufetu -od 50zł</li>
-                        <li>Dekoracja na stojaku -od 100zł/szt.</li>
-                        <li>Świece w szklanych świecznikach -od 10zł/szt.</li>
-                        <li>Dekoracje serwetek - od 2zł/szt.</li>
-                        <li>Dekoracje krzeseł - od 4zł/szt.</li>
-                        <li>Świece - od 2zł/szt.</li>
-                        <li>Numeracja stołów - od 2zł/szt.</li>
-                        <li>Bieżniki wzdłuż stołów - od 3zł/m</li>
-                        <li>Wypożyczenie sztalugi - 20 zł</li>
-                        <li>Rozpiska usadzenia gości na palecie - od 100 zł</li>
-                        <li>Rozpiska usadzenia gości na lustrze vintage  – od 100 zł</li>
-                        <li>Tablica Powitalna - 50zł</li>   
-                    </ul>
-                </div>
-            </div>
+    To Wy ustalacie maksymalny budżet - podczas sporządzania kosztorysu i ogólnego zarysu dekoracji. Sami decydujecie, ile maksymalnie chcecie przeznaczyć na oprawę florystyczną.
+Kierujemy się wyłącznie zasadą minimalnego budżetu w wysokości 4000 zł brutto przy DEKORACJI SALI I  FLORYSTYCE INDYWIDUALNEJ. Jeśli interesuje was również dekoracja kościoła, minimalny budżet wynosi 5000zł.
+
+Pamiętajcie jednak, że decydując się na budżet minimalny, nie jesteśmy w stanie zrealizować wszystkich Waszych pomysłów. Jeśli nie jesteście pewni czy dana dekoracja zmieści się w określonym budżecie - napiszcie do nas. chętnie przygotujemy indywidualną ofertę i wycenę ;)</p>
+            
             <p className={classes.BorderedP}>Dojazd w obrębie 20km Pracowni jest w cenie, pozostałe 10ZŁ plus 1,50zl /km</p>
         </div>
         <Section4 style={{padding:'0'}} background="rgb(243, 243, 243)"/>

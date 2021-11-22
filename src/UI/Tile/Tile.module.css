@@ -38,6 +38,10 @@
     .Tile{
         margin: 10px;
         width: 100%;
+        height: 200px;
         box-sizing: border-box;
+    }
+    .Desc{
+        top:unset;
     }
 }

@@ -28,7 +28,7 @@ const Modal = (props) => {
     return (
         props.show && <div className={classes.Modal}>
         {!isSingleImage && <span onClick={prevImage} className={classes.Left}><i className="icon-left-open-big"></i></span>}
-        <img className={classes.Img} src={displayImg} alt={props.alt}></img>
+            <img className={classes.Img} src={displayImg} alt={props.alt}></img>
         {!isSingleImage && <span onClick={nextImage} className={classes.Right}><i className="icon-right-open-big"></i></span>}
         <span onClick={closeModal} className={classes.Close}><i className="icon-cancel-1"></i></span>
     </div>

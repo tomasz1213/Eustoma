@@ -15,24 +15,24 @@ const ImgSlider2 = () => {
             } 
         })
         .then(() => {
-            const elArr = [];
+            const photoHolder = [];
             dataHolder.flat().forEach(el => {
                 if(el.url !== undefined){
-                    elArr.push(el.url);
+                    photoHolder.push(el.url);
                 }
             })
-            setImages(elArr);
+            setImages(photoHolder);
         })
     },[]);
-    const showUp = images.map(e => <ImgElement type={false} key={images.indexOf(e)+Math.random()} src={e} alt="Slider2" nextImg={{
+    const imageElements = images.map(e => <ImgElement type={false} key={images.indexOf(e)+Math.random()} src={e} alt="Slider2" nextImg={{
         arr: images,
         currIndex: images.indexOf(e)
     }}/>);
     const moveSlider = (side) => {
         const idSlider = document.getElementById('SLIDER_IMG2');
-        const sliderClass = [...document.getElementsByClassName(`${idSlider.className}`)];
-        const el = document.getElementsByClassName(`${classes.SliderRight}`);
-        const el2 = document.getElementsByClassName(`${classes.SliderLeft}`);
+        const sliderNodes = [...document.getElementsByClassName(`${idSlider.className}`)];
+        const rightArrow = document.getElementsByClassName(`${classes.SliderRight}`);
+        const leftArrow = document.getElementsByClassName(`${classes.SliderLeft}`);
         let defaultImgNumber = 3; 
         if(window.innerWidth <= 768){
             defaultImgNumber = 1;
@@ -40,23 +40,23 @@ const ImgSlider2 = () => {
         nextValue = side ? nextValue -378: nextValue +378; // width of ProductElement + 20px for moving tiles
         switch(nextValue) {
             case 0:
-                el[0].firstChild.style.visibility = 'hidden';
+                rightArrow[0].firstChild.style.visibility = 'hidden';
                 break;
-            case (sliderClass.length * -378) - (defaultImgNumber * -378):
-                el2[0].firstChild.style.visibility = 'hidden';
+            case (sliderNodes.length * -378) - (defaultImgNumber * -378):
+                leftArrow[0].firstChild.style.visibility = 'hidden';
                 break;
             default:
-                el[0].firstChild.style.visibility = 'visible';
-                el2[0].firstChild.style.visibility = 'visible';
+                rightArrow[0].firstChild.style.visibility = 'visible';
+                leftArrow[0].firstChild.style.visibility = 'visible';
                 break;
             }
-        sliderClass.forEach(elm => elm.style.left = `${nextValue}px`);
+        sliderNodes.forEach(elm => elm.style.left = `${nextValue}px`);
     };
     return (
         <div className={classes.Slider}>   
             <div onClick={() => moveSlider(true)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </div>
                 <div className={classes.Foto} >
-                   {showUp}
+                   {imageElements}
                 </div>
             <div onClick={() => moveSlider(false)} className={classes.SliderRight}><i className="icon-right-open-big"></i></div>
         </div>

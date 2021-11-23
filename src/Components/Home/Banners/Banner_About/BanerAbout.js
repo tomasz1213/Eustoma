@@ -9,8 +9,7 @@ const bannerAbout = () => (
             Zajmujemy się urzeczywistnianiem Państwa marzeń, odzwierciedlając je w naszych realizacjach. Inspiracją do pracy, jest dla nas stworzenie niezapomnianego efektu. Dekoracje to nasza pasja, dzięki czemu wkładamy w nie całe serce.
             Stworzymy niepowtarzalny klimat i zadbamy o wyjątkową oprawę Twojej imprezy, sprawiając, że pozostaje ona niezapomniana.
         </p>
-            <div className={classes.Image}><img src={backgroundImg} alt="background"></img></div>
-            <div  className={classes.Tiles} >
+            <div style={{backgroundImage:`url(${backgroundImg})`}}  className={classes.Tiles} >
                 <Tile number='01' text='NAPISZ DO NAS!'/>
                 <Tile number='02' text='ZAREZERWUJ TERMIN !'/>
                 <Tile number='03' text='DOGRAJ SZCZEGÓŁY!'/>

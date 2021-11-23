@@ -15,7 +15,8 @@
 .List a{
     color: #191b16 !important;
 }
-.BurgerButton{
+.BurgerButton,
+.BurgerButtonX{
     display: none;
     cursor: pointer;
     position: absolute;
@@ -24,6 +25,20 @@
     width:30px;
     z-index: 1000;
     border-bottom: 4px solid #000;
+    transition: all 0.3s ease-in-out;
+}
+.BurgerButtonX{
+    transform: rotate(405deg);
+}
+.BurgerButtonX::before{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    border-bottom: 4px solid #000;
+    top: -1px;
+    right:-1px;
+    transform: rotate(90deg);
 }
 .BurgerButton::after,
 .BurgerButton::before{
@@ -40,24 +55,12 @@
 .BurgerButton::after{
     top: 3px;
 }
-@media (max-width: 1200px){
-    .Nav{
-        left: 0;
-        width:70%;
-    }
-    .List{
-        display: none;
-    }
-    .BurgerButton{
-        display: block;
-    }
-}
 .MobileMenu{
     position: absolute;
     left:0;
     top:-20px;
     background-color: white;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     height: 103vh;
     text-align: center;
@@ -89,4 +92,16 @@
 .Nav i{
     font-size: 18px;
     margin-left: 10px;
+}
+@media (max-width: 1200px){
+    .Nav{
+        left: 0;
+        width:100%;
+    }
+    .List{
+        display: none;
+    }
+    .BurgerButton,.BurgerButtonX{
+        display: block;
+    }
 }

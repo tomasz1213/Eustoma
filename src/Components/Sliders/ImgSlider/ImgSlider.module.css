@@ -13,7 +13,7 @@
 .SliderLeft{
     position: absolute;
     left: 16%;
-    z-index: 100;
+    z-index: 99;
 }
 .SliderRight{
     position: absolute;

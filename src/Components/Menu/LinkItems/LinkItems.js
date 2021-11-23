@@ -10,7 +10,7 @@ const LinkItems = () => {
     };
     return(
     <>
-        <div onClick={displayMobileMenu} className={classes.BurgerButton}></div>
+        <div onClick={displayMobileMenu} className={showMenu ? classes.BurgerButtonX : classes.BurgerButton}></div>
         <nav className={classes.Nav}>
             <ul onClick={()=>window.scrollTo(0, 0)} className={showMenu ? classes.MobileMenu : classes.List}>
                 <li><NavLink exact to="/">Home</NavLink></li>

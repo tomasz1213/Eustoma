@@ -1,7 +1,8 @@
 .About{
     margin-top: 70px;
     width: 100%;
-    height: clamp(750px, 600px, 800px);
+    box-sizing: border-box;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,41 +16,35 @@
     margin-bottom: 100px;
 }
 .Image{
+    position: relative;
     height: 400px;
     width: 100%;
-}
-.Image > img{
-    width:100%;
-    height: 400px;
 }
 .Tiles {
     position: relative;
     display:flex;
     flex-direction: row;
-    width: 740px;
-    top:-360px;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
 }
 @media (max-width:1200px){
     .About > p {
         width: 100%;
         margin-bottom: 70px;
-        font-size:14px;
-    }
-    .Image >img{
-        width: 100%;
-        height: 800px;
-        object-fit: cover;
+        font-size:21px;
     }
     .About{
-        margin-bottom: 300px;
+        position:relative;
         margin-top:100px;
-        width: 100%;
     }
     .Tiles{
         flex-direction: column;
+        position:relative;
+        height:100%;
         width: 100%;
         margin: 0;
-        top: -400px;
-        height:650px;
+        top:0;
     }
 }

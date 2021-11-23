@@ -33,6 +33,7 @@ const RentalSlider = (props) => {
     },[props.sorted]);
     const sendProductData = (data) => {
         dispatch(updateSuccess(data));
+        window.scrollTo(0,0);
     };
     const computeFresh = (date) => {
         if(date){
@@ -46,7 +47,7 @@ const RentalSlider = (props) => {
 
         }else return false;
     };
-    const showUp = productData.map((element, i) => <NavLink key={element.key} to="/rental/product">
+    const showPhotoElements = productData.map((element) => <NavLink key={element.key} to="/rental/product">
         <Product type={false} fresh={computeFresh(element.date)} onClick={() => sendProductData(element)} key={element.key} src={element.url} alt="Slider2" data={element}/></NavLink>);
     const moveSlider = (side) => { // true for left false for right
         const rightIcon = document.getElementsByClassName(`${classes.SliderRight}`);
@@ -75,7 +76,7 @@ const RentalSlider = (props) => {
             <span onClick={() => moveSlider(false)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
             <div className={classes.Slider}>   
                 <div className={classes.Foto} >
-                {showUp}
+                {showPhotoElements}
                 </div>
             </div>
             <span onClick={() => moveSlider(true)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>

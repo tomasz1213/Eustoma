@@ -55,11 +55,10 @@ const offer = () => (
             </div>
             <h1>CENNIK</h1>
             <p className={classes.Prizing}>Podane ceny są orientacyjne, gdyż całkowity koszt dekoracji zależny jest od ich wielkości, rodzaju kwiatów oraz ich dostępności, a także innych materiałów użytych do ich wykonania.
-    To Wy ustalacie maksymalny budżet - podczas sporządzania kosztorysu i ogólnego zarysu dekoracji. Sami decydujecie, ile maksymalnie chcecie przeznaczyć na oprawę florystyczną.
-Kierujemy się wyłącznie zasadą minimalnego budżetu w wysokości 4000 zł brutto przy DEKORACJI SALI I  FLORYSTYCE INDYWIDUALNEJ. Jeśli interesuje was również dekoracja kościoła, minimalny budżet wynosi 5000zł.
-
-Pamiętajcie jednak, że decydując się na budżet minimalny, nie jesteśmy w stanie zrealizować wszystkich Waszych pomysłów. Jeśli nie jesteście pewni czy dana dekoracja zmieści się w określonym budżecie - napiszcie do nas. chętnie przygotujemy indywidualną ofertę i wycenę ;)</p>
-            
+                To Wy ustalacie maksymalny budżet - podczas sporządzania kosztorysu i ogólnego zarysu dekoracji. Sami decydujecie, ile maksymalnie chcecie przeznaczyć na oprawę florystyczną.
+                Kierujemy się wyłącznie zasadą <strong>minimalnego budżetu w wysokości 4000 zł</strong> brutto przy DEKORACJI SALI I  FLORYSTYCE INDYWIDUALNEJ. Jeśli interesuje was również dekoracja kościoła, <strong>minimalny budżet wynosi 5000zł.</strong>
+                Pamiętajcie jednak, że decydując się na budżet minimalny, nie jesteśmy w stanie zrealizować wszystkich Waszych pomysłów. Jeśli nie jesteście pewni czy dana dekoracja zmieści się w określonym budżecie - napiszcie do nas. chętnie przygotujemy indywidualną ofertę i wycenę ;)</p>
+            <p className={classes.Prizing}><strong>Zapisy na sezon 2022</strong> już ruszyły, dlatego jeśli jesteście zainteresowani współpracą z nami, nie czekajcie do ostatniej chwili.</p>
             <p className={classes.BorderedP}>Dojazd w obrębie 20km Pracowni jest w cenie, pozostałe 10ZŁ plus 1,50zl /km</p>
         </div>
         <Section4 style={{padding:'0'}} background="rgb(243, 243, 243)"/>

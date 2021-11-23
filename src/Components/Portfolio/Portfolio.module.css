@@ -42,10 +42,7 @@
         left:-63px;
         top:44px;
     }
-    .Results{
-        margin: 5%;
-        width: 95%;
-    }
+
 }
 @media (min-width: 768px) and (max-width:1200px) {
     .TopText{ 

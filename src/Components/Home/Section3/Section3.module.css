@@ -21,7 +21,7 @@
     font-family: cinzel,serif;
     font-size: clamp(0.8rem, 1rem, 1rem);
 }
-.Text >h1{
+.Header{
     font-size: 56px;
     letter-spacing: 10px;
     font-weight: 200;
@@ -50,7 +50,7 @@
         width: 100%;
         font-size:16px;
     }
-    .Text > h1{
+    .Header{
         font-size: 40px;
     }
 }

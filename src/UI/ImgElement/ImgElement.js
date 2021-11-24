@@ -9,7 +9,8 @@ const ImgElement = (props) => {
             <span id={props.type ? 'SLIDER_IMG' : 'SLIDER_IMG2'} className={props.type ? classes.ImgElement : classes.ImgElement2}>
                 <img className={props.type ? classes.ImgE : classes.ImgE2} alt={props.alt} src={props.src} onClick={()=> setShow(true)}></img>
             </span>
-            <Modal clicked={()=> setShow(false)} show={useShow} src={props.src} alt={props.alt} nextImg={props.nextImg}/>
+            <Modal clicked={()=> setShow(false)} show={useShow} src={props.src} alt={props.alt} nextImg={props.nextImg}
+            />
         </div>
     );
 };

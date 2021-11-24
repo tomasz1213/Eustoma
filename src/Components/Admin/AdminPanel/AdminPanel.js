@@ -10,6 +10,7 @@ const AdminPanel = () => {
     return (
         <div className={classes.AdminPanel}>
             <div className={classes.Menu}>
+                
                 <div className={classes.ButtonSquare}>
                     <NavLink activeClassName={classes.Active} to="/admin/dashboard"><button className={classes.Button}>Dashboard</button></NavLink>
                     <NavLink activeClassName={classes.Active} to="/admin/slider"><button className={classes.Button}>SLIDER</button></NavLink>

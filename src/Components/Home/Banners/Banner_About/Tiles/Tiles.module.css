@@ -44,4 +44,7 @@
     .Number{
         font-size:90px;
     }
+    .Number::after{
+        left:48%;
+    }
 }

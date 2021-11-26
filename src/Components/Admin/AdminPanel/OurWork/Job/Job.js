@@ -7,6 +7,14 @@ import classes from './Job.module.css';
 const Products = (props) => { 
     const [fetchedData,setFetchedData] = useState([]);
     const auth = useSelector(state => state.auth.auth.idToken);
+    const [inputData,setInputData] = useState({name:props.editMode ? props.data.name : '',
+        wedding:props.editMode ? props.data.wedding : '',
+        church:props.editMode ? props.data.church : '',
+        photograph:props.editMode ? props.data.photograph : '',
+        flowers:props.editMode ? props.data.flowers : '',
+        queue:props.editMode ? props.data.queue : ''});
+    const [fotoArr,setFotoArr] = useState(props.editMode ? props.data.url && [...props.data.url]: []);
+    const dispatch = useDispatch();
     useEffect(() =>{
         const arr = [];
         axios.get('/ourwork.json')
@@ -17,11 +25,6 @@ const Products = (props) => {
             setFetchedData(arr);
         })
     },[]);
-    let [inputData,setInputData] = useState({name:props.editMode ? props.data.name : '',
-        wedding:props.editMode ? props.data.wedding : '',church:props.editMode ? props.data.church : '',
-        photograph:props.editMode ? props.data.photograph : '',flowers:props.editMode ? props.data.flowers : '',queue:props.editMode ? props.data.queue : ''});
-    let [fotoArr,setFotoArr] = useState(props.editMode ? props.data.url && [...props.data.url]: []);
-    const dispatch = useDispatch();
     const uploader = () => {
         if(!props.editMode){
             dispatch(uploadImage("input_ourwork--photo",`/ourwork.json?auth=${auth}`,

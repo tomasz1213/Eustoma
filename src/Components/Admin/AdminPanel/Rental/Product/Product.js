@@ -1,13 +1,21 @@
 import React,{useEffect,useState} from 'react';
-import {useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from '../../../../../AxiosConfig';
 import classes from './Product.module.css';
 import {uploadImage,removeFromFirebase,updateDataFirebase} from '../../../../../store/actions';
 
 const Products = (props) => {
-    const [showCategories,setCategories] = useState([]);
+    const dispatch = useDispatch();
     const auth = useSelector(state => state.auth.auth.idToken);
+    const [showCategories,setCategories] = useState([]);
+    const [fotoArr,setFotoArr] = useState(props.editMode && [...props.data.url]);
+    const [inputData,setInputData] = useState({name:props.editMode ? props.data.name : '',
+        description:props.editMode ? props.data.description : '',
+        cleanPrize:props.editMode ? props.data.cleanPrize : 0,
+        prize:props.editMode ? props.data.prize : '',
+        items:props.editMode ? props.data.items : '',
+        itemCategory:props.editMode ? props.data.itemCategory : ''
+    });
     useEffect(() =>{
         const arr = [];
         axios.get('/categories.json')
@@ -18,27 +26,19 @@ const Products = (props) => {
             setCategories(arr);
         })
     },[]);  
-    let [name,setName] = useState(props.editMode ? props.data.name : '');
-    let [desc,setDesc] = useState(props.editMode ? props.data.description : '');
-    let [cleanPrize,setCleanPrize] = useState(props.editMode ? props.data.cleanPrize : '');
-    let [prize,setPrize] = useState(props.editMode ? props.data.prize : '');
-    let [itemsLeft,setItemsLeft] = useState(props.editMode ? props.data.items : '');
-    let [fotoArr,setFotoArr] = useState(props.editMode && [...props.data.url]);
-    let [itemProduct,setItemProduct] = useState(props.editMode ? props.data.itemCategory : '');
-    const dispatch = useDispatch();
     const uploader = () => {
-        if(!name || !desc || !prize){
+        if(!inputData.name || !inputData.description || !inputData.prize){
             const err = document.getElementById('PRODUCT_ERROR');
             err.innerText = 'Proszę uzupełnić wszystkie pola!';
             return;
         }
         if(!props.editMode){
             dispatch(uploadImage("input_products--photo",`/products.json?auth=${auth}`,
-            {name:name,cleanPrize:cleanPrize,description:desc,prize:prize,items:itemsLeft,itemCategory:itemProduct,date:`${new Date().toISOString().split('T')[0]}`}));
+            {...inputData,date:`${new Date().toISOString().split('T')[0]}`}));
             props.clicked();
         }else if(props.editMode){
             dispatch(updateDataFirebase(`products`,props.data.key,
-            {name:name,cleanPrize:cleanPrize,description:desc,prize:prize,items:itemsLeft,itemCategory:itemProduct,url:fotoArr,date:`${new Date().toISOString().split('T')[0]}`},"input_products--photo"));
+            {...inputData,url:fotoArr,date:`${new Date().toISOString().split('T')[0]}`},"input_products--photo"));
             props.clicked();
         }
     };
@@ -50,34 +50,8 @@ const Products = (props) => {
         props.clicked();
     };
     const handleInputs = (event) => {
-        if(event.value.length === 0){
-            event.nextSibling.innerText = 'To pole nie może pozostać pustę';
-            event.style.border = '1px solid red';
-        }else {
-            event.nextSibling.innerText = '';
-            event.style.border = 'none';
-        }
-        switch(event.id){
-            case 'input_products--name':
-                setName(event.value);
-                break;
-            case 'input_products--description':
-                setDesc(event.value);
-                    break;
-            case 'input_products--prize':
-                setPrize(event.value);
-                    break;  
-            case 'input_products--cleanPrize':
-                setCleanPrize(event.value);
-                    break; 
-           case 'input_products--items':
-                setItemsLeft(event.value);
-                    break;
-            case 'input_products--category':
-                setItemProduct(event.value);
-                    break;
-            default:
-        } 
+        const header = event.id.split('--');
+        setInputData({...inputData,[header[1]]:event.value});
     };
     const deleteImage = (img) => {
         let answer = window.confirm("Usunąć zdjęcie?");
@@ -99,25 +73,25 @@ const Products = (props) => {
                 {props.editMode && fotoArr.map((img,i) => <img className={classes.Image} onClick={() => deleteImage(img)} key={i} alt='foto' src={img}></img>)}
             </div>
             <p>DODAJ NAZWĘ PRODUKTU:</p>
-            <input className={classes.Input} value={name} onChange={event => handleInputs(event.target)} type="text" id="input_products--name"></input>
+            <input className={classes.Input} value={inputData.name} onChange={event => handleInputs(event.target)} type="text" id="input_products--name"></input>
             <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
             <p>DODAJ OPIS PRODUKTU:</p>
-            <textarea style={{height:'200px'}} value={desc} className={classes.Input} onChange={event => handleInputs(event.target)} type="text" id="input_products--description"></textarea>
+            <textarea style={{height:'200px'}} value={inputData.description} className={classes.Input} onChange={event => handleInputs(event.target)} type="text" id="input_products--description"></textarea>
             <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
             <p>WYBIERZ KATEGORIĘ PRODUKTU:</p>
-            <select value={itemProduct}  className={classes.Input} onChange={event => handleInputs(event.target)} name="input_products--category" id="input_products--category">
+            <select value={inputData.itemCategory}  className={classes.Input} onChange={event => handleInputs(event.target)} name="input_products--itemCategory" id="input_products--itemCategory">
                 <option value="">--Proszę wybrać opcję--</option>
                 {showCategories.map(el => <option key={el.key}>{el.name}</option>)}
             </select>
             <p style={{color:'red',fontSize:'14px',padding:'2px'}} ></p>
             <p>DODAJ ILOŚĆ SZTUK:</p>
-            <input className={classes.Input} value={itemsLeft} onChange={event => handleInputs(event.target)} type="text" id="input_products--items"></input>
+            <input className={classes.Input} value={inputData.items} onChange={event => handleInputs(event.target)} type="text" id="input_products--items"></input>
             <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
             <p>DODAJ CENĘ CZYSZCZENIA:</p>
-            <input className={classes.Input} value={cleanPrize} onChange={event => handleInputs(event.target)} type="text" id="input_products--cleanPrize"></input>
+            <input className={classes.Input} value={inputData.cleanPrize} onChange={event => handleInputs(event.target)} type="text" id="input_products--cleanPrize"></input>
             <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
             <p>DODAJ CENĘ PRODUKTU:</p>
-            <input className={classes.Input} value={prize} onChange={event => handleInputs(event.target)} type="text" id="input_products--prize"></input>
+            <input className={classes.Input} value={inputData.prize} onChange={event => handleInputs(event.target)} type="text" id="input_products--prize"></input>
             <p style={{color:'red',fontSize:'14px',padding:'2px'}} id='PRODUCT_ERROR'></p>
             <div className={classes.Buttons}>
                 <button style={{top:'10px'}} className={classes.Button} onClick={()=> uploader()}>Wyślij</button>

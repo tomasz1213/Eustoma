@@ -42,7 +42,7 @@ export const updateDataFirebase = (nodeName,id,data,inputID) => { // nodeName = 
     return async dispatch => {
         let combineArr = [];
         dispatch(changeLoadingToTrue());
-        let userRef = database.ref(`${nodeName}/${id}`);
+        let userRef = database.ref(nodeName).child(id);
         await uploadMultipleImages(inputID).then(arr => combineArr = [...arr,...data.url]);
         await userRef.update({...data,url:combineArr});
         await dispatch(downloadData());
@@ -155,24 +155,24 @@ export const uploadDataFirebase = (url,dataInfo) => {
 export const downloadData = (url = MEMORISED_URL,optionalURL = MEMORISED_URL2) => {
     return dispatch => {
         dispatch(changeLoadingToFalse());
-        const arr = [];
-        const arr2 = [];
+        const data = [];
+        const data2 = [];
         MEMORISED_URL = url;
         MEMORISED_URL2 = optionalURL;
         axios.get(url)
         .then(res => {
             for (const [key, value] of Object.entries(res.data)) {
-                arr.push({...value,key});
+                data.push({...value,key});
             } 
-            !optionalURL && dispatch(updateSuccess(arr)); 
+            !optionalURL && dispatch(updateSuccess(data)); 
         }).then(() => { // optional data fetching
             if(optionalURL){
                 axios.get(optionalURL)
                 .then(res => {
                     for (const [key, value] of Object.entries(res.data)) {
-                        arr2.push({...value,key});
+                        data2.push({...value,key});
                     } 
-                    dispatch(updateSuccess(arr,arr2))
+                    dispatch(updateSuccess(data,data2))
                 });
             };
         });

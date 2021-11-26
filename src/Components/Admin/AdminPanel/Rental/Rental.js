@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import classes from './Rental.module.css';
 import Categories from './Categories/Categories';
 import Products from './Product/Product';
@@ -13,6 +14,7 @@ const Rental = () => {
     const [showSortedProducts,setSortedProducts] = useState([]);
     const [editMode,setEditMode] = useState(false);
     const [elementData,setELementData] = useState();
+    const isDataLoding = useSelector(state => state.slider.loading);
     let displayCategories = [];
     let displayProducts = [];
     useEffect(() =>{
@@ -35,7 +37,7 @@ const Rental = () => {
             setSortedProducts(arrProducts);
             setLoadingSpinner(true);
         }); 
-    },[]);   
+    },[isDataLoding]);   
     const handleCategories = (target) => {
         if(target.value === 'all'){
             setSortedProducts(showProducts);

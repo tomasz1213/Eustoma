@@ -48,7 +48,7 @@ const ProductPage = (props) => {
                     <h1 className={classes.Title}>{data.name}</h1>
                     {isMobile &&  <div className={classes.Description} >{data.description}</div>}
                     <div style={{paddingTop:'23px',fontSize:'18px'}}>zł {prize}</div>
-                    {data.cleanPrize && <div>
+                    {data.cleanPrize && data.cleanPrize!=0 && <div>
                         <p>Czyszczenie</p>
                         <select className={classes.SelectBox} onChange={(event)=>selectPrize(event.target.value)}>
                             <option value={true}>oddam produkt wyczyszczcony</option>

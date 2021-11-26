@@ -19,12 +19,12 @@ const Banner = (props) => {
         anime({
             targets: [`.${classes.P1}`],
             translateX: [-100,0],
-            duration: 1000
+            duration: 5000
           });
         anime({
             targets: [`.${classes.P2}`],
             translateX: [100,0],
-            duration: 1000
+            duration: 5000
           });
     }
     return(

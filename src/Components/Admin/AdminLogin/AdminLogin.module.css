@@ -66,8 +66,12 @@ input::placeholder{
     color: white;
 }
 
-@media (min-width: 600px){
+@media (max-width: 1200px){
     .Auth{
-        width:500px;
+        width:auto;
+    }
+    .InputWrapper{
+        width:auto;
+        margin-top: 0;
     }
 }

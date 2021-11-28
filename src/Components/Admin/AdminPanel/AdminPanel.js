@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import classes from './AdminPanel.module.css';
 import {Switch, Route,NavLink} from 'react-router-dom';
 import Slider from './Slider/Slider';
@@ -7,11 +7,15 @@ import Rental from './Rental/Rental';
 import Dashboard from './Dashboard/Dashboard';
 
 const AdminPanel = () => {
+    const [showMenu,setShowMenu] = useState(false);
+    const displayMobileMenu = () => {
+         showMenu ? setShowMenu(false) : setShowMenu(true);
+    };
     return (
         <div className={classes.AdminPanel}>
             <div className={classes.Menu}>
-                
-                <div className={classes.ButtonSquare}>
+                <div onClick={displayMobileMenu} className={showMenu ? classes.BurgerButtonX : classes.BurgerButton}></div>
+                <div className={showMenu ? classes.MobileMenu : classes.ButtonSquare}>
                     <NavLink activeClassName={classes.Active} to="/admin/dashboard"><button className={classes.Button}>Dashboard</button></NavLink>
                     <NavLink activeClassName={classes.Active} to="/admin/slider"><button className={classes.Button}>SLIDER</button></NavLink>
                     <NavLink activeClassName={classes.Active} to="/admin/ourwork"><button className={classes.Button}>NASZE REALIZACJE</button></NavLink>

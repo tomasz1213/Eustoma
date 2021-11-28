@@ -68,14 +68,16 @@ const Rental = () => {
     };
     return (
         <div className={classes.Rental}>
-                <label className={classes.Button} >
-                <input onClick={() => showDataMode(1)} type="checkbox"></input>
-                <p>DODAJ KATEGORIĘ</p>
-                </label>
-                <label className={classes.Button} style={{marginTop:'29px',zIndex:'1'}}>
-                <input onClick={() => showDataMode(2)} type="checkbox"></input>
-                <p>DODAJ PRODUKT</p>
-                </label>
+                <div className={classes.Buttons}>
+                    <label className={classes.Button} >
+                     <input onClick={() => showDataMode(1)} type="checkbox"></input>
+                        <p>DODAJ KATEGORIĘ</p>
+                    </label>
+                    <label className={classes.Button}>
+                        <input onClick={() => showDataMode(2)} type="checkbox"></input>
+                        <p>DODAJ PRODUKT</p>
+                    </label>
+                </div>
                 {!displayMode && <h2>Kategorie:</h2>}
                 <div className={classes.Result}>
                     {showLoadingSpinner ? displayCategories : <div className={classes.ldsdualring}></div>}

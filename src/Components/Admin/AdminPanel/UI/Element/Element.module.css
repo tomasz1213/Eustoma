@@ -1,6 +1,6 @@
 .Element {
     width: 200px;
-    height:200px;
+    height:100px;
     margin: 20px;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
@@ -15,4 +15,11 @@
 .Element > h3 {
     background-color: #ccc;
     overflow: hidden;
+}
+@media (max-width:1200px) {
+    .Element{
+        width: 90%;
+        height: 50px;
+        margin:5px;
+    }
 }

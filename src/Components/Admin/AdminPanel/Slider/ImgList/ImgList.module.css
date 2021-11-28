@@ -1,28 +1,18 @@
 .Button{
-    background-color: #3f7beb;
-    position: absolute;
-    left:17px;
-    top:190px;
-    color:#fff;
-    width:260px;
-    height:30px;
-    border: 0 solid #eee;
-    cursor: pointer;
+  background-color: #1f2937;
+  position: absolute;
+  right:17px;
+  top:10px;
+  color:#fff;
+  width:auto;
+  height:30px;
+  border: 0 solid #eee;
+  cursor: pointer;
+  z-index: 10;
 }
 .Button:hover{
-    background-color: #134e6f;
-    cursor: pointer;
-}
-.Button::before{
-    content:"";
-    position: absolute;
-    top:-9px;
-    left:13px;
-    width: 0; 
-    height: 0; 
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #3f7beb;
+  background-color: #134e6f;
+  cursor: pointer;
 }
 .Button > input {
 	position: relative;

@@ -33,7 +33,7 @@
     cursor: pointer;
 }
 .Left > i{
-    font-size:50px;
+    font-size:50px; 
 }.Right > i{
     font-size:50px;
 }
@@ -50,7 +50,13 @@
 }
 @media (max-width:768px) {
     .Img{
-        width: 100%;
+        max-width: 70%;
         max-height: 60vh;
+    }
+    .Left{
+        left: 0;
+    }
+    .Right{
+        right: 0;
     }
 }

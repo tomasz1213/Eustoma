@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+import React,{useState, useRef} from 'react';
+import { useInViewport } from 'react-in-viewport';
 import {useDispatch,useSelector } from 'react-redux';
 import { uploadImage } from '../../../store/actions';
 import SelectBox from '../../../UI/SelectBox/SelectBox';
@@ -10,9 +11,19 @@ const Form = () =>{
     const [displayError,setDisplayError] = useState(false);
     const [checkBoxData,setCheckboxData] = useState({kompletSlubny:[],oprawaKwiatowa:[],oprawaPozaKwiatowa:[],jakTrafiliscie:[]});
     const [inputData,setInputData] = useState({name:null,surname:null,email:null,tel:null,date:null});
+    const formRef = useRef();
+    const nameRef = useRef();
+    const {
+      inViewport,
+    } = useInViewport(
+      formRef,
+      {},
+      { disconnectOnLeave: false }
+    );
     const handleCheckBoxes = (target,targetHeader) => {
-        let filterArr = [...checkBoxData.[targetHeader]];
-        target.value && target.checked ? filterArr.push(target.value) : filterArr = checkBoxData.[targetHeader].filter(el => el !== target.value);
+        const filterArr = [...checkBoxData.[targetHeader]];
+        target.value && target.checked ? filterArr.push(target.value) : 
+        filterArr = checkBoxData.[targetHeader].filter(el => el !== target.value);
         setCheckboxData({...checkBoxData,[targetHeader]:filterArr});
     };
     const submitData = () => {
@@ -30,13 +41,17 @@ const Form = () =>{
         setInputData({...inputData,[header[1]]:event.value});
         if(displayError)event.style.background = "white";
     };
+
+    if(inViewport && nameRef.current.value.length == 0) {
+        nameRef.current.focus();
+    }
     return(
-        <div className={classes.Form}>
+        <div ref={formRef} className={classes.Form}>
             <h2>FORMULARZ</h2>
             <div className={classes.Inputs}>
                 <div className={classes.InputCont}>
                     <label className={classes.Label}>Imię i Nazwisko Panny Młodej</label>
-                    <input onChange={event => handleInputs(event.target)} id='input__form--name' placeholder="Imię i Nazwisko Panny Młodej" className={classes.Input}></input>
+                    <input ref={nameRef} onChange={event => handleInputs(event.target)} id='input__form--name' placeholder="Imię i Nazwisko Panny Młodej" className={classes.Input}></input>
                 </div> 
                     <div className={classes.InputCont}>
                     <label className={classes.Label}>Imię i Nazwisko Pana Młodego</label>

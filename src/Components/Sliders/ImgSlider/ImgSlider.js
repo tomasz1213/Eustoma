@@ -66,11 +66,11 @@ const ImgSlider = () => {
     }}/>);
     return (
         <div className={classes.Slider}>   
-            <span onMouseOver={() => moveSlider(true)} onMouseOut={() => clearInterval(intervalSlider)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
+            <span onMouseOver={() => moveSlider(false)} onMouseOut={() => clearInterval(intervalSlider)} className={classes.SliderLeft}><i className="icon-left-open-big"></i> </span>
                 <div className={classes.Foto} >
                    {showImageElements}
                 </div>
-            <span onMouseOver={() => moveSlider(false)} onMouseOut={() => clearInterval(intervalSlider)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>
+            <span onMouseOver={() => moveSlider(true)} onMouseOut={() => clearInterval(intervalSlider)} className={classes.SliderRight}><i className="icon-right-open-big"></i></span>
         </div>
     );
     

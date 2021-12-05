@@ -39,6 +39,7 @@
     background-color:white
 }
 .Top{
+    position: relative;
     background-color:black;
     height:70px;
     width:100%;
@@ -49,10 +50,10 @@
     padding-top:30px;
 }
 .ButtonBack{
-    position:relative;
+    position:absolute;
     width:20px;
     font-size: 25px;
-    left:-115px;
+    left:10px;
     cursor: pointer;
 }
 .ShoppingCart{
@@ -176,7 +177,7 @@
     position: absolute;
     bottom: 162px;
 }
-@media (max-width: 768px){
+@media (max-width:1200px){
     .Prize{
         bottom:30px;
     }

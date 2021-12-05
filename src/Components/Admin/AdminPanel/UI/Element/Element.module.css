@@ -1,25 +1,25 @@
 .Element {
-    width: 200px;
-    height:100px;
-    margin: 20px;
-    text-align: center;
-    box-shadow: 0 2px 3px #ccc;
-    border: 1px solid #eee;
-    cursor: pointer;
-    background-size: cover;
+	width: 200px;
+	height: 100px;
+	margin: 20px;
+	text-align: center;
+	box-shadow: 0 2px 3px #ccc;
+	border: 1px solid #eee;
+	cursor: pointer;
+	background-size: cover;
 }
-.Element:hover{
-    box-shadow: 0 2px 3px #eee;
-    border: 3px solid #ccc;
+.Element:hover {
+	box-shadow: 0 2px 3px #eee;
+	border: 3px solid #ccc;
 }
 .Element > h3 {
-    background-color: #ccc;
-    overflow: hidden;
+	background-color: #ccc;
+	overflow: hidden;
 }
-@media (max-width:1200px) {
-    .Element{
-        width: 90%;
-        height: 50px;
-        margin:5px;
-    }
+@media (max-width: 1200px) {
+	.Element {
+		width: 90%;
+		height: 50px;
+		margin: 5px;
+	}
 }

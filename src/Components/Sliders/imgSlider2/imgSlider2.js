@@ -25,15 +25,15 @@ const ImgSlider2 = () => {
 				setImages(photoHolder);
 			});
 	}, []);
-	const imageElements = images.map((e) => (
+	const imageElements = images.map((element) => (
 		<ImgElement
 			type={false}
-			key={images.indexOf(e) + Math.random()}
-			src={e}
+			key={images.indexOf(element) + Math.random()}
+			src={element}
 			alt="Slider2"
 			nextImg={{
 				arr: images,
-				currIndex: images.indexOf(e),
+				currIndex: images.indexOf(element),
 			}}
 		/>
 	));

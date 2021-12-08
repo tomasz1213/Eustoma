@@ -15,4 +15,4 @@ describe('<AdminPanel/>', () => {
         const adminMenuPanelButtons = await screen.findAllByRole('button');
         expect(adminMenuPanelButtons).toHaveLength(4);
     });
-}); 
+});

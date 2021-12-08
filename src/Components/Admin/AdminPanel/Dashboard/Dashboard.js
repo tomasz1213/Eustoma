@@ -18,12 +18,13 @@ const Dashboard = () => {
 				formData.push({ ...value, key });
 			}
 			setFormData(formData);
-		});
-		axios.get("/shoppingCart.json").then((res) => {
-			for (const [key, value] of Object.entries(res.data)) {
-				cartData.push({ ...value, key });
-			}
-			setCartData(cartData);
+		}).then(()=>{
+			axios.get("/shoppingCart.json").then((res) => {
+				for (const [key, value] of Object.entries(res.data)) {
+					cartData.push({ ...value, key });
+				}
+				setCartData(cartData);
+			});
 		});
 	}, []);
 	const displayResult = (data, type) => {

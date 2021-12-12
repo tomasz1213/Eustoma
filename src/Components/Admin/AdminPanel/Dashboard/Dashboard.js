@@ -10,22 +10,27 @@ const Dashboard = () => {
 	const [cartData, setCartData] = useState([]);
 	const [resultData, setResultData] = useState();
 	const [displayMode, setDisplayMode] = useState(0);
-	useEffect(() => {
-		const formData = [];
-		const cartData = [];
-		axios.get("/forms.json").then((res) => {
-			for (const [key, value] of Object.entries(res.data)) {
-				formData.push({ ...value, key });
-			}
-			setFormData(formData);
-		}).then(()=>{
-			axios.get("/shoppingCart.json").then((res) => {
+	const fetchData = async (url) => {
+		return await axios
+			.get(url)
+			.then((res) => {
+				let data = [];
 				for (const [key, value] of Object.entries(res.data)) {
-					cartData.push({ ...value, key });
+					data.push({ ...value, key });
 				}
-				setCartData(cartData);
-			});
-		});
+				return Promise.resolve(data);
+			})
+			.catch((err) => Promise.reject(err));
+	};
+	useEffect(() => {
+		let mounted = true;
+		if (mounted) {
+			fetchData("/forms.json").then((res) => setFormData(res));
+			fetchData("/shoppingCart.json").then((res) => setCartData(res));
+		}
+		return () => {
+			mounted = false;
+		};
 	}, []);
 	const displayResult = (data, type) => {
 		setResultData(data);
@@ -37,6 +42,7 @@ const Dashboard = () => {
 				!displayMode &&
 				formData.map((element) => (
 					<Element
+						data-testid="resolved"
 						key={element.key}
 						clicked={() => displayResult(element, 1)}
 						background={element.url}

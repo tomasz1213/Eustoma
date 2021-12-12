@@ -14,21 +14,27 @@ const RentalSlider = (props) => {
 	const dispatch = useDispatch();
 	const [productData, setProductData] = useState([]);
 	useEffect(() => {
-		const productArr = [];
-		axios.get("/products.json").then((res) => {
-			for (const [key, value] of Object.entries(res.data)) {
-				productArr.push({ key, ...value });
-			}
-			if (props.sorted) {
-				productArr.sort((a, b) => {
-					if (!a.date && !b.date) return 0;
-					return new Date(b.date) - new Date(a.date);
-				});
-				setProductData(productArr.slice(0, 10));
-			} else {
-				setProductData(productArr.slice(0, 10));
-			}
-		});
+		let mounted = true;
+		if(mounted){
+			const productArr = [];
+			axios.get("/products.json").then((res) => {
+				for (const [key, value] of Object.entries(res.data)) {
+					productArr.push({ key, ...value });
+				}
+				if (props.sorted) {
+					productArr.sort((a, b) => {
+						if (!a.date && !b.date) return 0;
+						return new Date(b.date) - new Date(a.date);
+					});
+					setProductData(productArr.slice(0, 10));
+				} else {
+					setProductData(productArr.slice(0, 10));
+				}
+			});
+		}
+		return () => {
+			mounted = false;
+		}
 	}, [props.sorted]);
 	const sendProductData = (data) => {
 		dispatch(updateSuccess(data));

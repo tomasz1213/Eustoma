@@ -12,12 +12,12 @@ const OurWork = () => {
 	const [showData, setData] = useState([]);
 	let displayElement = null;
 	useEffect(() => {
-		const arr = [];
+		const dataHolder = [];
 		axios.get("/ourwork.json").then((res) => {
 			for (const [key, value] of Object.entries(res.data)) {
-				arr.push({ ...value, key });
+				dataHolder.push({ ...value, key });
 			}
-			setData(arr);
+			setData(dataHolder);
 			setLoadingSpinner(true);
 		});
 	}, []);

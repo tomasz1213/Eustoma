@@ -11,6 +11,17 @@ import RentalSlider from "./Slider/RenstalSlider/RentalSlider";
 import Product from "./Slider/RenstalSlider/Product/Product";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 
+export const computeFreshDate = (date) => {
+	if (date) {
+		const today = new Date();
+		const compareDate = new Date(date);
+		const diffTime = Math.abs(today - compareDate);
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		if (diffDays <= 30) {
+			return true;
+		} else return false;
+	} else return false;
+};
 const RentalMain = (props) => {
 	const [categories, setCategories] = useState();
 	const [products, setProducts] = useState();
@@ -18,38 +29,40 @@ const RentalMain = (props) => {
 	const [sortedProducts, setSortedProducts] = useState();
 	const [displayProducts, setDisplayProducts] = useState(0);
 	const dispatch = useDispatch();
+	const fetchData = async (url) => {
+		return await axios
+			.get(url)
+			.then((res) => {
+				let data = [];
+				for (const [key, value] of Object.entries(res.data)) {
+					data.push({ ...value, key });
+				}
+				return Promise.resolve(data);
+			})
+			.catch((err) => Promise.reject(err));
+	};
 	useEffect(() => {
-		axios.get("/categories.json").then((res) => {
-			let data = [];
-			for (const [key, value] of Object.entries(res.data)) {
-				data.push({ ...value, key });
-			}
-			setCategories(data);
-		});
-		axios.get("/products.json").then((res) => {
-			let data = [];
-			for (const [key, value] of Object.entries(res.data)) {
-				data.push({ ...value, key });
-			}
-			setProducts(data);
-			setSortedProducts(data);
-		});
+		let mounted = true;
+		if (mounted) {
+			fetchData("/categories.json")
+				.then((res) => setCategories(res))
+				.catch((err) => console.error(err));
+			fetchData("/products.json")
+				.then((res) => {
+					setProducts(res);
+					setSortedProducts(res);
+				})
+				.catch((err) => console.error(err));
+		}
+		return () => {
+			mounted = false;
+		};
 	}, []);
 	const sendProductData = (data) => {
 		dispatch(updateSuccess(data));
 		window.scrollTo(0, 0);
 	};
-	const computeFreshDate = (date) => {
-		if (date) {
-			const today = new Date();
-			const compareDate = new Date(date);
-			const diffTime = Math.abs(today - compareDate);
-			const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-			if (diffDays <= 30) {
-				return true;
-			} else return false;
-		} else return false;
-	};
+
 	const sortByCategory = (category) => {
 		setTimeout(() => {
 			const categoriesList = [

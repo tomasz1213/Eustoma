@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../../../AxiosConfig";
 import DisplayFormData from "./DisplayData/DisplayFormData";
 import DisplayCartData from "./DisplayData/DisplayCartData";
 import Element from "../UI/Element/Element";
 import classes from "./Dashboard.module.css";
+import { fetchData } from "../../../../utils";
 
 const Dashboard = () => {
 	const [formData, setFormData] = useState([]);
 	const [cartData, setCartData] = useState([]);
 	const [resultData, setResultData] = useState();
 	const [displayMode, setDisplayMode] = useState(0);
-	const fetchData = async (url) => {
-		return await axios
-			.get(url)
-			.then((res) => {
-				let data = [];
-				for (const [key, value] of Object.entries(res.data)) {
-					data.push({ ...value, key });
-				}
-				return Promise.resolve(data);
-			})
-			.catch((err) => Promise.reject(err));
-	};
 	useEffect(() => {
 		let mounted = true;
 		if (mounted) {
@@ -42,7 +30,7 @@ const Dashboard = () => {
 				!displayMode &&
 				formData.map((element) => (
 					<Element
-						data-testid="resolved"
+						testid="test-resolved"
 						key={element.key}
 						clicked={() => displayResult(element, 1)}
 						background={element.url}

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { fetchData } from "../../../../utils";
 import classes from "./Rental.module.css";
 import Categories from "./Categories/Categories";
 import Products from "./Product/Product";
 import Element from "../UI/Element/Element";
-import axios from "../../../../AxiosConfig";
 
 const Rental = () => {
 	const [displayMode, setDisplayMode] = useState(0);
@@ -18,21 +18,13 @@ const Rental = () => {
 	let displayCategories = [];
 	let displayProducts = [];
 	useEffect(() => {
-		const arrCategories = [];
-		const arrProducts = [];
-		axios.get("/categories.json").then((res) => {
-			for (const [key, value] of Object.entries(res.data)) {
-				arrCategories.push({ ...value, key });
-			}
-			setCategories(arrCategories);
+		fetchData("/categories.json").then((res) => {
+			setCategories(res);
 			setLoadingSpinner(true);
 		});
-		axios.get("/products.json").then((res) => {
-			for (const [key, value] of Object.entries(res.data)) {
-				arrProducts.push({ ...value, key });
-			}
-			setProducts(arrProducts);
-			setSortedProducts(arrProducts);
+		fetchData("/products.json").then((res) => {
+			setProducts(res);
+			setSortedProducts(res);
 			setLoadingSpinner(true);
 		});
 	}, [isDataLoding]);

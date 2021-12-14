@@ -2,24 +2,26 @@ import React, { useState, useEffect } from "react";
 import classes from "./OurWork.module.css";
 import Element from "../UI/Element/Element";
 import Job from "./Job/Job";
-import axios from "../../../../AxiosConfig";
+import { fetchData } from "../../../../utils";
 
 let ELEMENT_DATA = null;
 let EDIT_DATA_MODE = false;
 const OurWork = () => {
-	const [displayMode, setDisplayMode] = useState(0);
 	const [showLoadingSpinner, setLoadingSpinner] = useState(false);
+	const [displayMode, setDisplayMode] = useState(0);
 	const [showData, setData] = useState([]);
 	let displayElement = null;
 	useEffect(() => {
-		const dataHolder = [];
-		axios.get("/ourwork.json").then((res) => {
-			for (const [key, value] of Object.entries(res.data)) {
-				dataHolder.push({ ...value, key });
-			}
-			setData(dataHolder);
-			setLoadingSpinner(true);
-		});
+		let mounted = true;
+		if (mounted) {
+			fetchData("/ourwork.json").then((res) => {
+				setData(res);
+				setLoadingSpinner(true);
+			});
+		}
+		return () => {
+			mounted = false;
+		};
 	}, []);
 	const updateData = (element, conf) => {
 		// Editing existing realisation
@@ -46,6 +48,7 @@ const OurWork = () => {
 		default:
 			displayElement = showData.map((el) => (
 				<Element
+					testid="test-OurWork"
 					clicked={() => updateData(el, 1)}
 					name={el.name}
 					key={el.key}
@@ -64,7 +67,7 @@ const OurWork = () => {
 				{showLoadingSpinner ? (
 					displayElement
 				) : (
-					<div className={classes.ldsdualring}></div>
+					<div data-testid="Loading-spinner" className={classes.ldsdualring}></div>
 				)}
 			</div>
 		</div>

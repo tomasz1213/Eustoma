@@ -9,6 +9,7 @@ const Element = (props) => {
 
 	return (
 		<div
+			data-testid={props.testid}
 			onClick={() => openElement(props.name)}
 			className={classes.Element}
 			style={{ backgroundImage: `url(${props.background})` }}

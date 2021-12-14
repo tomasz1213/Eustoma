@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../AxiosConfig";
+import { fetchData } from "../../utils";
 import { NavLink } from "react-router-dom";
 import { updateSuccess } from "../../store/actions";
 import { useDispatch } from "react-redux";
@@ -29,18 +29,7 @@ const RentalMain = (props) => {
 	const [sortedProducts, setSortedProducts] = useState();
 	const [displayProducts, setDisplayProducts] = useState(0);
 	const dispatch = useDispatch();
-	const fetchData = async (url) => {
-		return await axios
-			.get(url)
-			.then((res) => {
-				let data = [];
-				for (const [key, value] of Object.entries(res.data)) {
-					data.push({ ...value, key });
-				}
-				return Promise.resolve(data);
-			})
-			.catch((err) => Promise.reject(err));
-	};
+
 	useEffect(() => {
 		let mounted = true;
 		if (mounted) {

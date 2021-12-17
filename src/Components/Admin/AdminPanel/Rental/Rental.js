@@ -75,6 +75,7 @@ const Rental = () => {
 		default:
 			displayCategories = showCategories.map((el) => (
 				<Element
+					testid="test-Rental"
 					clicked={() => updateData(el, 1)}
 					name={el.name}
 					key={el.key}
@@ -130,7 +131,7 @@ const Rental = () => {
 				{showLoadingSpinner ? (
 					displayProducts
 				) : (
-					<div className={classes.ldsdualring}></div>
+					<div data-testid="Loading-spinner" className={classes.ldsdualring}></div>
 				)}
 			</div>
 		</div>

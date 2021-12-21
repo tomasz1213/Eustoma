@@ -1,0 +1,44 @@
+.Calendar {
+  background: white;
+  padding: 40px 0;
+  box-sizing: border-box;
+  font-family: Montserrat, "sans-serif";
+  color: #51565d;
+}
+
+.react-calendar button {
+  cursor: pointer;
+  height: 100px;
+  background-color: white;
+  border-radius: 0%;
+  border: 0.1px solid rgba(154, 157, 160, 0.2);
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: rgba(152, 160, 166, 0.6);
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f9f9fa' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  cursor: not-allowed !important;
+}
+.react-calendar__month-view__weekdays__weekday {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #99a1a7;
+  text-align: center;
+  border-bottom: 1px solid rgba(166, 168, 179, 0.12);
+  line-height: 50px;
+  font-weight: 500;
+}
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+.react-calendar__navigation {
+  display: flex;
+  justify-content: center;
+}
+.react-calendar__navigation button {
+  flex-grow: 0 !important;
+  width: 100px !important;
+  height: 40px;
+}
+
+/*# sourceMappingURL=Calendar.css.map */

@@ -11,7 +11,11 @@
   height: 100px;
   background-color: white;
   border-radius: 0%;
-  border: 0.1px solid rgba(154, 157, 160, 0.2);
+  border: 0.1px solid rgba(221, 221, 221, 0.2);
+}
+.react-calendar button:hover {
+  background-color: #b6b7b8;
+  opacity: 0.3;
 }
 .react-calendar__month-view__days__day--neighboringMonth {
   color: rgba(152, 160, 166, 0.6);
@@ -39,6 +43,12 @@
   flex-grow: 0 !important;
   width: 100px !important;
   height: 40px;
+}
+
+@media (max-width: 1200px) {
+  .react-calendar button {
+    height: 70px;
+  }
 }
 
 /*# sourceMappingURL=Calendar.css.map */

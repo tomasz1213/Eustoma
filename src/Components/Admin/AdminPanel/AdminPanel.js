@@ -5,6 +5,7 @@ import Slider from "./Slider/Slider";
 import OurWork from "./OurWork/OurWork";
 import Rental from "./Rental/Rental";
 import Dashboard from "./Dashboard/Dashboard";
+import Calendar from "./Calendar/Calendar";
 
 const AdminPanel = () => {
 	const [showMenu, setShowMenu] = useState(false);
@@ -31,6 +32,9 @@ const AdminPanel = () => {
 					<NavLink activeClassName={classes.Active} to="/admin/rental">
 						<button className={classes.Button}>WYPOŻYCZALNIA</button>
 					</NavLink>
+					<NavLink activeClassName={classes.Active} to="/admin/calendar">
+						<button className={classes.Button}>KALENDARZ</button>
+					</NavLink>
 				</div>
 			</div>
 			<div className={classes.Context}>
@@ -38,6 +42,7 @@ const AdminPanel = () => {
 					<Route exact path="/admin/slider" component={Slider} />
 					<Route exact path="/admin/ourwork" component={OurWork} />
 					<Route exact path="/admin/rental" component={Rental} />
+					<Route exact path="/admin/calendar" component={Calendar} />
 					<Route path="/admin" component={Dashboard} />
 				</Switch>
 			</div>

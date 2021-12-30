@@ -14,7 +14,7 @@ const Rental = () => {
 	const [showSortedProducts, setSortedProducts] = useState([]);
 	const [editMode, setEditMode] = useState(false);
 	const [elementData, setELementData] = useState();
-	const isDataLoding = useSelector((state) => state.slider.loading);
+	const isDataLoading = useSelector((state) => state.slider.loading);
 	let displayCategories = [];
 	let displayProducts = [];
 	useEffect(() => {

@@ -172,6 +172,7 @@ export const removeFromFirebase = (url) => {
 
 export const uploadDataFirebase = (url, dataInfo) => {
 	return (dispatch) => {
+		dispatch(changeLoadingToTrue());
 		const data = {
 			...dataInfo,
 		};

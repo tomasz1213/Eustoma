@@ -4,7 +4,8 @@ export const fetchData = async (url) => {
     return await axios
         .get(url)
         .then((res) => {
-            let data = [];
+            const data = [];
+            if(!res.data)return;
             for (const [key, value] of Object.entries(res.data)) {
                 data.push({ ...value, key });
             }

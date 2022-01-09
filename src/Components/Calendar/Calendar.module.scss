@@ -5,6 +5,10 @@
 	font-family: Montserrat, "sans-serif";
 	color: #51565d;
 }
+.Reservation{
+	background-color: #F0AB8B;
+	color: white;
+}
 .react-calendar {
 	button {
 		cursor: pointer;
@@ -13,7 +17,7 @@
 		border-radius: 0%;
 		border: 0.1px solid rgba(#dddddd, 0.2);
 	}
-	button:hover{
+	button:hover {
 		background-color: #b8b6b6;
 		opacity: 0.3;
 	}
@@ -31,14 +35,14 @@
 		border-bottom: 1px solid rgba(166, 168, 179, 0.12);
 		line-height: 50px;
 		font-weight: 500;
-		abbr{
+		abbr {
 			text-decoration: none;
 		}
 	}
-	&__navigation{
+	&__navigation {
 		display: flex;
 		justify-content: center;
-		button{
+		button {
 			flex-grow: 0 !important;
 			width: 100px !important;
 			height: 40px;
@@ -51,5 +55,8 @@
 		button {
 			height: 70px;
 		}
+	}
+	.Reservation{
+		font-size: 9px;
 	}
 }

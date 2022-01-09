@@ -12,6 +12,8 @@
 }
 .Menu a{
     text-decoration: none;
+    position: absolute;
+    height: 70px;
 }
 .Logo{
     font-family: 'Cinzel', serif;

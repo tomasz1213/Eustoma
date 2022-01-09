@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CalendarJS from "react-calendar";
 import { fetchData } from "../../utils";
-import { useDispatch, useSelector } from "react-redux";
 import Menu from "../Menu/Menu";
 import Footer from "../Footer/Footer";
 import classes from "./Calendar.module.scss";
@@ -21,7 +20,7 @@ const Calendar = () => {
 					if(el.innerText != res[i].key)continue;
 					el.innerText = "Rezerwacja";
 					el.style.backgroundColor = "#F0AB8B";
-					el.style.color = 'white';
+					el.classList.add(`${classes.Reservation}`);
 				}
 			})
 		});
@@ -35,10 +34,7 @@ const Calendar = () => {
 			<div className={classes.Calendar}>
 				<CalendarJS
 					onActiveStartDateChange={({
-						action,
-						activeStartDate,
-						value,
-						view,
+						activeStartDate
 					}) => {
 						downloadCalendar(activeStartDate);
 					}}

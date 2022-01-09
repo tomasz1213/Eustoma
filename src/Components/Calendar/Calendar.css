@@ -6,6 +6,11 @@
   color: #51565d;
 }
 
+.Reservation {
+  background-color: #F0AB8B;
+  color: white;
+}
+
 .react-calendar button {
   cursor: pointer;
   height: 100px;
@@ -14,7 +19,7 @@
   border: 0.1px solid rgba(221, 221, 221, 0.2);
 }
 .react-calendar button:hover {
-  background-color: #b6b7b8;
+  background-color: #b8b6b6;
   opacity: 0.3;
 }
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -48,6 +53,10 @@
 @media (max-width: 1200px) {
   .react-calendar button {
     height: 70px;
+  }
+
+  .Reservation {
+    font-size: 8px;
   }
 }
 

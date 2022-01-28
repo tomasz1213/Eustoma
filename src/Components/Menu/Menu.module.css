@@ -55,4 +55,10 @@
     .Menu{
         padding: 5px 0;
     }
+    .Menu a{
+        position: absolute;
+        left: 0;
+        height: 70px;
+        
+    }
 }
